@@ -1,0 +1,2342 @@
+/**
+ * @name CompactX
+ * @author Czczh
+ * @version 1.0.0
+ * @description A compact, customizable glass theme for Discord.
+ */
+
+/* =========================================================
+   USER CONFIG
+   ========================================================= */
+:root{
+  /* =======================================================
+     ACCENT / BRAND
+     ======================================================= */
+  --main-color:#8798b2;
+  --hover-color:#a0aec1;
+  --success-color:#43b581;
+  --warning-color:#faa61a;
+  --danger-color:#982929;
+  --focus-color:var(--main-color);
+
+  /* =======================================================
+     STATUS COLORS
+     ======================================================= */
+  --online-color:#43b581;
+  --idle-color:#faa61a;
+  --dnd-color:#982929;
+  --streaming-color:#9147ff;
+  --offline-color:#808080;
+
+  /* =======================================================
+     WALLPAPER
+     ClearVision-style controls, implemented locally.
+     ======================================================= */
+  --background-image:url("https://i.imgur.com/B9C03tr.png");
+  --background-position:center;
+  --background-size:cover;
+  --background-attachment:fixed;
+  --background-repeat:no-repeat;
+  --background-filter:saturate(1.05) brightness(.96);
+
+  /* Seamless base blur.
+     This blurs the wallpaper itself once across the entire window so small
+     Discord layout gaps can never expose a sharp, unblurred slice.
+     Panel blur variables below become additional local frosting.
+     Set to 0px if you explicitly want the wallpaper sharp. */
+  --background-underlay-blur:1px;
+  --background-underlay-overscan:20px;
+
+  /* 0% = no global shade, 100% = full shade color. */
+  --background-shading-percent:0%;
+  --background-shading-color:rgb(0 0 0);
+
+  /* =======================================================
+     USER POPOUT BACKGROUND
+     Set image to none to use only glass.
+     ======================================================= */
+  --user-popout-image:var(--background-image);
+  --user-popout-position:var(--background-position);
+  --user-popout-size:var(--background-size);
+  --user-popout-attachment:var(--background-attachment);
+  --user-popout-filter:var(--background-filter);
+  --user-popout-image-tint:5%;
+
+  /* =======================================================
+     USER MODAL BACKGROUND
+     ======================================================= */
+  --user-modal-image:var(--background-image);
+  --user-modal-position:var(--background-position);
+  --user-modal-size:var(--background-size);
+  --user-modal-attachment:var(--background-attachment);
+  --user-modal-filter:var(--background-filter);
+  --user-modal-image-tint:0%;
+
+  /* =======================================================
+     HOME ICON
+     Use none for Discord's normal icon.
+     Example: url("https://example.com/icon.svg")
+     ======================================================= */
+  --home-icon:none;
+  --home-size:68%;
+  --home-position:center;
+
+  /* =======================================================
+     FONTS / TEXT
+     ======================================================= */
+  --main-font:"gg sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --code-font:Consolas,"gg mono","Liberation Mono",Menlo,Courier,monospace;
+  --normal-text:#d8d8db;
+  --muted-text:#aeaeb4;
+
+  /* =======================================================
+     CHANNEL COLORS
+     ======================================================= */
+  --channel-normal:var(--interactive-text-default);
+  --channel-muted:var(--interactive-muted);
+  --channel-hover:var(--interactive-text-hover);
+  --channel-selected:var(--interactive-text-active);
+  --channel-unread:var(--main-color);
+  --channel-unread-hover:var(--hover-color);
+  --channel-selected-bg:rgba(135,152,178,.12);
+  --channel-hover-bg:rgba(255,255,255,.06);
+
+  /* =======================================================
+     SHAPE / MOTION
+     ======================================================= */
+  --radius-small:4px;
+  --radius-medium:8px;
+  --radius-large:12px;
+  --radius-popout:12px;
+  --radius-modal:14px;
+  --transition-speed:.15s;
+
+  /* Optional server icon sizing. Keep defaults for stock layout. */
+  --server-size:48px;
+  --server-gap:8px;
+  --server-radius:34%;
+
+  /* =======================================================
+     GLASS ENGINE
+
+     Every opacity below is independent.
+       0%   = OFF / fully transparent
+       100% = solid glass-base-color
+
+     This is the main customization area.
+     ======================================================= */
+  --glass-base-color:rgb(0 0 0);
+  --glass-blur:4px;
+  --glass-saturation:100%;
+  --glass-brightness:1;
+  --glass-border-color:rgba(255,255,255,.10);
+  --glass-divider-color:rgba(255,255,255,0);
+  --glass-shadow:0 8px 28px rgba(0,0,0,.10);
+
+  /* Top bars. These are separate on purpose. */
+  --glass-titlebar-color:var(--glass-base-color);
+  --glass-titlebar-opacity:24%;
+  --glass-titlebar-blur:0px;
+
+  --glass-chat-header-color:var(--glass-base-color);
+  --glass-chat-header-opacity:24%;
+  --glass-chat-header-blur:0px;
+
+  /* Main layout */
+  --glass-main-chat-color:var(--glass-base-color);
+  --glass-main-chat-opacity:25%;
+  --glass-main-chat-blur:0px;
+
+  --glass-server-list-color:var(--glass-base-color);
+  --glass-server-list-opacity:22%;
+  --glass-server-list-blur:8px;
+
+  --glass-dm-sidebar-color:var(--glass-base-color);
+  --glass-dm-sidebar-opacity:18%;
+  --glass-dm-sidebar-blur:8px;
+
+  --glass-channel-sidebar-color:var(--glass-base-color);
+  --glass-channel-sidebar-opacity:24%;
+  --glass-channel-sidebar-blur:8px;
+
+  --glass-member-list-color:var(--glass-base-color);
+  --glass-member-list-opacity:24%;
+  --glass-member-list-blur:8px;
+
+  --glass-profile-sidebar-color:var(--glass-base-color);
+  --glass-profile-sidebar-opacity:24%;
+  --glass-profile-sidebar-blur:0px;
+
+  --glass-user-panel-color:var(--glass-base-color);
+  --glass-user-panel-opacity:17%;
+  --glass-user-panel-blur:10px;
+
+  /* Vencord SpotifyControls panel */
+  --glass-spotify-color:var(--glass-base-color);
+  --glass-spotify-opacity:16%;
+  --glass-spotify-blur:10px;
+  --spotify-accent-color:var(--main-color);
+  --spotify-control-hover-opacity:10%;
+
+  /* The account nameplate extends behind available bottom-left rows.
+     Each extra row contributes only while present, preserving the layout.
+     Set a specific extension to 0px to exclude that row. */
+  --user-panel-effect-extension:132px;       /* SpotifyControls */
+  --activity-panel-effect-extension:72px;   /* Discord "Playing a game" */
+  --listen-along-effect-extension:64px;     /* Discord Listen Along */
+  --user-panel-effect-opacity:100%;
+
+  /* Frosted separators / dividers.
+     These are intentionally tinted + blurred instead of transparent lines,
+     so the wallpaper cannot stay sharp through panel seams. */
+  --separator-color:var(--glass-base-color);
+  --separator-opacity:42%;
+  --separator-thickness:1px;
+  --separator-blur:16px;
+  --separator-saturation:110%;
+  --separator-edge-color:rgba(255,255,255,.055);
+  --separator-softness:3px;
+
+  /* Settings */
+  --glass-settings-sidebar-color:var(--glass-base-color);
+  --glass-settings-sidebar-opacity:10%;
+  --glass-settings-content-color:var(--glass-base-color);
+  --glass-settings-content-opacity:10%;
+
+  /* Shared surfaces */
+  --glass-card-color:var(--glass-base-color);
+  --glass-card-opacity:20%;
+  --glass-raised-color:var(--glass-base-color);
+  --glass-raised-opacity:45%;
+  --glass-popout-color:var(--glass-base-color);
+  --glass-popout-opacity:52%;
+  --glass-modal-color:var(--glass-base-color);
+  --glass-modal-opacity:0%;
+  --glass-input-color:rgb(255 255 255);
+  --glass-input-opacity:0%;
+  --glass-hover-color:rgb(255 255 255);
+  --glass-hover-opacity:0%;
+
+  /* Messages */
+  --glass-message-hover-color:var(--glass-base-color);
+  --glass-message-hover-opacity:14%;
+  --glass-message-selected-opacity:12%;
+  --glass-mentioned-opacity:12%;
+
+  /* =======================================================
+     LEGACY SURFACE VARIABLES
+     Kept so the rest of the theme and old edits still work.
+     ======================================================= */
+  --surface-app:rgba(0,0,0,.24);
+  --surface-chat:rgba(0,0,0,.24);
+  --surface-sidebar:rgba(0,0,0,0);
+  --surface-card:rgba(0,0,0,.20);
+  --surface-raised:rgba(0,0,0,.24);
+  --surface-popout:rgba(0,0,0,.52);
+  --surface-modal:rgba(0,0,0,.44);
+  --surface-input:rgba(255,255,255,.05);
+  --surface-hover:rgba(255,255,255,.06);
+
+  /* Backward-compatible aliases from the previous build. */
+  --tint-main-chat:var(--glass-main-chat-opacity);
+  --tint-dms:var(--glass-dm-sidebar-opacity);
+  --tint-profile:var(--glass-profile-sidebar-opacity);
+  --tint-server-list:var(--glass-server-list-opacity);
+  --tint-message-hover:var(--glass-message-hover-opacity);
+  --tint-whole-app:var(--background-shading-percent);
+}
+
+
+.theme-light{
+  --glass-base-color:rgb(255 255 255);
+  --surface-app:rgba(252,252,252,.30);
+  --surface-chat:rgba(252,252,252,.34);
+  --surface-sidebar:rgba(252,252,252,0);
+  --surface-card:rgba(252,252,252,.30);
+  --surface-raised:rgba(252,252,252,.44);
+  --surface-popout:rgba(252,252,252,.78);
+  --surface-modal:rgba(252,252,252,.68);
+  --surface-input:rgba(0,0,0,.08);
+  --surface-hover:rgba(0,0,0,.06);
+  --normal-text:#36363c;
+  --muted-text:#75757e;
+}
+.theme-darker{
+  --surface-app:rgba(0,0,0,.60);
+  --surface-chat:rgba(0,0,0,.50);
+  --surface-card:rgba(0,0,0,.30);
+  --surface-raised:rgba(0,0,0,.44);
+  --surface-popout:rgba(0,0,0,.76);
+  --surface-modal:rgba(0,0,0,.64);
+}
+.theme-midnight{
+  --surface-app:rgba(0,0,0,.80);
+  --surface-chat:rgba(0,0,0,.60);
+  --surface-card:rgba(0,0,0,.40);
+  --surface-raised:rgba(0,0,0,.54);
+  --surface-popout:rgba(0,0,0,.84);
+  --surface-modal:rgba(0,0,0,.74);
+}
+
+/* =========================================================
+   INTERNAL TOKENS
+   ========================================================= */
+:root{
+  --cv-main:hsl(from var(--main-color) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-hover:hsl(from var(--hover-color) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-success:hsl(from var(--success-color) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-warning:hsl(from var(--warning-color) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-danger:hsl(from var(--danger-color) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --accent-fill:rgba(135,152,178,.20);
+  --accent-fill-strong:rgba(135,152,178,.22);
+  --accent-fill-hover:rgba(160,174,193,.18);
+  --accent-glow:rgba(135,152,178,.26);
+
+  --cv-app:hsl(from var(--surface-app) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-chat:hsl(from var(--surface-chat) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-card:hsl(from var(--surface-card) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-raised:hsl(from var(--surface-raised) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-pop:hsl(from var(--surface-popout) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-modal:hsl(from var(--surface-modal) h calc(var(--saturation-factor,1)*s) l/alpha);
+  --cv-input:hsl(from var(--surface-input) h calc(var(--saturation-factor,1)*s) l/alpha);
+
+  --font-primary:var(--main-font);
+  --font-display:var(--main-font);
+  --font-code:var(--code-font);
+
+  --text-default:var(--normal-text);
+  --text-muted:var(--muted-text);
+  --text-link:var(--cv-main);
+  --text-brand:var(--cv-main);
+  --focus-primary:var(--cv-main);
+}
+
+@keyframes compact-slide{from{transform:scaleX(0);transform-origin:left}to{transform:scaleX(1);transform-origin:left}}
+@keyframes compact-pulse{0%,100%{opacity:.72}50%{opacity:.38}}
+
+/* =========================================================
+   BASE / WALLPAPER
+   ========================================================= */
+:is(html,body,#app-mount,.appMount__51fd7){background:transparent!important}
+body,button,input,select,textarea{font-family:var(--main-font)!important}
+code,pre{font-family:var(--code-font)!important}
+::selection{background:var(--cv-main);color:#fff}
+
+.bg__960e4{
+  background:var(--background-image) var(--background-position)/var(--background-size) no-repeat!important;
+  background-attachment:var(--background-attachment)!important;
+  inset:calc(0px - var(--background-underlay-overscan))!important;
+  width:auto!important;
+  height:auto!important;
+  filter:var(--background-filter) blur(var(--background-underlay-blur))!important;
+  z-index:-1!important;
+}
+:is(.app_a3002d,.app__160d8,.layer__960e4,.standardSidebarView__23e6b){background:transparent!important}
+.app__160d8::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:color-mix(in srgb,var(--cv-app) var(--tint-whole-app),transparent);
+  z-index:-1;
+}
+
+/* =========================================================
+   SHARED SURFACES
+   ========================================================= */
+:is(
+  .hljs,.markup__75297 code,.embedFull__623de,.file__0ccae,.wrapper_d5f3cd,
+  .guildInviteContainer__083ae,.tile__72090,.wrapperAudio_cf09d8,.wrapper_cf09d8,
+  .textContainer__4d95d,.footer__4d95d,.container__9271d,.container_a8e786,
+  .container_f69538,.container__0be77,.container_ca49a1,.contentPreview__9a337,
+  .searchResult__80bf8,.container__0f2e8,.emptyCard__7e549,.mainTableContainer__09a38,
+  .container_a62383,.card_c19a92,.row_d13feb,.container__5573a,.productCardContainer_fcbddd,
+  .container_cec934,.joinOptions__959cb,.safetyChecklist_eae0ef,.simpleItemWrapper__5dac8,
+  .auditLog__43dab,.scrollerContainer__4b8d8,.editCard_a25a68,.featureCard__7dd5e,
+  .upsellContainer__73000,.card_fc2e20,.descriptionBox__981f7,.analyticsCard__0dfec,
+  .accountProfileCard_a27e58,.perkCard_e6430c,.giftCard_a45ed3,.guildContainer__5dba5,
+  .boostContainer_ceb06a,.detailsBlock_e335a7,.paymentPane__01014,.settingCard__1a4ef,
+  .mainTableContainer_fa2640,.container_d8f25b,.card__84e3e,.container__19cf2,
+  .container__5682d,.backgroundModifierContainer_d96a9c,.collapseable__217b7,
+  .newMembersNotice_acdcc0,.container_bc0d35,.optionButtonWrapper__270d7,
+  .profileCard__5d7c9,.container__6764b,.container_cb32c7,.command_c94584,
+  .clickable__761e5,.soundButton__9be63,.soundButtonRefresh__9be63,
+  .selectionBox_b13085,.selectedPlan_b13085,.previewContainerSelected__50f14,
+  .decorationGridItem_dfa67d,.effectGridItem_b4019a,.box_f8c98c,.row__0624f,
+  .authedAppV2__50a54,.metadataContainer_c7f964,.defaultKeybindGroup_f82450
+){
+  background:var(--cv-card)!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+
+:is(
+  .wrapper_f7ecac,.popover_f84418,.toolbar_bba883,.quickSelectPopout_ebaca5,
+  .reactionTooltip_bbcccb,.container__5808f,.jumpToPresentBar__0f481,.wrapper__44df5,
+  .popoutContentWrapper_af3b89,.interactionsContainer_af3b89,.container_dca174,
+  .loadingPopout__58f1c,.autocomplete__13533,.popout_a16aea,.selectDropdown__0edde,
+  .container__8cb2e,.channelHeader__5d903,.menu_c1e9c4,.tooltip_fa450d,
+  .contentWrapper__08434,.messagesPopoutWrap__432f4,.container__16eb0,.browser_d98031,
+  .popout__76f04,.contentWrapper__9c62c,.picker__09f65,.popoutContainer__0f481,
+  .containerBackground_d4ced7,.contentWarningPopout_d2eed6,.popover_d6f39b,
+  .rolePopout__75297,.tooltip__4e35b,.container__3dde2,.customColorPicker__459fb,
+  .createOverwritePopout__0ab2c,.action__83b1d,.container__09ccc,.guildDetails__7dd5e,
+  .browser__9a792,.innerWrapper_b4589b,.chatHeaderBar_a5700d,.innerWrapperBase__553fd
+){
+  background:var(--cv-pop)!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+
+:is(
+  .root__49fc1,.container__8a031,.keyboardShortcutsModal_f061f6,.keybindGroup_f061f6,
+  .modalBg_b824c5,.authBox__921c5,.premiumBrandRefreshBackground_e5f3a9
+){
+  background:var(--cv-modal)!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+
+:is(
+  .header__49fc1,.content__49fc1,.footer__49fc1,.footer__7f727,.content_a8c622,
+  .upsellFooter__5e07c,.customGiftMessage_bf1b4a,.wrapper__4106a,.content_e9e3ed,
+  .contentHeader_e9e3ed,.badgeList_a27e58,.background_a27e58,.fieldList_a27e58,
+  .container_d878e7,.avatarBackground_eb2508,.modalContent__39813,.header_a72ffc,
+  .emptyContainer__88a04,.connectionHeader_c7f964,.modalContentInner_e44912
+){background:transparent!important}
+
+/* =========================================================
+   INPUTS / SEARCH / FORM CONTROLS
+   ========================================================= */
+:is(
+  .wrapper__72c38,.container_a45028,.container_fea832,.channelTextArea__74017,
+  .searchBar__97492,.input_ac6cb0,.addFriendInputWrapper__72ba7,.cardInput__8b579,
+  .keywordsTextArea__6a631,.textArea_c615b7,.header_f369db,.profileNote__9c3be .textarea__9daae
+){
+  background:var(--cv-input)!important;
+  border-color:color-mix(in srgb,var(--cv-input) 74%,white 26%)!important;
+}
+:is(
+  .wrapper__72c38,.container_a45028,.container_fea832,.channelTextArea__74017,
+  .searchBar__97492,.input_ac6cb0,.addFriendInputWrapper__72ba7,.cardInput__8b579,
+  .keywordsTextArea__6a631,.textArea_c615b7,.header_f369db,.profileNote__9c3be .textarea__9daae
+):focus-within{
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--cv-main) 70%,transparent)!important;
+}
+:is(input,textarea)::placeholder{color:var(--text-muted)!important}
+
+.outerRadioBase__64e61{stroke:var(--icon-strong);stroke-width:4}
+:is(.radioGroupOption__64e61,.standaloneRadioIndicator__64e61)[data-selected] :is(.outerRadioBase__64e61,.outerRadioFill__64e61){
+  fill:none!important;
+  stroke:var(--cv-main)!important;
+}
+:is(.checkboxOption__714a9[data-selected] .checkboxIndicator__714a9,.checkboxSelected_f4f0eb){
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+}
+.switchIndicator_a28278:not([style*="rgba(0, 0, 0, 0.12)"]){background:var(--cv-main)!important}
+:is(.slider_a562c8 .barFill_a562c8,.mediaBarProgress_b26b79,.mediaBarGrabber_b26b79,.fill__55b14,.ripple_a8e786){
+  background:var(--cv-main)!important;
+}
+
+/* =========================================================
+   BUTTONS / TABS
+   ========================================================= */
+:is(
+  .lookFilled__201d5.colorBrand__201d5,.lookFilled__201d5.colorPrimary__201d5,
+  .primary_a22cb0,.activeButton_c15210,.selected__1a58a,.option_a16aea[aria-selected=true],
+  .pillItemSelected__9e06a,.selectorButtonSelected__0907c,.navButtonActive__08434,
+  .categoryItemDefaultCategorySelected_b9ee0c,.stickerCategoryGenericSelected__3ad28,
+  .firstPartyCategorySelected__3ad28,.item_caf372.active_caf372,.checkIcon__270d7,
+  .iconWrapper__54b20,.iconWrapper__7e6bb,.tutorialIcon_d15d9e,.icon__319e1
+){
+  background:var(--accent-fill-strong)!important;
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+}
+:is(
+  .lookFilled__201d5.colorBrand__201d5,.lookFilled__201d5.colorPrimary__201d5,
+  .primary_a22cb0,.activeButton_c15210,.newMembersNotice_acdcc0
+):hover{background:var(--accent-fill-hover)!important}
+
+.lookFilled__201d5.colorGreen__201d5{background:var(--cv-success)!important}
+:is(.lookFilled__201d5.colorRed__201d5,.critical-primary_a22cb0){background:var(--cv-danger)!important}
+:is(.secondary_a22cb0,.lookOutlined__201d5.colorPrimary__201d5){border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+:is(.topPill_aa8da2,.side_aa8da2) .themed_aa8da2.item_aa8da2.selected_aa8da2{
+  background:var(--cv-main)!important;
+  color:var(--interactive-text-active)!important;
+}
+
+/* =========================================================
+   TITLE / HEADER
+   ========================================================= */
+/* The Discord window title bar and the active chat/DM header now follow
+   --tint-main-chat instead of staying permanently transparent. */
+.bar_c38106{
+  background:color-mix(in srgb,var(--cv-chat) var(--tint-main-chat),transparent)!important;
+}
+.container__9293f{
+  background:color-mix(in srgb,var(--cv-chat) var(--tint-main-chat),transparent)!important;
+}
+:is(.title_f75fb0,.toolbar__9293f){background:transparent!important}
+.children__9293f::after{display:none!important}
+:is(.akaBadge__488b1,.numberBadge__463b7,.textBadge__463b7){background:var(--cv-main)!important}
+.notice__6e2b9{border-radius:var(--radius-small)}
+.colorBrand__6e2b9{--custom-notice-background:color-mix(in srgb,var(--cv-main) 82%,transparent)}
+.colorDanger__6e2b9{--custom-notice-background:color-mix(in srgb,var(--cv-danger) 82%,transparent)}
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+.chat_f75fb0{background:transparent!important;border:none!important}
+:is(.chatContent_f75fb0,.scroller_f35c3c,.callContainer_cb9592,.peopleColumn__133bf,.contentRegion__23e6b){
+  background:color-mix(in srgb,var(--cv-chat) var(--tint-main-chat),transparent)!important;
+}
+:is(.chatGradientBase__36d07,.chatHeaderBar_dc83f5,.formWithLoadedChatInput_f75fb0:before,.stackedBars__74017,.themedBackground__74017,.threadSuggestionBar__841c8){
+  background:transparent!important;
+}
+.form_f75fb0{margin-top:4px}
+.upload_aa605f{background:var(--cv-card)!important;border:none!important}
+
+/* Message-row tint, matching the narrow message strip shown in the screenshot. */
+:is(.message__5126c:hover,.message__5126c.selected__5126c){
+  background:color-mix(in srgb,var(--cv-card) var(--tint-message-hover),transparent)!important;
+}
+
+:is(.replying__5126c,.mentioned__5126c){
+  background:color-mix(in srgb,var(--cv-main) 12%,transparent)!important;
+}
+:is(.replying__5126c,.mentioned__5126c)::before{background:var(--cv-main)!important}
+.wrapper_f61d60{background:var(--accent-fill-strong)!important;color:var(--text-strong)!important;border-radius:var(--radius-small)}
+.wrapper_f61d60:hover{background:var(--accent-fill-hover)!important}
+
+:is(.repliedMessageClickableSpine_c19a55,.messageSpine_c19a55::before,.cozy_c19a55.hasThread_c19a55::after){
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+}
+:is(.reactions__23977 .reactionMe__23977,.reactions_f8896c .reactionMe_f8896c){
+  background:color-mix(in srgb,var(--cv-main) 16%,transparent)!important;
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+}
+:is(.reaction__23977,.reactionBtn__23977,.reaction_f8896c,.reactionBtn_f8896c):hover{
+  border-color:var(--cv-hover)!important;
+}
+
+.divider__908e2{--divider-color:var(--cv-main)}
+.content__908e2{background:transparent!important}
+:is(.newMessagesBar__0f481,.countContainer_f369db,.countContainer__5808f,.newMembersNotice_acdcc0){
+  background:var(--cv-main)!important;
+}
+
+/* =========================================================
+   CALLS / VOICE
+   ========================================================= */
+:is(.wrapper_cb9592,.channelChatWrapper_cb9592,.root_bfe55a){background:transparent!important}
+.pulseGradient__11664{display:none!important}
+.border__2f4f7.speaking__2f4f7{box-shadow:inset 0 0 0 2px var(--cv-main)!important}
+.colorable_f1ceac.disconnect_f1ceac{background:var(--cv-danger)!important}
+.buttonSection__1405b{background:var(--cv-pop)!important;border:none!important;border-radius:var(--radius-small)}
+.participantsButton__211d1{background:var(--cv-pop)!important}
+
+/* =========================================================
+   MESSAGE EMBEDS / FILES / CODE
+   ========================================================= */
+.markup__75297 code.inline{
+  background:color-mix(in srgb,var(--cv-card) 82%,white 6%)!important;
+  border:none!important;
+  padding:2px 6px;
+}
+.hljs{border:1px solid var(--border-normal)!important}
+.hoverButtonGroup__06ab4{background:var(--cv-pop)!important}
+.gifFavoriteButton__43deb{background:var(--cv-pop)!important}
+.languageSelector__4d95d{background:var(--cv-pop)!important}
+.codeView__4d95d,.modalTextContainer__4d95d{background:transparent!important}
+
+/* =========================================================
+   FORUMS / THREADS / SEARCH
+   ========================================================= */
+.container_f369db{background:color-mix(in srgb,var(--cv-app) 76%,transparent)!important}
+.matchingPostsRow_f369db{background:var(--cv-input)!important;border-color:var(--border-subtle)!important}
+.pill_a2c9e8{
+  background:var(--cv-card)!important;
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+}
+.pill_a2c9e8:hover{border-color:var(--cv-hover)!important}
+.pill_a2c9e8.selected_a2c9e8{background:var(--cv-main)!important;color:var(--interactive-text-active)!important}
+:is(.container__9a337,.container_faa96b){background:var(--cv-card)!important;border-color:transparent!important}
+:is(.container__9a337,.container_faa96b):hover{border-color:var(--cv-hover)!important}
+:is(.container__9a337.isOpen__9a337,.container_faa96b.isOpen_faa96b){border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+
+:is(.searchResultsWrap_a98f3b,.searchHeader_ae7890){background:color-mix(in srgb,var(--cv-app) 80%,transparent)!important}
+.searchResult__80bf8{background:var(--cv-card)!important}
+.button__80bf8{background:var(--cv-main)!important}
+.button__80bf8:hover{background:var(--accent-fill-hover)!important}
+
+/* =========================================================
+   SERVER RAIL / HOME
+   ========================================================= */
+.guilds__5e434{
+  background:color-mix(in srgb,var(--cv-app) var(--tint-server-list),transparent)!important;
+}
+.wrapper_ef3116{background:transparent!important;padding-top:10px}
+.item__58105{box-shadow:0 0 4px 1px var(--accent-glow)!important}
+:is(.circleIconButton__5bc7e,.childWrapper__6e9f8,.icon__6e9f8){background:var(--cv-card)!important}
+:is(.circleIconButton__5bc7e:hover,.wrapper__6e9f8:hover .childWrapper__6e9f8){background:var(--accent-fill-hover)!important}
+:is(.circleIconButton__5bc7e.selected__5bc7e,.wrapper__6e9f8.selected__6e9f8 .childWrapper__6e9f8){background:var(--cv-main)!important}
+.mention__3b95d{background:var(--cv-main)!important}
+.iconBadge__650eb.isCurrentUserConnected__650eb{background:var(--cv-main)!important}
+
+/* =========================================================
+   SERVER CHANNEL SIDEBAR
+   ========================================================= */
+:is(.sidebar__5e434,.sidebarList__5e434,.container__2637a,.panels__5e434){
+  background:var(--surface-sidebar)!important;
+  border:none!important;
+}
+.sidebarList__5e434{border-top-left-radius:10px;backdrop-filter:none!important}
+.sidebar__5e434:after{display:none!important}
+.animatedContainer_f37cb1{background:transparent!important;border:none!important}
+
+.name__29444{
+  color:var(--cv-main)!important;
+  font-weight:700;
+}
+.name__29444::before,.name__29444::after{
+  content:"";
+  height:2px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,var(--cv-main));
+}
+.name__29444::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
+
+:is(.unread__2ea32,.bar__7aaec,.bar__3b95d){box-shadow:0 0 4px 1px var(--accent-glow)}
+:is(.bar__7aaec,.bar__3b95d){background:var(--cv-main)!important;border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+
+.link__2ea32{margin-left:4px;transition:.15s ease}
+.wrapper__2ea32:hover .link__2ea32{background:var(--surface-hover)!important}
+.wrapper__2ea32.modeMuted__2ea32 :is(.name__2ea32,.icon__2ea32){color:var(--channel-muted)!important}
+.wrapper__2ea32.modeUnreadImportant__2ea32 :is(.name__2ea32,.icon__2ea32){
+  color:var(--channel-unread)!important;
+  filter:drop-shadow(0 0 2px var(--accent-glow));
+}
+.wrapper__2ea32.modeSelected__2ea32 .link__2ea32{
+  background:var(--accent-fill)!important;
+}
+.wrapper__2ea32.modeSelected__2ea32 .link__2ea32::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:var(--radius-small);
+  background:var(--accent-fill-strong);
+  z-index:-1;
+  animation:compact-slide .18s ease;
+}
+.wrapper__2ea32.modeSelected__2ea32 :is(.name__2ea32,.icon__2ea32){color:var(--channel-selected)!important}
+.wrapper__2ea32.modeConnected__2ea32 :is(.name__2ea32,.icon__2ea32){
+  color:var(--cv-main)!important;
+  filter:drop-shadow(0 0 2px var(--accent-glow));
+}
+:is(.wrapper__260e1,.users__260e1){background:transparent!important}
+.avatar__07f91[style*="var(--status-speaking)"]::before{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:24px;
+  border-radius:999px 0 0 999px;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--cv-main) 50%,transparent),transparent);
+  z-index:-1;
+}
+
+/* =========================================================
+   PRIVATE CHANNELS / DMS
+   ========================================================= */
+.privateChannels_e6b769{
+  background:color-mix(in srgb,var(--cv-app) var(--tint-dms),transparent)!important;
+}
+.privateChannels_e6b769 .scroller__99e7c{background:transparent!important}
+.privateChannelsHeaderContainer__99e7c{color:var(--cv-main)!important}
+.headerText__99e7c{
+  color:var(--cv-main)!important;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:700;
+}
+.headerText__99e7c::before,.headerText__99e7c::after{
+  content:"";
+  height:2px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,var(--cv-main));
+}
+.headerText__99e7c::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
+.interactive__972a0{border-radius:var(--radius-small);transition:.15s ease}
+.interactive__972a0:hover{background:var(--surface-hover)!important}
+.interactive__972a0.interactiveSelected__972a0{background:var(--accent-fill-strong)!important;color:var(--interactive-text-active)!important}
+
+/* =========================================================
+   MEMBER LIST
+   ========================================================= */
+:is(.container_c8ffbb,.membersWrap_c8ffbb){background:transparent!important;border:none!important}
+.members_c8ffbb{background:color-mix(in srgb,var(--cv-app) 72%,transparent)!important}
+.membersGroup_c8ffbb{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  color:var(--cv-main)!important;
+  font-weight:700;
+}
+.membersGroup_c8ffbb::before,.membersGroup_c8ffbb::after{
+  content:"";
+  height:2px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,currentColor);
+}
+.membersGroup_c8ffbb::after{background:linear-gradient(90deg,currentColor,transparent)}
+.member__5d473{background:transparent!important}
+.member__5d473:hover .childContainer__91a9d{background:var(--surface-hover)!important}
+.selected__91a9d .childContainer__91a9d{
+  background:color-mix(in srgb,var(--cv-main) 20%,transparent)!important;
+}
+
+/* =========================================================
+   FRIENDS / ACTIVITY / REQUESTS
+   ========================================================= */
+:is(.container_cbd375,.container__7d20c,.peopleColumn__133bf,.list_f391e3){
+  background:color-mix(in srgb,var(--cv-app) 76%,transparent)!important;
+}
+:is(.tabBody__133bf,.container__133bf,.nowPlayingColumn__133bf){background:transparent!important;border:none!important}
+:is(.actionButton_f8fa06,.outer_bf1984,.section__00943){background:var(--cv-card)!important;border:none!important}
+.actionButton_f8fa06:hover{background:var(--accent-fill-hover)!important}
+.actionButton_f8fa06.actionAccept_f8fa06{color:var(--cv-success)!important}
+.actionButton_f8fa06.actionDeny_f8fa06{color:var(--cv-danger)!important}
+.tabBar__133bf .addFriend__133bf[aria-selected=true]{background:var(--accent-fill-strong)!important;color:var(--text-strong)!important}
+
+/* =========================================================
+   DISCOVER / LIBRARY / SHOP / NITRO / QUESTS
+   ========================================================= */
+:is(.applicationStore_f07d62,.homeWrapper__0920e,.container__89463,.container__6c253,.shopScroll__1feb0,.shopScroll__08415,.page__1feb0,.shop__08415,.page_c791b2){
+  background:transparent!important;
+}
+:is(.scroller__02f2d,.contentContainer__89463,.shop__6db1d,.scroller__4a84a,.scroller_fb04e1,.scroller__23746){
+  background:color-mix(in srgb,var(--cv-app) 76%,transparent)!important;
+}
+.productCardContainer_fcbddd:hover{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+.productSkeletonCardContainer_e4f643,.featuredBlockSkeleton__08415{
+  background:var(--cv-card)!important;
+  animation:compact-pulse 1.5s ease-in-out infinite;
+}
+.circleToggled__11877{outline-color:var(--cv-main)!important}
+.themeToggled__11877{background:var(--cv-card)!important;border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+:is(.postEnrollmentBackgroundCollapsed__24e2c,.postEnrollmentBackgroundExpanded__24e2c){
+  background-image:none!important;
+  background-color:transparent!important;
+  border:none!important;
+}
+.contentInteractable__24e2c .postEnrollmentBackgroundExpanded__24e2c{background:var(--cv-pop)!important}
+
+/* =========================================================
+   PROFILES / USER POPOUTS / DM PROFILE SIDEBAR
+   ========================================================= */
+:is(.user-profile-popout,.user-profile-modal,.user-profile-modal-v2):not(.custom-user-profile-theme){
+  background:var(--cv-pop)!important;
+}
+.outer_c0bea0{border:none!important}
+.outer_c0bea0:not(.custom-user-profile-theme){background:var(--cv-app)!important}
+.outer_c0bea0:not(.custom-user-profile-theme) .inner_c0bea0{background:transparent!important}
+.overlay_c0bea0{background:var(--cv-card)!important}
+.outer_c0bea0:not(.custom-user-profile-theme) .outer_ab8609{background:var(--cv-pop)!important}
+.outer_c0bea0:not(.custom-user-profile-theme) .inner_ab8609{background:transparent!important}
+.panel_b08638{background:var(--cv-pop)!important}
+
+.aside_f58343{
+  background:color-mix(in srgb,var(--cv-app) var(--tint-profile),transparent)!important;
+}
+:is(
+  .outer_c0bea0.user-profile-sidebar-redesign,
+  .outer_c0bea0.user-profile-sidebar-redesign .inner_c0bea0,
+  .outer_c0bea0.user-profile-sidebar-redesign .overlay_c0bea0,
+  .outer_c0bea0.user-profile-sidebar-redesign .panel_b08638
+){background:transparent!important;background-color:transparent!important}
+
+.profile__9c3be{background:var(--cv-app)!important;border-radius:var(--radius-medium)}
+.outer_c0bea0:not(.custom-user-profile-theme) .role_dfa8b6{position:relative;border-radius:var(--radius-small)}
+.outer_c0bea0:not(.custom-user-profile-theme) .role_dfa8b6 .roleCircle__4f569::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:inherit;
+  background:inherit;
+  opacity:.2;
+}
+
+/* =========================================================
+   POPUPS / MENUS / PICKERS
+   ========================================================= */
+.colorDefault_c1e9c4.focused_c1e9c4{background:var(--accent-fill-hover)!important}
+.colorDanger_c1e9c4.focused_c1e9c4{background:var(--cv-danger)!important}
+.colorDefault_c1e9c4:active:not(.hideInteraction_c1e9c4){background:var(--cv-main)!important}
+
+:is(.emojiPicker_c0e32c,.header_c0e32c,.container_fed6d3,.header_fed6d3,.header__432f4,.footer__432f4){
+  background:transparent!important;
+}
+:is(.emojiItem_fc7141.emojiItemSelected_fc7141,.stickerInspected_c6367b .inspectedIndicator_c6367b){
+  background:var(--surface-hover)!important;
+}
+:is(.categoryFadeBlurple_d02962,.sectionContainer__61424,.wrapper__14245){
+  background:color-mix(in srgb,var(--cv-main) 82%,transparent)!important;
+}
+.categoryFade_d02962:hover{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+.soundButton__9be63:hover,.soundButtonRefresh__9be63:hover{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+
+/* =========================================================
+   CALENDAR / QUICKSWITCHER / AUTOCOMPLETE
+   ========================================================= */
+.calendarPicker_d27f17 .react-datepicker{
+  background:var(--cv-pop)!important;
+}
+.calendarPicker_d27f17 .react-datepicker__header{background:transparent!important}
+.calendarPicker_d27f17 .react-datepicker__month{
+  background:var(--cv-card)!important;
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+}
+.calendarPicker_d27f17 .react-datepicker__day:is(.react-datepicker__day--keyboard-selected,.react-datepicker__day--selected,:hover){
+  background:var(--cv-main)!important;
+}
+.result__71961[aria-selected=true]{background:var(--accent-fill-hover)!important}
+.clickable__13533[aria-selected=true] .base__13533{background:var(--accent-fill-hover)!important}
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+:is(.contentRegionScroller__23e6b,.content_e9e3ed,.contentHeader_e9e3ed){background:transparent!important}
+.sidebarRegionScroller__23e6b{
+  background:color-mix(in srgb,var(--cv-app) 74%,transparent)!important;
+  padding:20px 8px 60px 20px;
+}
+:is(.sidebar__409aa,.fixedContent__409aa){background:transparent!important}
+.fixedContent__409aa::after{display:none!important}
+.sectionLabel__409aa{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.sectionLabel__409aa::before,.sectionLabel__409aa::after{
+  content:"";
+  height:2px;
+  flex:1;
+  background:linear-gradient(90deg,transparent,var(--cv-main));
+}
+.sectionLabel__409aa::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
+.label__409aa{color:var(--cv-main)!important}
+.item_caf372:hover{background:var(--surface-hover)!important}
+.item_caf372.active_caf372{background:var(--cv-main)!important}
+
+.accountButtonInner_c7f964,.accountBtnInner__750de{
+  background:var(--cv-card)!important;
+  border:2px solid transparent!important;
+}
+.accountButtonInner_c7f964:hover,.accountBtnInner__750de:hover{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+.sessionIcon__803f2{background:var(--cv-main)!important;color:var(--text-strong)!important}
+
+/* =========================================================
+   SERVER SETTINGS / MODERATION
+   ========================================================= */
+:is(.settingCard__1a4ef,.container_d8f25b,.auditLog__43dab,.editCard_a25a68,.safetyChecklist_eae0ef){
+  background:var(--cv-card)!important;
+}
+:is(.container_d8f25b,.editCard_a25a68):hover{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+:is(.deny__344e6,.allow__344e6,.item__344e6){background:var(--cv-card)!important}
+.deny__344e6{color:var(--cv-danger)!important}
+.allow__344e6{color:var(--cv-success)!important}
+.deny__344e6.selected__344e6{background:color-mix(in srgb,var(--cv-danger) 55%,transparent)!important}
+.allow__344e6.selected__344e6{background:color-mix(in srgb,var(--cv-success) 55%,transparent)!important}
+.valuePill__5dac8{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+
+/* =========================================================
+   STATUS COLORS
+   ========================================================= */
+.mask__44b0c rect[fill="#84858d"]{fill:var(--offline-color)!important}
+.mask__44b0c rect[fill="#45a366"]{fill:var(--online-color)!important}
+.mask__44b0c rect[fill="#ffc04e"]{fill:var(--idle-color)!important}
+.mask__44b0c rect[fill="#da3e44"]{fill:var(--dnd-color)!important}
+.mask__44b0c rect[fill="#9147ff"]{fill:var(--streaming-color)!important}
+
+.status_a423bd[style*="132, 133, 141"]{background-color:var(--offline-color)!important}
+.status_a423bd[style*="69, 163, 102"]{background-color:var(--online-color)!important}
+.status_a423bd[style*="255, 192, 78"]{background-color:var(--idle-color)!important}
+.status_a423bd[style*="218, 62, 68"]{background-color:var(--dnd-color)!important}
+
+/* =========================================================
+   SCROLLBARS
+   ========================================================= */
+:is(.auto__99f8c,.auto_d125d2)::-webkit-scrollbar{width:14px}
+:is(.thin__99f8c,.thin_d125d2)::-webkit-scrollbar{width:8px}
+:is(.auto__99f8c,.auto_d125d2,.thin__99f8c,.thin_d125d2)::-webkit-scrollbar-thumb{
+  background:var(--cv-main)!important;
+  border:3px solid transparent;
+  background-clip:padding-box!important;
+  border-radius:999px;
+}
+:is(.auto__99f8c,.auto_d125d2,.thin__99f8c,.thin_d125d2)::-webkit-scrollbar-track{
+  background:transparent!important;
+}
+
+/* =========================================================
+   BETTERDISCORD
+   ========================================================= */
+.visual-refresh :is(.bd-store-card,.bd-addon-store-card,.bd-addon-card,.bd-addon-header,.bd-notification){
+  background:var(--cv-card)!important;
+  border-color:transparent!important;
+}
+.visual-refresh :is(.bd-store-card,.bd-addon-store-card,.bd-addon-card):hover{
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+  box-shadow:none!important;
+}
+.visual-refresh .bd-addon-store-card .bd-addon-store-card-tag{
+  background:transparent!important;
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+}
+.visual-refresh .bd-modal-root{
+  background:var(--cv-modal)!important;
+  border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
+}
+.visual-refresh .bd-button-filled.bd-button-color-primary{background:var(--cv-main)!important}
+.visual-refresh .bd-button-filled.bd-button-color-primary:hover{background:var(--accent-fill-hover)!important}
+.visual-refresh .bd-addon-error-icon{background:var(--cv-main)!important}
+.visual-refresh .bd-addon-error{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+
+/* =========================================================
+   HASH-CHANGE FALLBACKS
+   ========================================================= */
+:is([class^="guilds_"],[class*=" guilds_"]){
+  background-color:color-mix(in srgb,var(--cv-app) var(--tint-server-list),transparent)!important;
+}
+:is([class^="privateChannels_"],[class*=" privateChannels_"]){
+  background-color:color-mix(in srgb,var(--cv-app) var(--tint-dms),transparent)!important;
+}
+:is([class^="sidebarList_"],[class*=" sidebarList_"]){
+  background-color:var(--surface-sidebar)!important;
+}
+:is(
+  [class^="sidebarList_"],[class*=" sidebarList_"],
+  [class^="privateChannels_"],[class*=" privateChannels_"]
+) [class*="scroller_"]{
+  background-color:transparent!important;
+}
+[class^="aside_"]:has(.user-profile-sidebar-redesign),
+[class*=" aside_"]:has(.user-profile-sidebar-redesign){
+  background-color:color-mix(in srgb,var(--cv-app) var(--tint-profile),transparent)!important;
+}
+
+.user-profile-sidebar-redesign[class*="outer_"],
+.user-profile-sidebar-redesign [class*="inner_"],
+.user-profile-sidebar-redesign [class*="overlay_"]{
+  background-color:transparent!important;
+}
+
+
+/* =========================================================
+   GLASS ENGINE 2.0 / ROBUST PANEL OVERRIDES
+   This block intentionally comes last so Discord's own
+   transparent layers cannot cancel the configured tint.
+   ========================================================= */
+:root{
+  --g-titlebar:color-mix(in srgb,var(--glass-titlebar-color) var(--glass-titlebar-opacity),transparent);
+  --g-chat-header:color-mix(in srgb,var(--glass-chat-header-color) var(--glass-chat-header-opacity),transparent);
+  --g-chat:color-mix(in srgb,var(--glass-main-chat-color) var(--glass-main-chat-opacity),transparent);
+  --g-server-list:color-mix(in srgb,var(--glass-server-list-color) var(--glass-server-list-opacity),transparent);
+  --g-dm-sidebar:color-mix(in srgb,var(--glass-dm-sidebar-color) var(--glass-dm-sidebar-opacity),transparent);
+  --g-channel-sidebar:color-mix(in srgb,var(--glass-channel-sidebar-color) var(--glass-channel-sidebar-opacity),transparent);
+  --g-member-list:color-mix(in srgb,var(--glass-member-list-color) var(--glass-member-list-opacity),transparent);
+  --g-profile-sidebar:color-mix(in srgb,var(--glass-profile-sidebar-color) var(--glass-profile-sidebar-opacity),transparent);
+  --g-user-panel:color-mix(in srgb,var(--glass-user-panel-color) var(--glass-user-panel-opacity),transparent);
+  --g-spotify:color-mix(in srgb,var(--glass-spotify-color) var(--glass-spotify-opacity),transparent);
+  --g-separator:color-mix(in srgb,var(--separator-color) var(--separator-opacity),transparent);
+  --g-settings-sidebar:color-mix(in srgb,var(--glass-settings-sidebar-color) var(--glass-settings-sidebar-opacity),transparent);
+  --g-settings-content:color-mix(in srgb,var(--glass-settings-content-color) var(--glass-settings-content-opacity),transparent);
+  --g-card:color-mix(in srgb,var(--glass-card-color) var(--glass-card-opacity),transparent);
+  --g-raised:color-mix(in srgb,var(--glass-raised-color) var(--glass-raised-opacity),transparent);
+  --g-popout:color-mix(in srgb,var(--glass-popout-color) var(--glass-popout-opacity),transparent);
+  --g-modal:color-mix(in srgb,var(--glass-modal-color) var(--glass-modal-opacity),transparent);
+  --g-input:color-mix(in srgb,var(--glass-input-color) var(--glass-input-opacity),transparent);
+  --g-hover:color-mix(in srgb,var(--glass-hover-color) var(--glass-hover-opacity),transparent);
+  --g-message-hover:color-mix(in srgb,var(--glass-message-hover-color) var(--glass-message-hover-opacity),transparent);
+}
+
+/* Wallpaper and global shading */
+.bg__960e4,
+[class^="bg_960e4"],[class*=" bg_960e4"]{
+  background-image:var(--background-image)!important;
+  background-position:var(--background-position)!important;
+  background-size:var(--background-size)!important;
+  background-attachment:var(--background-attachment)!important;
+  background-repeat:var(--background-repeat)!important;
+  inset:calc(0px - var(--background-underlay-overscan))!important;
+  width:auto!important;
+  height:auto!important;
+  filter:var(--background-filter) blur(var(--background-underlay-blur))!important;
+}
+.app__160d8::before,
+[class^="app__160d8"]::before,[class*=" app__160d8"]::before{
+  background:color-mix(in srgb,var(--background-shading-color) var(--background-shading-percent),transparent)!important;
+}
+
+/* Frosting helper. */
+:is(
+  .bar_c38106,.container__9293f,.guilds__5e434,.sidebarList__5e434,
+  .privateChannels_e6b769,.members_c8ffbb,.aside_f58343,.panels__5e434,
+  .sidebarRegionScroller__23e6b,.contentRegionScroller__23e6b
+){
+  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness));
+  backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness));
+}
+
+/* TOPMOST WINDOW BAR
+   Uses an inset fill as well as background-color. This fixes the case where
+   Discord leaves the element technically transparent above the wallpaper. */
+.bar_c38106{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:inset 0 0 0 9999px var(--g-titlebar)!important;
+  -webkit-backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+  border-bottom:1px solid var(--glass-divider-color)!important;
+}
+
+
+/* Fallback for Discord builds that rotate the title-bar hash while keeping
+   the same top-level structure. */
+#app-mount [class^="base_"] > [class^="bar_"]:first-child,
+#app-mount [class*=" base_"] > [class*=" bar_"]:first-child{
+  background:transparent!important;
+  background-color:transparent!important;
+  box-shadow:inset 0 0 0 9999px var(--g-titlebar)!important;
+  -webkit-backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+}
+
+/* Active channel / DM header directly below the title bar. */
+.container__9293f{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:inset 0 0 0 9999px var(--g-chat-header)!important;
+  -webkit-backdrop-filter:blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation))!important;
+  border-bottom:1px solid var(--glass-divider-color)!important;
+}
+:is(.title_f75fb0,.toolbar__9293f,.children__9293f){background:transparent!important}
+
+/* Additional hash-resistant header fallbacks scoped to likely Discord header containers. */
+[class^="chat_"][class*="f75fb0"] > [class^="container_"][class*="9293f"],
+[class*=" chat_"][class*="f75fb0"] > [class*=" container_"][class*="9293f"]{
+  background:var(--g-chat-header)!important;
+  box-shadow:inset 0 0 0 9999px var(--g-chat-header)!important;
+}
+
+/* Main chat */
+:is(.chatContent_f75fb0,.scroller_f35c3c,.callContainer_cb9592){
+  background:var(--g-chat)!important;
+  background-color:var(--g-chat)!important;
+  -webkit-backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
+  backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
+}
+.chat_f75fb0{background:transparent!important}
+
+/* Server rail */
+.guilds__5e434,
+:is([class^="guilds_"],[class*=" guilds_"]){
+  background:var(--g-server-list)!important;
+  background-color:var(--g-server-list)!important;
+  -webkit-backdrop-filter:blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation))!important;
+  border-right:1px solid var(--glass-divider-color)!important;
+}
+
+/* Server / channel sidebar. DM sidebar overrides this below. */
+.sidebarList__5e434,
+:is([class^="sidebarList_"],[class*=" sidebarList_"]){
+  background:var(--g-channel-sidebar)!important;
+  background-color:var(--g-channel-sidebar)!important;
+  -webkit-backdrop-filter:blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  border-right:1px solid var(--glass-divider-color)!important;
+}
+:is(.container__2637a,.animatedContainer_f37cb1){background:transparent!important}
+
+/* DMs: includes the search/header part and the private-channel scroller. */
+.sidebarList__5e434:has(.privateChannels_e6b769),
+:is([class^="sidebarList_"],[class*=" sidebarList_"]):has([class^="privateChannels_"],[class*=" privateChannels_"]),
+.privateChannels_e6b769,
+:is([class^="privateChannels_"],[class*=" privateChannels_"]){
+  background:var(--g-dm-sidebar)!important;
+  background-color:var(--g-dm-sidebar)!important;
+  -webkit-backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
+}
+.privateChannels_e6b769 .scroller__99e7c,
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) [class*="scroller_"]{background:transparent!important}
+
+/* Member list */
+:is(.container_c8ffbb,.membersWrap_c8ffbb){background:transparent!important}
+.members_c8ffbb{
+  background:var(--g-member-list)!important;
+  background-color:var(--g-member-list)!important;
+  -webkit-backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
+  border-left:1px solid var(--glass-divider-color)!important;
+}
+
+/* DM profile sidebar */
+.aside_f58343,
+[class^="aside_"]:has(.user-profile-sidebar-redesign),
+[class*=" aside_"]:has(.user-profile-sidebar-redesign){
+  background:var(--g-profile-sidebar)!important;
+  background-color:var(--g-profile-sidebar)!important;
+  -webkit-backdrop-filter:blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  border-left:1px solid var(--glass-divider-color)!important;
+}
+.user-profile-sidebar-redesign[class*="outer_"],
+.user-profile-sidebar-redesign [class*="inner_"],
+.user-profile-sidebar-redesign [class*="overlay_"],
+.user-profile-sidebar-redesign [class*="panel_"]{background:transparent!important;background-color:transparent!important}
+
+/* Bottom-left user/voice panel */
+.panels__5e434{
+  background:var(--g-user-panel)!important;
+  background-color:var(--g-user-panel)!important;
+  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
+  border-top:1px solid var(--glass-divider-color)!important;
+}
+
+/* Settings panes */
+.sidebarRegionScroller__23e6b{
+  background:var(--g-settings-sidebar)!important;
+  background-color:var(--g-settings-sidebar)!important;
+}
+.contentRegionScroller__23e6b{
+  background:var(--g-settings-content)!important;
+  background-color:var(--g-settings-content)!important;
+}
+
+/* Cards */
+:is(
+  .hljs,.markup__75297 code,.embedFull__623de,.file__0ccae,.wrapper_d5f3cd,
+  .guildInviteContainer__083ae,.tile__72090,.wrapperAudio_cf09d8,.wrapper_cf09d8,
+  .textContainer__4d95d,.footer__4d95d,.container__9271d,.container_a8e786,
+  .searchResult__80bf8,.emptyCard__7e549,.card_c19a92,.row_d13feb,
+  .productCardContainer_fcbddd,.settingCard__1a4ef,.profileCard__5d7c9,
+  .accountProfileCard_a27e58,.perkCard_e6430c,.giftCard_a45ed3
+){background:var(--g-card)!important}
+
+/* Inputs */
+:is(
+  .wrapper__72c38,.container_a45028,.container_fea832,.channelTextArea__74017,
+  .searchBar__97492,.input_ac6cb0,.addFriendInputWrapper__72ba7,.cardInput__8b579,
+  .keywordsTextArea__6a631,.textArea_c615b7,.profileNote__9c3be .textarea__9daae
+){
+  background:var(--g-input)!important;
+  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
+  backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
+  border-color:var(--glass-border-color)!important;
+}
+
+/* Popouts */
+:is(
+  .wrapper_f7ecac,.popover_f84418,.toolbar_bba883,.quickSelectPopout_ebaca5,
+  .reactionTooltip_bbcccb,.container__5808f,.jumpToPresentBar__0f481,
+  .autocomplete__13533,.popout_a16aea,.selectDropdown__0edde,.menu_c1e9c4,
+  .tooltip_fa450d,.contentWrapper__08434,.messagesPopoutWrap__432f4,
+  .browser_d98031,.popout__76f04,.picker__09f65,.rolePopout__75297
+){
+  background:var(--g-popout)!important;
+  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
+  border:1px solid var(--glass-border-color)!important;
+  box-shadow:var(--glass-shadow)!important;
+  border-radius:var(--radius-popout)!important;
+}
+
+/* Modals */
+:is(.root__49fc1,.container__8a031,.keyboardShortcutsModal_f061f6,.modalBg_b824c5,.authBox__921c5){
+  background:var(--g-modal)!important;
+  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
+  border:1px solid var(--glass-border-color)!important;
+  box-shadow:var(--glass-shadow)!important;
+  border-radius:var(--radius-modal)!important;
+}
+
+/* Messages */
+.message__5126c{transition:background-color var(--transition-speed) ease}
+:is(.message__5126c:hover,.message__5126c.selected__5126c){background:var(--g-message-hover)!important}
+.replying__5126c{background:color-mix(in srgb,var(--cv-main) var(--glass-message-selected-opacity),transparent)!important}
+.mentioned__5126c{background:color-mix(in srgb,var(--cv-main) var(--glass-mentioned-opacity),transparent)!important}
+
+/* Channel rows */
+.wrapper__2ea32:hover .link__2ea32{background:var(--channel-hover-bg)!important}
+.wrapper__2ea32.modeSelected__2ea32 .link__2ea32{background:var(--channel-selected-bg)!important}
+.wrapper__2ea32.modeUnreadImportant__2ea32:hover :is(.name__2ea32,.icon__2ea32){color:var(--channel-unread-hover)!important}
+
+/* Custom home icon */
+.wrapper__6e9f8[data-list-item-id="guildsnav___home"] .childWrapper__6e9f8{
+  background-image:var(--home-icon)!important;
+  background-size:var(--home-size)!important;
+  background-position:var(--home-position)!important;
+  background-repeat:no-repeat!important;
+}
+.wrapper__6e9f8[data-list-item-id="guildsnav___home"] .childWrapper__6e9f8:has(svg){
+  /* When --home-icon is none, Discord's SVG remains visible. */
+}
+.wrapper__6e9f8[data-list-item-id="guildsnav___home"] .childWrapper__6e9f8 svg{
+  opacity:1;
+}
+
+/* Server sizing */
+.guilds__5e434 .listItem__650eb{margin-bottom:var(--server-gap)!important}
+.guilds__5e434 :is(.wrapper_cc5dd2,.svg_cc5dd2,.childWrapper__6e9f8,.icon__6e9f8){
+  width:var(--server-size)!important;
+  height:var(--server-size)!important;
+}
+.guilds__5e434 :is(.childWrapper__6e9f8,.icon__6e9f8){border-radius:var(--server-radius)!important}
+
+/* Optional independent profile imagery. Nitro/custom profile themes are left alone. */
+.user-profile-popout:not(.custom-user-profile-theme){
+  background-image:
+    linear-gradient(color-mix(in srgb,var(--glass-base-color) var(--user-popout-image-tint),transparent),color-mix(in srgb,var(--glass-base-color) var(--user-popout-image-tint),transparent)),
+    var(--user-popout-image)!important;
+  background-position:var(--user-popout-position)!important;
+  background-size:var(--user-popout-size)!important;
+  background-attachment:var(--user-popout-attachment)!important;
+  filter:var(--user-popout-filter);
+}
+:is(.user-profile-modal,.user-profile-modal-v2):not(.custom-user-profile-theme){
+  background-image:
+    linear-gradient(color-mix(in srgb,var(--glass-base-color) var(--user-modal-image-tint),transparent),color-mix(in srgb,var(--glass-base-color) var(--user-modal-image-tint),transparent)),
+    var(--user-modal-image)!important;
+  background-position:var(--user-modal-position)!important;
+  background-size:var(--user-modal-size)!important;
+  background-attachment:var(--user-modal-attachment)!important;
+  filter:var(--user-modal-filter);
+}
+
+/* Accessibility focus */
+:focus-visible{outline-color:var(--focus-color)!important}
+
+/* Selection and scrollbars remain accent-driven. */
+::selection{background:color-mix(in srgb,var(--cv-main) 70%,transparent)!important;color:#fff!important}
+
+/* If Discord changes a few hashes, these generic fallbacks keep the large
+   translucent regions usable without targeting every tiny component. */
+[class^="members_"],[class*=" members_"]{--glass-fallback-member:var(--g-member-list)}
+[class^="contentRegionScroller_"],[class*=" contentRegionScroller_"]{background-color:var(--g-settings-content)!important}
+[class^="sidebarRegionScroller_"],[class*=" sidebarRegionScroller_"]{background-color:var(--g-settings-sidebar)!important}
+
+/* =========================================================
+   CURRENT DISCORD DOM COVERAGE / 2026-10-04
+   Generated from the user's live Discord DOM snapshot.
+
+   Goal: make existing glass variables control the actual
+   currently-mounted Discord surfaces, including wrappers that
+   otherwise repaint Discord's stock backgrounds over the glass.
+   ========================================================= */
+
+/* ---------- APP / PAGE SHELLS ---------- */
+:is(
+  .container__5e434,
+  .base__5e434,
+  .content__5e434,
+  .page__5e434,
+  .content_f75fb0,
+  .subtitleContainer_f75fb0,
+  .messagesWrapper__36d07,
+  .scroller__36d07,
+  .scrollerContent__36d07,
+  .scrollerInner__36d07,
+  .channelBottomBarArea_f75fb0,
+  .layerContainer__59d0d
+){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* Keep Discord's page shell from laying an opaque color over wallpaper. */
+:is([class^="content__5e434"],[class*=" content__5e434"],
+    [class^="page__5e434"],[class*=" page__5e434"]){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* ---------- DM SIDEBAR ---------- */
+/* The live build puts its DM search header inside privateChannels. Let the
+   configured DM glass tint show through instead of Discord's own fill. */
+:is(.searchBar_e6b769,.privateChannelsHeaderContainer__99e7c){
+  background:transparent!important;
+  background-color:transparent!important;
+  border-color:var(--glass-divider-color)!important;
+}
+.searchBar_e6b769 > :is(button,[role="button"]){
+  background:var(--g-input)!important;
+  border:1px solid var(--glass-border-color)!important;
+}
+
+/* Current DM row implementation. */
+:is(.channel__972a0,.container_e45859){background:transparent!important}
+.interactive__972a0{transition:background-color var(--transition-speed) ease!important}
+.interactive__972a0:hover{background:var(--g-hover)!important}
+.interactive__972a0.interactiveSelected__972a0,
+.interactiveSelected__972a0{background:var(--channel-selected-bg)!important}
+
+/* ---------- MAIN CHAT ---------- */
+/* chatContent owns the configured chat tint. Everything inside should be
+   transparent unless it is deliberately a card/input/popout. */
+.chatContent_f75fb0{
+  background:var(--g-chat)!important;
+  background-color:var(--g-chat)!important;
+}
+.chatContent_f75fb0 :is(
+  .messagesWrapper__36d07,
+  .scroller__36d07,
+  .scrollerContent__36d07,
+  .scrollerInner__36d07
+){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* Current message implementation uses both __5126c and c19a55 classes. */
+:is(.message__5126c,.wrapper_c19a55){
+  transition:background-color var(--transition-speed) ease!important;
+}
+:is(.message__5126c,.wrapper_c19a55):hover{
+  background:var(--g-message-hover)!important;
+}
+:is(.message__5126c.selected__5126c,.wrapper_c19a55.selected__5126c){
+  background:var(--g-message-hover)!important;
+}
+:is(.message__5126c.replying__5126c,.wrapper_c19a55.replying__5126c){
+  background:color-mix(in srgb,var(--cv-main) var(--glass-message-selected-opacity),transparent)!important;
+}
+:is(.message__5126c.mentioned__5126c,.wrapper_c19a55.mentioned__5126c){
+  background:color-mix(in srgb,var(--cv-main) var(--glass-mentioned-opacity),transparent)!important;
+}
+
+/* Loading/skeleton message rows should not introduce a solid Discord panel. */
+:is(.wrapper_d852db,.wrapper_fc8177,.content_fc8177,.attachmentContainer_fc8177){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* ---------- CHAT INPUT ---------- */
+/* In the current build the visible fill is often on scrollableContainer,
+   not channelTextArea itself. */
+:is(.channelTextArea_f75fb0,.channelTextArea__74017){background:transparent!important}
+:is(.scrollableContainer__74017,.inner__74017){
+  background:var(--g-input)!important;
+  background-color:var(--g-input)!important;
+  border-color:var(--glass-border-color)!important;
+  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
+  backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
+}
+
+/* ---------- MESSAGE ACTION BAR / POPOVERS ---------- */
+:is(.buttonsInner__5126c,.popover_f84418,.wrapper_f7ecac,.popover__2d0ab,.statusPopover__2d0ab){
+  background:var(--g-popout)!important;
+  background-color:var(--g-popout)!important;
+  border-color:var(--glass-border-color)!important;
+  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
+}
+:is(.hoverBarButton_f84418,.button_f7ecac):hover{background:var(--g-hover)!important}
+
+/* ---------- BOTTOM USER / VOICE PANEL ---------- */
+/* The panel itself is tinted by --glass-user-panel-*; clear nested stock
+   surfaces so they do not defeat that setting. */
+.panels__5e434 > :is(.wrapper_e131a9,.container__37e49),
+.panels__5e434 :is(.container__37e49,.container_df39b2,.accountPopoutButtonWrapper__37e49){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+.panels__5e434 :is(.accountPopoutButtonWrapper__37e49,.button__67645.plated__67645):hover{
+  background:var(--g-hover)!important;
+}
+
+/* ---------- PROFILE SIDEBAR ---------- */
+/* Current live DOM uses a custom-user-profile-theme even in the DM sidebar.
+   The ASIDE owns the glass tint, so neutralize only structural profile layers;
+   banner/avatar/effects remain intact. */
+.aside_f58343 > .outer_c0bea0.user-profile-sidebar{
+  background:transparent!important;
+  background-color:transparent!important;
+}
+.aside_f58343 .user-profile-sidebar :is(
+  .inner_c0bea0,
+  .scrollerFade__7f9c0,
+  .wrapper_da5890,
+  .referenceContainer_ab8609,
+  .outer_ab8609,
+  .inner_ab8609,
+  .content_ab8609
+){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* Profile sections/cards seen in the live sidebar. */
+.aside_f58343 .user-profile-sidebar :is(
+  .section_bf424d,
+  .section__6aa84,
+  .card__9d597,
+  .container__9d597,
+  .container__73abe,
+  .card__73abe,
+  .card__9ed47
+){
+  background:var(--g-card)!important;
+  background-color:var(--g-card)!important;
+  border-color:var(--glass-border-color)!important;
+}
+
+/* ---------- SERVER RAIL ---------- */
+/* BetterFolders/current wrappers around server icons. */
+.guilds__5e434 :is(.wrapper__58105,.overlay__58105,.blobContainer_e5445c){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+.guilds__5e434 :is(.folderButton__48112,.folderButtonInner__48112):hover{
+  background:var(--g-hover)!important;
+}
+
+/* ---------- DRAG/DROP MODAL ---------- */
+:is(.uploadDropModal_b78547,.inner_b78547){
+  background:var(--g-modal)!important;
+  background-color:var(--g-modal)!important;
+  border-color:var(--glass-border-color)!important;
+  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
+}
+.uploadDropModal_b78547 :is(.icons_b78547,.title_b78547,.instructions_b78547){background:transparent!important}
+
+/* ---------- HASH-RESISTANT STRUCTURAL FALLBACKS ---------- */
+/* Scope these to known regions so generic names such as "content" do not
+   accidentally flatten unrelated Discord components. */
+:is([class^="chatContent_"],[class*=" chatContent_"]) > :is([class^="messagesWrapper_"],[class*=" messagesWrapper_"]){
+  background:transparent!important;
+}
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) > :is([class^="searchBar_"],[class*=" searchBar_"]){
+  background:transparent!important;
+}
+:is([class^="panels_"],[class*=" panels_"]) > :is([class^="container_"],[class*=" container_"],[class^="wrapper_"],[class*=" wrapper_"]){
+  background-color:transparent!important;
+}
+:is([class^="aside_"],[class*=" aside_"]) > :is([class*="user-profile-sidebar"]){
+  background-color:transparent!important;
+}
+
+
+
+/* =========================================================
+   SPOTIFY CONTROLS + SEPARATORS / LIVE DOM COVERAGE
+   ========================================================= */
+
+/* ---------- VENCORD SPOTIFY CONTROLS ----------
+   SpotifyControls is mounted as a wrapper_e131a9 child of the bottom-left
+   panels region. :has() scopes this styling to the Spotify instance only so
+   Discord voice/activity wrappers using the same structural class are left
+   alone. */
+.panels__5e434 > .wrapper_e131a9:has([class*="vc-spotify"]){
+  background:var(--g-spotify)!important;
+  background-color:var(--g-spotify)!important;
+  border-top:var(--separator-thickness) solid var(--g-separator)!important;
+  border-bottom:var(--separator-thickness) solid var(--g-separator)!important;
+  -webkit-backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+}
+
+/* Keep the panel internals clear so the configured Spotify glass is the only
+   surface tint. */
+.panels__5e434 > .wrapper_e131a9:has([class*="vc-spotify"]) :is(
+  .vc-spotify-button-row,
+  .container__5a838,
+  .control__5a838,
+  .slider__4c059,
+  .track__4c059
+){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* Song / artist / album text follows the theme instead of Spotify green. */
+.panels__5e434 :is(
+  .vc-spotify-ellipoverflow,
+  .vc-spotify-secondary-song-info,
+  .vc-spotify-progress-time,
+  .vc-spotify-song-info-prefix,
+  .vc-spotify-artist,
+  .vc-spotify-album
+){
+  color:var(--normal-text)!important;
+}
+.panels__5e434 :is(.vc-spotify-secondary-song-info,.vc-spotify-progress-time,.vc-spotify-song-info-prefix){
+  color:var(--muted-text)!important;
+}
+.panels__5e434 :is(.vc-spotify-artist,.vc-spotify-album):hover{
+  color:var(--cv-hover)!important;
+  text-decoration:underline;
+}
+
+/* Playback controls. */
+.panels__5e434 .vc-spotify-button{
+  background:transparent!important;
+  border-color:transparent!important;
+  border-radius:var(--radius-small)!important;
+  transition:background-color var(--transition-speed) ease,color var(--transition-speed) ease!important;
+}
+.panels__5e434 .vc-spotify-button:hover{
+  background:color-mix(in srgb,var(--spotify-accent-color) var(--spotify-control-hover-opacity),transparent)!important;
+}
+.panels__5e434 .vc-spotify-button-icon{
+  color:var(--normal-text)!important;
+  fill:currentColor!important;
+}
+.panels__5e434 :is(.vc-spotify-repeat-context,.vc-spotify-shuffle:not(.vc-spotify-shuffle-off)){
+  color:var(--spotify-accent-color)!important;
+  background:color-mix(in srgb,var(--spotify-accent-color) 10%,transparent)!important;
+}
+.panels__5e434 :is(.vc-spotify-repeat-context,.vc-spotify-shuffle:not(.vc-spotify-shuffle-off)) .vc-spotify-button-icon{
+  color:var(--spotify-accent-color)!important;
+}
+
+/* Spotify progress slider uses the theme accent. */
+.panels__5e434 .slider__4c059 .bar__4c059{
+  background:color-mix(in srgb,var(--normal-text) 18%,transparent)!important;
+}
+.panels__5e434 .slider__4c059 .barFill__4c059{
+  background:var(--spotify-accent-color)!important;
+}
+.panels__5e434 .slider__4c059 .grabber__4c059{
+  background:var(--normal-text)!important;
+  border-color:var(--glass-border-color)!important;
+}
+
+/* ---------- SEPARATORS / DIVIDERS ---------- */
+/* Solid divider elements currently mounted in the collected DOM. */
+:is(
+  .guildSeparator__252b6,
+  .sectionDivider_e6b769,
+  .sectionDivider__629e4,
+  .separator_f84418,
+  .divider__1feb0
+){
+  background:var(--g-separator)!important;
+  background-color:var(--g-separator)!important;
+}
+
+/* Message date / unread separator. Discord draws this one using a border. */
+:is(.divider__5126c,.divider__908e2){
+  --divider-color:var(--g-separator)!important;
+  border-top-color:var(--g-separator)!important;
+}
+:is(.divider__5126c,.divider__908e2) > :is(.content__908e2,[class*="content_"]){
+  background:transparent!important;
+}
+
+/* Context-menu separator is border based in the current build. */
+.separator_c1e9c4{
+  border-bottom-color:var(--g-separator)!important;
+}
+
+/* Horizontal card divider. */
+.divider_c19a92{
+  border-top-color:var(--g-separator)!important;
+  border-right-color:transparent!important;
+  border-bottom-color:transparent!important;
+  border-left-color:transparent!important;
+}
+
+/* Tiny inline timestamp separator should follow muted text rather than becoming
+   a full-width line. */
+.separator_c19a55{
+  color:color-mix(in srgb,var(--muted-text) 72%,transparent)!important;
+  border-color:currentColor!important;
+}
+
+/* Window-controls divider. */
+.winButtonsWithDivider_c38106{
+  border-left-color:var(--g-separator)!important;
+}
+
+/* Sidebar resize handle is an interactive separator, not a decorative line. */
+.sidebarResizeHandle__5e434{
+  background:transparent!important;
+}
+.sidebarResizeHandle__5e434:hover,
+.sidebarResizeHandle__5e434:active{
+  background:color-mix(in srgb,var(--spotify-accent-color) 30%,transparent)!important;
+}
+
+/* Hash-resistant separator fallbacks, restricted to explicit semantic names. */
+:is(
+  [class^="guildSeparator_"],[class*=" guildSeparator_"],
+  [class^="sectionDivider_"],[class*=" sectionDivider_"],
+  [class^="separator_"][role="separator"],[class*=" separator_"][role="separator"]
+){
+  border-color:var(--g-separator)!important;
+}
+
+/* =========================================================
+   LIVE INSPECTOR FIXES / EXACT OCT 4 DOM
+   ========================================================= */
+
+/* ---------- VENCORD SPOTIFY: ACTUAL PLAYER ROOT ----------
+   Current DOM:
+     .panels__5e434
+       > .wrapper_e131a9            (empty)
+       > #vc-spotify-player         (actual player)
+       > .container__37e49          (account panel)
+   The previous :has() rule targeted the empty wrapper and therefore never
+   painted the player itself. */
+.panels__5e434 > #vc-spotify-player{
+  background:var(--g-spotify)!important;
+  background-color:var(--g-spotify)!important;
+  background-image:none!important;
+  border-top:var(--separator-thickness) solid var(--g-separator)!important;
+  border-right:0!important;
+  border-bottom:var(--separator-thickness) solid var(--g-separator)!important;
+  border-left:0!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+}
+
+/* Kill plugin-owned solid/album-art surfaces if SpotifyControls adds them via
+   pseudo elements. Album artwork itself remains visible through the img. */
+.panels__5e434 > #vc-spotify-player::before,
+.panels__5e434 > #vc-spotify-player::after{
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+}
+
+/* The player internals should not introduce a second rectangle over the root. */
+#vc-spotify-player :is(
+  #vc-spotify-info-wrapper,
+  #vc-spotify-titles,
+  #vc-spotify-progress-bar,
+  .vc-spotify-button-row,
+  .container__5a838,
+  .control__5a838,
+  .slider__4c059,
+  .track__4c059
+){
+  background:transparent!important;
+  background-color:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Exact Vencord controls from the inspected player. */
+#vc-spotify-player .vc-spotify-button{
+  background:transparent!important;
+  border-color:transparent!important;
+  border-radius:var(--radius-small)!important;
+}
+#vc-spotify-player .vc-spotify-button:hover{
+  background:color-mix(in srgb,var(--spotify-accent-color) var(--spotify-control-hover-opacity),transparent)!important;
+}
+#vc-spotify-player :is(.vc-spotify-shuffle-on,.vc-spotify-repeat-context){
+  color:var(--spotify-accent-color)!important;
+  background:color-mix(in srgb,var(--spotify-accent-color) 10%,transparent)!important;
+}
+#vc-spotify-player .bar__4c059{
+  background:color-mix(in srgb,var(--normal-text) 18%,transparent)!important;
+}
+#vc-spotify-player .barFill__4c059{
+  background:var(--spotify-accent-color)!important;
+}
+#vc-spotify-player .grabber__4c059{
+  background:var(--normal-text)!important;
+  border-color:var(--glass-border-color)!important;
+}
+
+/* ---------- SPOTIFY / ACCOUNT-PANEL SEAM ----------
+   Make the player/account boundary use the same separator system rather than
+   Discord/Vencord's own hard-coded line. */
+.panels__5e434 > #vc-spotify-player + .container__37e49{
+  border-top:0!important;
+  box-shadow:none!important;
+}
+
+/* ---------- DM / CHANNEL HEADER SEPARATOR ----------
+   Put exactly one configurable separator on the subtitle wrapper. The inner
+   container currently carries Discord's own border, so remove that first. */
+.subtitleContainer_f75fb0{
+  background:transparent!important;
+  border:0!important;
+  border-bottom:var(--separator-thickness) solid var(--g-separator)!important;
+  box-shadow:none!important;
+}
+.subtitleContainer_f75fb0 > .container__9293f,
+.subtitleContainer_f75fb0 > .title_f75fb0.container__9293f{
+  border:0!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+
+/* If Discord's data-has-border chat wrapper is the source of the extra line,
+   neutralize it and let the explicit subtitle separator above be authoritative. */
+.chat_f75fb0[data-has-border="true"]{
+  border:0!important;
+  box-shadow:none!important;
+}
+
+/* ---------- KNOWN SIDEBAR SEPARATORS FROM INSPECTOR ---------- */
+.guilds__5e434 .guildSeparator__252b6,
+.privateChannels_e6b769 .sectionDivider_e6b769{
+  background:var(--g-separator)!important;
+  background-color:var(--g-separator)!important;
+  border:0!important;
+  box-shadow:none!important;
+  min-height:var(--separator-thickness)!important;
+  height:var(--separator-thickness)!important;
+}
+
+/* Keep their spacing but prevent Discord's default surface token from leaking
+   through around the line. */
+.guilds__5e434 .listItem__650eb:has(> .guildSeparator__252b6),
+.privateChannels_e6b769 .content_d125d2:has(> .sectionDivider_e6b769){
+  background:transparent!important;
+}
+
+/* ---------- CHAT DATE / UNREAD DIVIDERS ----------
+   This is the actual role=separator element inside the message scroller. */
+.chatContent_f75fb0 :is(.divider__5126c.divider__908e2,.divider__908e2){
+  --divider-color:var(--g-separator)!important;
+  border-top-color:var(--g-separator)!important;
+  box-shadow:none!important;
+}
+.chatContent_f75fb0 .divider__908e2 > .content__908e2{
+  background:var(--g-chat)!important;
+  color:var(--muted-text)!important;
+}
+
+/* =========================================================
+   DOM COVERAGE V5 / SAFE NAMEPLATE EXTENSION + SOLID FROST
+   ========================================================= */
+
+/* IMPORTANT: do not change .panels__5e434 positioning here.
+   Discord uses that element as part of its sidebar layout. V4 forced it to
+   position:relative, which displaced the entire sidebar/chat composition. */
+
+/* ---------------------------------------------------------
+   USER NAMEPLATE MEDIA UNDER SPOTIFY / GAME ACTIVITY / LISTEN ALONG
+
+   The effect expands upward behind whichever rows exist. Only the image or
+   video surface is extended; the sidebar and panel layout never move.
+   --------------------------------------------------------- */
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])){
+  overflow:hidden!important;
+}
+
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49{
+  position:relative!important;
+  overflow:visible!important;
+  z-index:1!important;
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2{
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  top:calc(0px - var(--nameplate-spotify-span, 0px) - var(--nameplate-activity-span, 0px) - var(--nameplate-listening-span, 0px))!important;
+  width:auto!important;
+  height:auto!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+  opacity:var(--user-panel-effect-opacity)!important;
+  z-index:0!important;
+}
+
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2 .videoContainer_df39b2{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  overflow:hidden!important;
+}
+
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2 :is(.img_df39b2,video){
+  width:100%!important;
+  height:100%!important;
+  min-width:100%!important;
+  min-height:100%!important;
+  object-fit:cover!important;
+}
+
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49 > :not(.container_df39b2){
+  position:relative!important;
+  z-index:2!important;
+}
+
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > #vc-spotify-player{
+  position:relative!important;
+  z-index:2!important;
+  overflow:hidden!important;
+  background:var(--g-spotify)!important;
+  background-color:var(--g-spotify)!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+}
+
+/* ---------------------------------------------------------
+   SEPARATORS
+
+   The separator itself is intentionally mostly opaque. Backdrop blur on a
+   one-pixel transparent line is visually ineffective and exposes a sharp slice
+   of wallpaper. These use a dark/tinted surface plus a soft halo instead.
+   --------------------------------------------------------- */
+:root{
+  --glass-divider-color:var(--g-separator);
+}
+
+/* Header bottom seam */
+.subtitleContainer_f75fb0{
+  position:relative!important;
+  border:0!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+.subtitleContainer_f75fb0 > .container__9293f,
+.subtitleContainer_f75fb0 > .title_f75fb0.container__9293f{
+  border:0!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+}
+.subtitleContainer_f75fb0::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:var(--separator-thickness);
+  background:var(--g-separator);
+  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
+  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
+  box-shadow:
+    inset 0 0 0 1px var(--separator-edge-color),
+    0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 72%,transparent);
+  pointer-events:none;
+  z-index:50;
+}
+
+/* Spotify top/bottom seams */
+.panels__5e434 > #vc-spotify-player::before,
+.panels__5e434 > #vc-spotify-player::after{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;
+  right:0!important;
+  height:var(--separator-thickness)!important;
+  display:block!important;
+  background:var(--g-separator)!important;
+  background-image:none!important;
+  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
+  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
+  box-shadow:
+    inset 0 0 0 1px var(--separator-edge-color),
+    0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 72%,transparent)!important;
+  pointer-events:none!important;
+  z-index:20!important;
+}
+.panels__5e434 > #vc-spotify-player::before{top:0!important}
+.panels__5e434 > #vc-spotify-player::after{bottom:0!important}
+
+/* Server rail, DM sections, menus and other real separator nodes. */
+:is(
+  .guildSeparator__252b6,
+  .sectionDivider_e6b769,
+  .sectionDivider__629e4,
+  .separator_f84418,
+  .divider__1feb0,
+  .separator_c1e9c4
+){
+  background:var(--g-separator)!important;
+  background-color:var(--g-separator)!important;
+  border-color:var(--separator-edge-color)!important;
+  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
+  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
+  box-shadow:
+    inset 0 0 0 1px var(--separator-edge-color),
+    0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 72%,transparent)!important;
+}
+.guilds__5e434 .guildSeparator__252b6,
+.privateChannels_e6b769 .sectionDivider_e6b769{
+  height:var(--separator-thickness)!important;
+  min-height:var(--separator-thickness)!important;
+  border:0!important;
+}
+
+/* Message date/unread divider */
+.chatContent_f75fb0 :is(.divider__5126c.divider__908e2,.divider__908e2){
+  position:relative!important;
+  border:0!important;
+  border-top:0!important;
+  background:transparent!important;
+  overflow:visible!important;
+}
+.chatContent_f75fb0 :is(.divider__5126c.divider__908e2,.divider__908e2)::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:50%;
+  height:var(--separator-thickness);
+  transform:translateY(-50%);
+  background:var(--g-separator);
+  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
+  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
+  box-shadow:0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 72%,transparent);
+  pointer-events:none;
+  z-index:0;
+}
+.chatContent_f75fb0 .divider__908e2 > .content__908e2{
+  position:relative!important;
+  z-index:1!important;
+  background:color-mix(in srgb,var(--glass-main-chat-color) 88%,transparent)!important;
+  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
+  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
+  border-radius:999px!important;
+  padding-inline:8px!important;
+}
+
+/* Panel boundaries. Keep them opaque enough that they never become a crisp
+   wallpaper slit between two glass regions. */
+.guilds__5e434{border-right-color:var(--g-separator)!important}
+.sidebarList__5e434{border-right-color:var(--g-separator)!important}
+.members_c8ffbb,.aside_f58343{border-left-color:var(--g-separator)!important}
+.panels__5e434{border-top-color:var(--g-separator)!important}
+.winButtonsWithDivider_c38106{border-left-color:var(--g-separator)!important}
+.separator_c1e9c4{border:0!important;min-height:var(--separator-thickness)!important}
+
+
+/* =========================================================
+   SEAMLESS GLASS COMPOSITOR V6
+   Fixes sharp/unblurred holes and backdrop-filter sampling seams.
+
+   The wallpaper is blurred globally above. Large panels keep their independent
+   tint/extra-blur controls, but tiny dividers no longer create their own 2px
+   backdrop-filter surfaces.
+   ========================================================= */
+
+/* Transparent structural wrappers must not clip the globally blurred wallpaper
+   or create isolated backdrop-filter sampling contexts. */
+:is(
+  .container__5e434,
+  .base__5e434,
+  .content__5e434,
+  .page__5e434,
+  .content_f75fb0,
+  .subtitleContainer_f75fb0,
+  .messagesWrapper__36d07,
+  .scroller__36d07,
+  .scrollerContent__36d07,
+  .scrollerInner__36d07,
+  .channelBottomBarArea_f75fb0
+){
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+
+/* The actual scrolling/content regions keep normal clipping behavior. */
+:is(
+  .chatContent_f75fb0,
+  .privateChannels_e6b769,
+  .members_c8ffbb,
+  .guilds__5e434,
+  .sidebarList__5e434,
+  .aside_f58343,
+  .panels__5e434
+){
+  background-clip:border-box!important;
+}
+
+/* Separators are now visual/tinted seams only. The wallpaper underneath is
+   already blurred continuously, so backdrop-filter here only causes halos,
+   discontinuities and offset-looking samples. */
+:is(
+  .guildSeparator__252b6,
+  .sectionDivider_e6b769,
+  .sectionDivider__629e4,
+  .separator_f84418,
+  .divider__1feb0,
+  .separator_c1e9c4,
+  .chatContent_f75fb0 .divider__908e2 > .content__908e2
+){
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+.subtitleContainer_f75fb0::after,
+.panels__5e434 > #vc-spotify-player::before,
+.panels__5e434 > #vc-spotify-player::after,
+.chatContent_f75fb0 .divider__908e2::before{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+
+/* Keep seams visually closed without creating a separate blur viewport. */
+.subtitleContainer_f75fb0::after,
+.panels__5e434 > #vc-spotify-player::before,
+.panels__5e434 > #vc-spotify-player::after,
+.chatContent_f75fb0 .divider__908e2::before{
+  box-shadow:
+    inset 0 0 0 1px var(--separator-edge-color),
+    0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 54%,transparent)!important;
+}
+
+/* Cover the common 1px grid seams between the major glass regions. These are
+   shadows rather than extra elements, so they cannot expose sharp wallpaper. */
+.guilds__5e434{
+  box-shadow:1px 0 0 var(--g-separator)!important;
+}
+.sidebarList__5e434{
+  box-shadow:1px 0 0 var(--g-separator)!important;
+}
+.members_c8ffbb,
+.aside_f58343{
+  box-shadow:-1px 0 0 var(--g-separator)!important;
+}
+.panels__5e434{
+  box-shadow:0 -1px 0 var(--g-separator)!important;
+}
+
+/* Do not let the resize handle reveal a sharp strip when idle. */
+.sidebarResizeHandle__5e434{
+  background:color-mix(in srgb,var(--separator-color) 18%,transparent)!important;
+}
+.sidebarResizeHandle__5e434:hover,
+.sidebarResizeHandle__5e434:active{
+  background:color-mix(in srgb,var(--spotify-accent-color) 30%,transparent)!important;
+}
+
+/* The title/header/main/profile defaults in this build are intentionally 0px.
+   They still receive the seamless wallpaper blur. Their individual blur values
+   now act only as optional extra frosting instead of deciding whether a gap is
+   sharp or blurred. */
+
+/* =========================================================
+   V7 / LISTEN ALONG + NAMEPLATE GLASS COVERAGE
+   ========================================================= */
+
+/* Optional panels each contribute their own height to the nameplate image.
+   Detect each sibling independently: game activity also works with no Spotify. */
+.panels__5e434{
+  --nameplate-spotify-span:0px;
+  --nameplate-activity-span:0px;
+  --nameplate-listening-span:0px;
+}
+.panels__5e434:has(> #vc-spotify-player){
+  --nameplate-spotify-span:var(--user-panel-effect-extension);
+}
+.panels__5e434:has(> [class*="activityPanel_"]){
+  --nameplate-activity-span:var(--activity-panel-effect-extension);
+}
+.panels__5e434:has(> [class*="listeningAlong_"]){
+  --nameplate-listening-span:var(--listen-along-effect-extension);
+}
+
+/* Listen Along is a separate sibling above Spotify in the live DOM. Give it
+   an explicit glass layer so it cannot fall back to a stock/clear surface. */
+.panels__5e434 > .listeningAlong_e0cf27,
+.panels__5e434 > [class^="listeningAlong_"],
+.panels__5e434 > [class*=" listeningAlong_"]{
+  position:relative!important;
+  z-index:3!important;
+  background:var(--g-user-panel)!important;
+  background-color:var(--g-user-panel)!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+}
+
+/* All three optional rows are counted by the nameplate spans above.
+   No later top override is needed. */
+
+/* The collectible/nameplate media is painted above the panel's own background,
+   so the parent's tint cannot tint the media itself. Put the same user-panel
+   glass over the media, but below the account controls. */
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49::before{
+  content:"";
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:var(--g-user-panel)!important;
+  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+}
+
+/* Keep the visible account controls above the new tint overlay. */
+.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49 > :not(.container_df39b2){
+  position:relative!important;
+  z-index:2!important;
+}
+
+
+/* =========================================================
+   V8 / SOFT GLASS + GAME ACTIVITY COVERAGE
+   ========================================================= */
+
+/* Discord's "Playing a game" row is a sibling of Spotify and the account
+   controls. Keep the account media behind it and make the row itself lightly
+   frosted, matching Listen Along and Spotify rather than appearing separate. */
+.panels__5e434 > .activityPanel__5e434,
+.panels__5e434 > [class^="activityPanel_"],
+.panels__5e434 > [class*=" activityPanel_"]{
+  position:relative!important;
+  z-index:2!important;
+  background:var(--g-user-panel)!important;
+  background-color:var(--g-user-panel)!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+}
+
+/* Clear Discord's stock fill inside the activity row, but preserve buttons,
+   game art, hover states and all real content. */
+.panels__5e434 [class*="activityPanel_"] :is(
+  .body__5dec7,
+  [class^="body_5dec7"],
+  .gameWrapper__8c6c2,
+  [class^="gameWrapper_"]
+){
+  background:transparent!important;
+  background-color:transparent!important;
+}
+
+/* The nameplate is behind the activity/Spotify/Listen Along content and
+   cannot intercept controls. The existing album art and game icon remain. */
+   
+   
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   V9 / SHADOW · DEPTH · DARKER SEAMS
+   - Removes decorative accent gradient lines
+   - Adds shadow depth to flat regions
+   - Uses neutral dark shadows, not accent lines
+   ========================================================= */
+
+/* ---------- A. REMOVE ACCENT DECORATIVE LINES ----------
+   These headings drew accent-colored gradient lines via ::before/::after.
+   Disable them; keep the flex slot so layout is preserved. */
+:is(
+  .name__29444::before, .name__29444::after,
+  .headerText__99e7c::before, .headerText__99e7c::after,
+  .membersGroup_c8ffbb::before, .membersGroup_c8ffbb::after,
+  .sectionLabel__409aa::before, .sectionLabel__409aa::after
+){
+  background:none!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+  opacity:0!important;
+}
+/* Soft text-shadow replaces the line as the only heading decoration. */
+:is(.name__29444,.headerText__99e7c,.membersGroup_c8ffbb,
+    .sectionLabel__409aa,.label__409aa){
+  text-shadow:0 1px 0 rgba(0,0,0,.32);
+}
+
+/* Speaking halo behind voice avatars was also an accent gradient streak.
+   Replace with a neutral soft shadow so the state still reads. */
+.avatar__07f91[style*="var(--status-speaking)"]::before{
+  background:linear-gradient(90deg,rgba(0,0,0,.42),transparent)!important;
+  box-shadow:none!important;
+}
+
+/* Every server icon previously had an accent glow. Replace with a neutral
+   elevation shadow so the rail has depth without colored edges. */
+.item__58105{
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.32),
+    0 3px 6px -2px rgba(0,0,0,.38)!important;
+}
+
+/* ---------- B. PANEL DEPTH: REPLACE FLAT SEAMS ----------
+   The 1px hard seam colors are replaced with soft dark interior shadows. */
+.guilds__5e434{
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.10),
+    inset -4px 0 8px -2px rgba(0,0,0,.42),
+    inset 1px 0 0 rgba(255,255,255,.02)!important;
+}
+.sidebarList__5e434{
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.08),
+    inset -4px 0 8px -2px rgba(0,0,0,.38),
+    inset 1px 0 0 rgba(255,255,255,.02)!important;
+}
+.members_c8ffbb,
+.aside_f58343{
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.08),
+    inset 4px 0 8px -2px rgba(0,0,0,.38),
+    inset -1px 0 0 rgba(255,255,255,.02)!important;
+}
+.panels__5e434{
+  box-shadow:
+    inset 0 1px 0 rgba(0,0,0,.22),
+    inset 0 10px 14px -10px rgba(0,0,0,.45),
+    inset 0 -1px 0 rgba(255,255,255,.02)!important;
+}
+/* Interior edge so the big surfaces stop reading as flat. */
+:is(
+  .privateChannels_e6b769,
+  .chatContent_f75fb0,
+  .sidebarRegionScroller__23e6b,
+  .contentRegionScroller__23e6b
+){
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.02)!important;
+}
+
+/* ---------- C. TOP BAR / CHAT HEADER: DROP SHADOW ----------
+   Both previously had only the inset tint. Add real depth below. */
+.bar_c38106{
+  box-shadow:
+    inset 0 0 0 9999px var(--g-titlebar),
+    0 1px 0 rgba(0,0,0,.28),
+    0 6px 14px -6px rgba(0,0,0,.45)!important;
+}
+.container__9293f,
+.subtitleContainer_f75fb0 > .container__9293f,
+.subtitleContainer_f75fb0 > .title_f75fb0.container__9293f{
+  box-shadow:
+    inset 0 0 0 9999px var(--g-chat-header),
+    0 1px 0 rgba(0,0,0,.22),
+    0 4px 10px -6px rgba(0,0,0,.35)!important;
+}
+.subtitleContainer_f75fb0{
+  box-shadow:0 5px 12px -6px rgba(0,0,0,.40)!important;
+}
+
+/* ---------- D. INPUTS / COMPOSER: INSET DEPTH ---------- */
+:is(
+  .scrollableContainer__74017,
+  .inner__74017,
+  .wrapper__72c38,
+  .container_a45028,
+  .container_fea832,
+  .searchBar__97492,
+  .input_ac6cb0,
+  .addFriendInputWrapper__72ba7,
+  .cardInput__8b579,
+  .keywordsTextArea__6a631,
+  .textArea_c615b7
+){
+  box-shadow:
+    inset 0 1px 2px rgba(0,0,0,.28),
+    inset 0 0 0 1px rgba(0,0,0,.08)!important;
+}
+
+/* ---------- E. CARDS: ELEVATION ----------
+   Cards had box-shadow:none and looked like floating flat color blobs. */
+:is(
+  .hljs,.markup__75297 code,.embedFull__623de,.file__0ccae,.wrapper_d5f3cd,
+  .guildInviteContainer__083ae,.tile__72090,.wrapperAudio_cf09d8,.wrapper_cf09d8,
+  .textContainer__4d95d,.footer__4d95d,.container__9271d,.container_a8e786,
+  .searchResult__80bf8,.emptyCard__7e549,.card_c19a92,.row_d13feb,
+  .productCardContainer_fcbddd,.settingCard__1a4ef,.profileCard__5d7c9,
+  .accountProfileCard_a27e58,.perkCard_e6430c,.giftCard_a45ed3
+){
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.10),
+    0 2px 6px -2px rgba(0,0,0,.20),
+    inset 0 1px 0 rgba(255,255,255,.02)!important;
+}
+
+/* ---------- F. POPOUTS / MODALS: STRONGER DROP SHADOW ----------
+   --glass-shadow was .10 alpha, far too subtle. Override directly. */
+:root{
+  --glass-shadow:
+    0 8px 24px rgba(0,0,0,.35),
+    0 2px 6px rgba(0,0,0,.25);
+}
+:is(
+  .wrapper_f7ecac,.popover_f84418,.toolbar_bba883,.quickSelectPopout_ebaca5,
+  .reactionTooltip_bbcccb,.container__5808f,.jumpToPresentBar__0f481,
+  .autocomplete__13533,.popout_a16aea,.selectDropdown__0edde,.menu_c1e9c4,
+  .tooltip_fa450d,.contentWrapper__08434,.messagesPopoutWrap__432f4,
+  .browser_d98031,.popout__76f04,.picker__09f65,.rolePopout__75297
+){
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.35),
+    0 2px 6px rgba(0,0,0,.25),
+    inset 0 0 0 1px var(--glass-border-color)!important;
+}
+:is(
+  .root__49fc1,.container__8a031,.keyboardShortcutsModal_f061f6,
+  .authBox__921c5,.uploadDropModal_b78547,.inner_b78547
+){
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.55),
+    0 8px 20px rgba(0,0,0,.40),
+    inset 0 0 0 1px var(--glass-border-color)!important;
+}
+
+/* ---------- G. MESSAGE ROWS: EDGE DEPTH ---------- */
+:is(.message__5126c:hover,.message__5126c.selected__5126c,
+   .wrapper_c19a55:hover,.wrapper_c19a55.selected__5126c){
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.025),
+    inset 0 -1px 0 rgba(0,0,0,.15)!important;
+}
+:is(.replying__5126c,.mentioned__5126c,
+   .wrapper_c19a55.replying__5126c,.wrapper_c19a55.mentioned__5126c){
+  box-shadow:
+    inset 4px 0 8px -6px rgba(0,0,0,.55),
+    inset 0 0 0 1px rgba(0,0,0,.08)!important;
+}
+
+/* ---------- H. CHANNEL / DM ROWS ---------- */
+.wrapper__2ea32:hover .link__2ea32,
+.wrapper__2ea32.modeSelected__2ea32 .link__2ea32,
+.interactive__972a0:hover,
+.interactive__972a0.interactiveSelected__972a0{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.02),
+    inset 0 -1px 0 rgba(0,0,0,.14)!important;
+}
+
+/* ---------- I. BUTTONS: ELEVATION ---------- */
+:is(
+  .lookFilled__201d5,
+  .primary_a22cb0,
+  .activeButton_c15210,
+  .selected__1a58a,
+  .bd-button-filled
+){
+  box-shadow:
+    0 1px 0 rgba(0,0,0,.20),
+    0 2px 4px -1px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
