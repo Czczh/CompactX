@@ -1,0 +1,31 @@
+/**
+ * @name CompactX
+ * @author Czczh
+ * @version 1.0.0
+ * @description CompactX with personal settings kept locally.
+ * @source https://github.com/Czczh/CompactX
+ */
+
+@import url("https://cdn.jsdelivr.net/gh/Czczh/CompactX@main/CompactX.css");
+
+:root {
+  /* Uncomment and edit any options you want to keep across theme updates. */
+
+  /* --background-image: url("https://example.com/background.png"); */
+  /* --background-position: center; */
+  /* --background-size: cover; */
+  /* --background-filter: saturate(1.05) brightness(.96); */
+  /* --background-underlay-blur: 1px; */
+
+  /* --main-color: #8798b2; */
+  /* --hover-color: #a0aec1; */
+  /* --main-font: "gg sans", sans-serif; */
+
+  /* --glass-base-color: rgb(0 0 0); */
+  /* --glass-blur: 4px; */
+  /* --glass-main-chat-opacity: 25%; */
+  /* --glass-channel-sidebar-opacity: 24%; */
+  /* --glass-dm-sidebar-opacity: 18%; */
+  /* --glass-server-list-opacity: 22%; */
+  /* --glass-member-list-opacity: 24%; */
+}
