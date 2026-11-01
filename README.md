@@ -4,7 +4,7 @@ A customizable glass theme for Discord.
 
 ## Install
 
-**Vencord:** Add the [hosted CSS](https://cdn.jsdelivr.net/gh/Czczh/CompactX@main/CompactX.css) under Settings > Vencord > Themes > Online Themes. Keep personal overrides in QuickCSS.
+**Vencord:** Add the [raw GitHub CSS](https://raw.githubusercontent.com/Czczh/CompactX/main/CompactX.css) under Settings > Vencord > Themes > Online Themes. Keep personal overrides in QuickCSS. Replace any older jsDelivr URL to get updates without its 12-hour branch cache.
 
 **BetterDiscord:** Download [CompactX.theme.css](./CompactX.theme.css), place it in your BetterDiscord themes folder, and enable it. Edit the local file's variables or use BetterDiscord Custom CSS.
 
@@ -20,7 +20,7 @@ Use a local `:root` override, not changes to `CompactX.css`:
 }
 ```
 
-The theme comes from GitHub; personal settings remain on the user's device. Updating this repository does not overwrite local QuickCSS, Custom CSS, or an already installed local loader. Updates appear when the client reloads the stylesheet, subject to CDN caching. The CDN's `main` branch cache can take up to 12 hours to refresh. Local settings are not automatically synchronized between devices.
+Personal settings remain on the user's device. Updating the repository does not overwrite QuickCSS, Custom CSS, or an installed local loader. Updates appear when the client refetches the stylesheet. BetterDiscord's jsDelivr import may be cached for up to 12 hours. Settings do not automatically synchronize between devices.
 
 ## Files
 
