@@ -8,24 +8,241 @@
 
 @import url("https://cdn.jsdelivr.net/gh/Czczh/CompactX@main/CompactX.css");
 
+/* Settings are stored in this local file and remain unchanged by remote updates. */
 :root {
-  /* Uncomment and edit any options you want to keep across theme updates. */
+  /* =======================================================
+     ACCENT / BRAND
+     ======================================================= */
+  --main-color:#8798b2;
+  --hover-color:#a0aec1;
+  --success-color:#43b581;
+  --warning-color:#faa61a;
+  --danger-color:#982929;
+  --focus-color:var(--main-color);
 
-  /* --background-image: url("https://example.com/background.png"); */
-  /* --background-position: center; */
-  /* --background-size: cover; */
-  /* --background-filter: saturate(1.05) brightness(.96); */
-  /* --background-underlay-blur: 1px; */
+  /* =======================================================
+     STATUS COLORS
+     ======================================================= */
+  --online-color:#43b581;
+  --idle-color:#faa61a;
+  --dnd-color:#982929;
+  --streaming-color:#9147ff;
+  --offline-color:#808080;
 
-  /* --main-color: #8798b2; */
-  /* --hover-color: #a0aec1; */
-  /* --main-font: "gg sans", sans-serif; */
+  /* =======================================================
+     WALLPAPER
+     ClearVision-style controls, implemented locally.
+     ======================================================= */
+  --background-image:url("https://i.imgur.com/B9C03tr.png");
+  --background-position:center;
+  --background-size:cover;
+  --background-attachment:fixed;
+  --background-repeat:no-repeat;
+  --background-filter:saturate(1.05) brightness(.96);
 
-  /* --glass-base-color: rgb(0 0 0); */
-  /* --glass-blur: 4px; */
-  /* --glass-main-chat-opacity: 25%; */
-  /* --glass-channel-sidebar-opacity: 24%; */
-  /* --glass-dm-sidebar-opacity: 18%; */
-  /* --glass-server-list-opacity: 22%; */
-  /* --glass-member-list-opacity: 24%; */
+  /* Seamless base blur.
+     This blurs the wallpaper itself once across the entire window so small
+     Discord layout gaps can never expose a sharp, unblurred slice.
+     Panel blur variables below become additional local frosting.
+     Set to 0px if you explicitly want the wallpaper sharp. */
+  --background-underlay-blur:1px;
+  --background-underlay-overscan:20px;
+
+  /* 0% = no global shade, 100% = full shade color. */
+  --background-shading-percent:0%;
+  --background-shading-color:rgb(0 0 0);
+
+  /* =======================================================
+     USER POPOUT BACKGROUND
+     Set image to none to use only glass.
+     ======================================================= */
+  --user-popout-image:var(--background-image);
+  --user-popout-position:var(--background-position);
+  --user-popout-size:var(--background-size);
+  --user-popout-attachment:var(--background-attachment);
+  --user-popout-filter:var(--background-filter);
+  --user-popout-image-tint:5%;
+
+  /* =======================================================
+     USER MODAL BACKGROUND
+     ======================================================= */
+  --user-modal-image:var(--background-image);
+  --user-modal-position:var(--background-position);
+  --user-modal-size:var(--background-size);
+  --user-modal-attachment:var(--background-attachment);
+  --user-modal-filter:var(--background-filter);
+  --user-modal-image-tint:0%;
+
+  /* =======================================================
+     HOME ICON
+     Use none for Discord's normal icon.
+     Example: url("https://example.com/icon.svg")
+     ======================================================= */
+  --home-icon:none;
+  --home-size:68%;
+  --home-position:center;
+
+  /* =======================================================
+     FONTS / TEXT
+     ======================================================= */
+  --main-font:"gg sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --code-font:Consolas,"gg mono","Liberation Mono",Menlo,Courier,monospace;
+  --normal-text:#d8d8db;
+  --muted-text:#aeaeb4;
+
+  /* =======================================================
+     CHANNEL COLORS
+     ======================================================= */
+  --channel-normal:var(--interactive-text-default);
+  --channel-muted:var(--interactive-muted);
+  --channel-hover:var(--interactive-text-hover);
+  --channel-selected:var(--interactive-text-active);
+  --channel-unread:var(--main-color);
+  --channel-unread-hover:var(--hover-color);
+  --channel-selected-bg:rgba(135,152,178,.12);
+  --channel-hover-bg:rgba(255,255,255,.06);
+
+  /* =======================================================
+     SHAPE / MOTION
+     ======================================================= */
+  --radius-small:4px;
+  --radius-medium:8px;
+  --radius-large:12px;
+  --radius-popout:12px;
+  --radius-modal:14px;
+  --transition-speed:.15s;
+
+  /* Optional server icon sizing. Keep defaults for stock layout. */
+  --server-size:48px;
+  --server-gap:8px;
+  --server-radius:34%;
+
+  /* =======================================================
+     GLASS ENGINE
+
+     Every opacity below is independent.
+       0%   = OFF / fully transparent
+       100% = solid glass-base-color
+
+     This is the main customization area.
+     ======================================================= */
+  --glass-base-color:rgb(0 0 0);
+  --glass-blur:4px;
+  --glass-saturation:100%;
+  --glass-brightness:1;
+  --glass-border-color:rgba(255,255,255,.10);
+  --glass-divider-color:rgba(255,255,255,0);
+  --glass-shadow:0 8px 28px rgba(0,0,0,.10);
+
+  /* Top bars. These are separate on purpose. */
+  --glass-titlebar-color:var(--glass-base-color);
+  --glass-titlebar-opacity:24%;
+  --glass-titlebar-blur:0px;
+
+  --glass-chat-header-color:var(--glass-base-color);
+  --glass-chat-header-opacity:24%;
+  --glass-chat-header-blur:0px;
+
+  /* Main layout */
+  --glass-main-chat-color:var(--glass-base-color);
+  --glass-main-chat-opacity:25%;
+  --glass-main-chat-blur:0px;
+
+  --glass-server-list-color:var(--glass-base-color);
+  --glass-server-list-opacity:22%;
+  --glass-server-list-blur:8px;
+
+  --glass-dm-sidebar-color:var(--glass-base-color);
+  --glass-dm-sidebar-opacity:18%;
+  --glass-dm-sidebar-blur:8px;
+
+  --glass-channel-sidebar-color:var(--glass-base-color);
+  --glass-channel-sidebar-opacity:24%;
+  --glass-channel-sidebar-blur:8px;
+
+  --glass-member-list-color:var(--glass-base-color);
+  --glass-member-list-opacity:24%;
+  --glass-member-list-blur:8px;
+
+  --glass-profile-sidebar-color:var(--glass-base-color);
+  --glass-profile-sidebar-opacity:24%;
+  --glass-profile-sidebar-blur:0px;
+
+  --glass-user-panel-color:var(--glass-base-color);
+  --glass-user-panel-opacity:17%;
+  --glass-user-panel-blur:10px;
+
+  /* Vencord SpotifyControls panel */
+  --glass-spotify-color:var(--glass-base-color);
+  --glass-spotify-opacity:16%;
+  --glass-spotify-blur:10px;
+  --spotify-accent-color:var(--main-color);
+  --spotify-control-hover-opacity:10%;
+
+  /* The account nameplate extends behind available bottom-left rows.
+     Each extra row contributes only while present, preserving the layout.
+     Set a specific extension to 0px to exclude that row. */
+  --user-panel-effect-extension:132px;       /* SpotifyControls */
+  --activity-panel-effect-extension:72px;   /* Discord "Playing a game" */
+  --listen-along-effect-extension:64px;     /* Discord Listen Along */
+  --user-panel-effect-opacity:100%;
+
+  /* Frosted separators / dividers.
+     These are intentionally tinted + blurred instead of transparent lines,
+     so the wallpaper cannot stay sharp through panel seams. */
+  --separator-color:var(--glass-base-color);
+  --separator-opacity:42%;
+  --separator-thickness:1px;
+  --separator-blur:16px;
+  --separator-saturation:110%;
+  --separator-edge-color:rgba(255,255,255,.055);
+  --separator-softness:3px;
+
+  /* Settings */
+  --glass-settings-sidebar-color:var(--glass-base-color);
+  --glass-settings-sidebar-opacity:10%;
+  --glass-settings-content-color:var(--glass-base-color);
+  --glass-settings-content-opacity:10%;
+
+  /* Shared surfaces */
+  --glass-card-color:var(--glass-base-color);
+  --glass-card-opacity:20%;
+  --glass-raised-color:var(--glass-base-color);
+  --glass-raised-opacity:45%;
+  --glass-popout-color:var(--glass-base-color);
+  --glass-popout-opacity:52%;
+  --glass-modal-color:var(--glass-base-color);
+  --glass-modal-opacity:0%;
+  --glass-input-color:rgb(255 255 255);
+  --glass-input-opacity:0%;
+  --glass-hover-color:rgb(255 255 255);
+  --glass-hover-opacity:0%;
+
+  /* Messages */
+  --glass-message-hover-color:var(--glass-base-color);
+  --glass-message-hover-opacity:14%;
+  --glass-message-selected-opacity:12%;
+  --glass-mentioned-opacity:12%;
+
+  /* =======================================================
+     LEGACY SURFACE VARIABLES
+     Kept so the rest of the theme and old edits still work.
+     ======================================================= */
+  --surface-app:rgba(0,0,0,.24);
+  --surface-chat:rgba(0,0,0,.24);
+  --surface-sidebar:rgba(0,0,0,0);
+  --surface-card:rgba(0,0,0,.20);
+  --surface-raised:rgba(0,0,0,.24);
+  --surface-popout:rgba(0,0,0,.52);
+  --surface-modal:rgba(0,0,0,.44);
+  --surface-input:rgba(255,255,255,.05);
+  --surface-hover:rgba(255,255,255,.06);
+
+  /* Backward-compatible aliases from the previous build. */
+  --tint-main-chat:var(--glass-main-chat-opacity);
+  --tint-dms:var(--glass-dm-sidebar-opacity);
+  --tint-profile:var(--glass-profile-sidebar-opacity);
+  --tint-server-list:var(--glass-server-list-opacity);
+  --tint-message-hover:var(--glass-message-hover-opacity);
+  --tint-whole-app:var(--background-shading-percent);
 }
