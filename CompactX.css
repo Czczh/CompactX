@@ -1,7 +1,7 @@
 /**
  * @name CompactX
  * @author Czczh
- * @version 1.0.0
+ * @version 1.0.1
  * @description A compact, customizable glass theme for Discord.
  */
 
@@ -577,7 +577,7 @@ code,pre{font-family:var(--code-font)!important}
   background:color-mix(in srgb,var(--cv-app) var(--tint-server-list),transparent)!important;
 }
 .wrapper_ef3116{background:transparent!important;padding-top:10px}
-.item__58105{box-shadow:0 0 4px 1px var(--accent-glow)!important}
+.item__58105{box-shadow:none!important}
 :is(.circleIconButton__5bc7e,.childWrapper__6e9f8,.icon__6e9f8){background:var(--cv-card)!important}
 :is(.circleIconButton__5bc7e:hover,.wrapper__6e9f8:hover .childWrapper__6e9f8){background:var(--accent-fill-hover)!important}
 :is(.circleIconButton__5bc7e.selected__5bc7e,.wrapper__6e9f8.selected__6e9f8 .childWrapper__6e9f8){background:var(--cv-main)!important}
@@ -591,7 +591,7 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--surface-sidebar)!important;
   border:none!important;
 }
-.sidebarList__5e434{border-top-left-radius:10px;backdrop-filter:none!important}
+.sidebarList__5e434{border-radius:0!important;backdrop-filter:none!important}
 .sidebar__5e434:after{display:none!important}
 .animatedContainer_f37cb1{background:transparent!important;border:none!important}
 
@@ -607,7 +607,7 @@ code,pre{font-family:var(--code-font)!important}
 }
 .name__29444::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
 
-:is(.unread__2ea32,.bar__7aaec,.bar__3b95d){box-shadow:0 0 4px 1px var(--accent-glow)}
+:is(.unread__2ea32,.bar__7aaec,.bar__3b95d){box-shadow:none}
 :is(.bar__7aaec,.bar__3b95d){background:var(--cv-main)!important;border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
 
 .link__2ea32{margin-left:4px;transition:.15s ease}
@@ -1065,13 +1065,20 @@ code,pre{font-family:var(--code-font)!important}
 
 /* DMs: includes the search/header part and the private-channel scroller. */
 .sidebarList__5e434:has(.privateChannels_e6b769),
-:is([class^="sidebarList_"],[class*=" sidebarList_"]):has([class^="privateChannels_"],[class*=" privateChannels_"]),
-.privateChannels_e6b769,
-:is([class^="privateChannels_"],[class*=" privateChannels_"]){
+:is([class^="sidebarList_"],[class*=" sidebarList_"]):has([class^="privateChannels_"],[class*=" privateChannels_"]){
   background:var(--g-dm-sidebar)!important;
   background-color:var(--g-dm-sidebar)!important;
+  border-radius:0!important;
   -webkit-backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
   backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
+}
+.privateChannels_e6b769,
+:is([class^="privateChannels_"],[class*=" privateChannels_"]){
+  background:transparent!important;
+  background-color:transparent!important;
+  border-radius:0!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
 }
 .privateChannels_e6b769 .scroller__99e7c,
 :is([class^="privateChannels_"],[class*=" privateChannels_"]) [class*="scroller_"]{background:transparent!important}
@@ -1194,12 +1201,13 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Server sizing */
-.guilds__5e434 .listItem__650eb{margin-bottom:var(--server-gap)!important}
+.guilds__5e434 .listItem__650eb{margin-bottom:var(--server-gap)!important;overflow:visible!important}
 .guilds__5e434 :is(.wrapper_cc5dd2,.svg_cc5dd2,.childWrapper__6e9f8,.icon__6e9f8){
   width:var(--server-size)!important;
   height:var(--server-size)!important;
 }
-.guilds__5e434 :is(.childWrapper__6e9f8,.icon__6e9f8){border-radius:var(--server-radius)!important}
+.guilds__5e434 .childWrapper__6e9f8{border-radius:var(--server-radius)!important}
+.guilds__5e434 .icon__6e9f8{border-radius:0!important}
 
 /* Optional independent profile imagery. Nitro/custom profile themes are left alone. */
 .user-profile-popout:not(.custom-user-profile-theme){
@@ -1274,7 +1282,7 @@ code,pre{font-family:var(--code-font)!important}
 :is(.searchBar_e6b769,.privateChannelsHeaderContainer__99e7c){
   background:transparent!important;
   background-color:transparent!important;
-  border-color:var(--glass-divider-color)!important;
+  border-color:transparent!important;
 }
 .searchBar_e6b769 > :is(button,[role="button"]){
   background:var(--g-input)!important;
@@ -1801,10 +1809,6 @@ code,pre{font-family:var(--code-font)!important}
    one-pixel transparent line is visually ineffective and exposes a sharp slice
    of wallpaper. These use a dark/tinted surface plus a soft halo instead.
    --------------------------------------------------------- */
-:root{
-  --glass-divider-color:var(--g-separator);
-}
-
 /* Header bottom seam */
 .subtitleContainer_f75fb0{
   position:relative!important;
@@ -1828,11 +1832,9 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--g-separator);
   -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
   backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
-  box-shadow:
-    inset 0 0 0 1px var(--separator-edge-color),
-    0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 72%,transparent);
+  box-shadow:none!important;
   pointer-events:none;
-  z-index:50;
+  z-index:1;
 }
 
 /* Spotify top/bottom seams */
@@ -1848,11 +1850,9 @@ code,pre{font-family:var(--code-font)!important}
   background-image:none!important;
   -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
   backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
-  box-shadow:
-    inset 0 0 0 1px var(--separator-edge-color),
-    0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 72%,transparent)!important;
+  box-shadow:none!important;
   pointer-events:none!important;
-  z-index:20!important;
+  z-index:1!important;
 }
 .panels__5e434 > #vc-spotify-player::before{top:0!important}
 .panels__5e434 > #vc-spotify-player::after{bottom:0!important}
@@ -1868,12 +1868,10 @@ code,pre{font-family:var(--code-font)!important}
 ){
   background:var(--g-separator)!important;
   background-color:var(--g-separator)!important;
-  border-color:var(--separator-edge-color)!important;
-  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
-  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
-  box-shadow:
-    inset 0 0 0 1px var(--separator-edge-color),
-    0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 72%,transparent)!important;
+  border-color:transparent!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+  box-shadow:none!important;
 }
 .guilds__5e434 .guildSeparator__252b6,
 .privateChannels_e6b769 .sectionDivider_e6b769{
@@ -1901,7 +1899,7 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--g-separator);
   -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
   backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
-  box-shadow:0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 72%,transparent);
+  box-shadow:none!important;
   pointer-events:none;
   z-index:0;
 }
@@ -1915,12 +1913,6 @@ code,pre{font-family:var(--code-font)!important}
   padding-inline:8px!important;
 }
 
-/* Panel boundaries. Keep them opaque enough that they never become a crisp
-   wallpaper slit between two glass regions. */
-.guilds__5e434{border-right-color:var(--g-separator)!important}
-.sidebarList__5e434{border-right-color:var(--g-separator)!important}
-.members_c8ffbb,.aside_f58343{border-left-color:var(--g-separator)!important}
-.panels__5e434{border-top-color:var(--g-separator)!important}
 .winButtonsWithDivider_c38106{border-left-color:var(--g-separator)!important}
 .separator_c1e9c4{border:0!important;min-height:var(--separator-thickness)!important}
 
@@ -1990,35 +1982,14 @@ code,pre{font-family:var(--code-font)!important}
   backdrop-filter:none!important;
 }
 
-/* Keep seams visually closed without creating a separate blur viewport. */
-.subtitleContainer_f75fb0::after,
-.panels__5e434 > #vc-spotify-player::before,
-.panels__5e434 > #vc-spotify-player::after,
-.chatContent_f75fb0 .divider__908e2::before{
-  box-shadow:
-    inset 0 0 0 1px var(--separator-edge-color),
-    0 0 var(--separator-softness) color-mix(in srgb,var(--separator-color) 54%,transparent)!important;
-}
-
-/* Cover the common 1px grid seams between the major glass regions. These are
-   shadows rather than extra elements, so they cannot expose sharp wallpaper. */
-.guilds__5e434{
-  box-shadow:1px 0 0 var(--g-separator)!important;
-}
-.sidebarList__5e434{
-  box-shadow:1px 0 0 var(--g-separator)!important;
-}
-.members_c8ffbb,
-.aside_f58343{
-  box-shadow:-1px 0 0 var(--g-separator)!important;
-}
-.panels__5e434{
-  box-shadow:0 -1px 0 var(--g-separator)!important;
+/* Structural panels rely on their tint rather than overlapping edge shadows. */
+:is(.guilds__5e434,.sidebarList__5e434,.privateChannels_e6b769,.members_c8ffbb,.aside_f58343,.panels__5e434){
+  box-shadow:none!important;
 }
 
 /* Do not let the resize handle reveal a sharp strip when idle. */
 .sidebarResizeHandle__5e434{
-  background:color-mix(in srgb,var(--separator-color) 18%,transparent)!important;
+  background:transparent!important;
 }
 .sidebarResizeHandle__5e434:hover,
 .sidebarResizeHandle__5e434:active{
@@ -2126,217 +2097,8 @@ code,pre{font-family:var(--code-font)!important}
 
 /* The nameplate is behind the activity/Spotify/Listen Along content and
    cannot intercept controls. The existing album art and game icon remain. */
-   
-   
 
-
-
-
-
-
-
-
-
-/* =========================================================
-   V9 / SHADOW · DEPTH · DARKER SEAMS
-   - Removes decorative accent gradient lines
-   - Adds shadow depth to flat regions
-   - Uses neutral dark shadows, not accent lines
-   ========================================================= */
-
-/* ---------- A. REMOVE ACCENT DECORATIVE LINES ----------
-   These headings drew accent-colored gradient lines via ::before/::after.
-   Disable them; keep the flex slot so layout is preserved. */
-:is(
-  .name__29444::before, .name__29444::after,
-  .headerText__99e7c::before, .headerText__99e7c::after,
-  .membersGroup_c8ffbb::before, .membersGroup_c8ffbb::after,
-  .sectionLabel__409aa::before, .sectionLabel__409aa::after
-){
-  background:none!important;
-  background-image:none!important;
-  border:0!important;
-  box-shadow:none!important;
-  opacity:0!important;
-}
-/* Soft text-shadow replaces the line as the only heading decoration. */
-:is(.name__29444,.headerText__99e7c,.membersGroup_c8ffbb,
-    .sectionLabel__409aa,.label__409aa){
-  text-shadow:0 1px 0 rgba(0,0,0,.32);
-}
-
-/* Speaking halo behind voice avatars was also an accent gradient streak.
-   Replace with a neutral soft shadow so the state still reads. */
-.avatar__07f91[style*="var(--status-speaking)"]::before{
-  background:linear-gradient(90deg,rgba(0,0,0,.42),transparent)!important;
-  box-shadow:none!important;
-}
-
-/* Every server icon previously had an accent glow. Replace with a neutral
-   elevation shadow so the rail has depth without colored edges. */
-.item__58105{
-  box-shadow:
-    0 1px 2px rgba(0,0,0,.32),
-    0 3px 6px -2px rgba(0,0,0,.38)!important;
-}
-
-/* ---------- B. PANEL DEPTH: REPLACE FLAT SEAMS ----------
-   The 1px hard seam colors are replaced with soft dark interior shadows. */
-.guilds__5e434{
-  box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,.10),
-    inset -4px 0 8px -2px rgba(0,0,0,.42),
-    inset 1px 0 0 rgba(255,255,255,.02)!important;
-}
-.sidebarList__5e434{
-  box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,.08),
-    inset -4px 0 8px -2px rgba(0,0,0,.38),
-    inset 1px 0 0 rgba(255,255,255,.02)!important;
-}
-.members_c8ffbb,
-.aside_f58343{
-  box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,.08),
-    inset 4px 0 8px -2px rgba(0,0,0,.38),
-    inset -1px 0 0 rgba(255,255,255,.02)!important;
-}
-.panels__5e434{
-  box-shadow:
-    inset 0 1px 0 rgba(0,0,0,.22),
-    inset 0 10px 14px -10px rgba(0,0,0,.45),
-    inset 0 -1px 0 rgba(255,255,255,.02)!important;
-}
-/* Interior edge so the big surfaces stop reading as flat. */
-:is(
-  .privateChannels_e6b769,
-  .chatContent_f75fb0,
-  .sidebarRegionScroller__23e6b,
-  .contentRegionScroller__23e6b
-){
-  box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,.08),
-    inset 0 1px 0 rgba(255,255,255,.02)!important;
-}
-
-/* ---------- C. TOP BAR / CHAT HEADER: DROP SHADOW ----------
-   Both previously had only the inset tint. Add real depth below. */
-.bar_c38106{
-  box-shadow:
-    inset 0 0 0 9999px var(--g-titlebar),
-    0 1px 0 rgba(0,0,0,.28),
-    0 6px 14px -6px rgba(0,0,0,.45)!important;
-}
-.container__9293f,
-.subtitleContainer_f75fb0 > .container__9293f,
-.subtitleContainer_f75fb0 > .title_f75fb0.container__9293f{
-  box-shadow:
-    inset 0 0 0 9999px var(--g-chat-header),
-    0 1px 0 rgba(0,0,0,.22),
-    0 4px 10px -6px rgba(0,0,0,.35)!important;
-}
-.subtitleContainer_f75fb0{
-  box-shadow:0 5px 12px -6px rgba(0,0,0,.40)!important;
-}
-
-/* ---------- D. INPUTS / COMPOSER: INSET DEPTH ---------- */
-:is(
-  .scrollableContainer__74017,
-  .inner__74017,
-  .wrapper__72c38,
-  .container_a45028,
-  .container_fea832,
-  .searchBar__97492,
-  .input_ac6cb0,
-  .addFriendInputWrapper__72ba7,
-  .cardInput__8b579,
-  .keywordsTextArea__6a631,
-  .textArea_c615b7
-){
-  box-shadow:
-    inset 0 1px 2px rgba(0,0,0,.28),
-    inset 0 0 0 1px rgba(0,0,0,.08)!important;
-}
-
-/* ---------- E. CARDS: ELEVATION ----------
-   Cards had box-shadow:none and looked like floating flat color blobs. */
-:is(
-  .hljs,.markup__75297 code,.embedFull__623de,.file__0ccae,.wrapper_d5f3cd,
-  .guildInviteContainer__083ae,.tile__72090,.wrapperAudio_cf09d8,.wrapper_cf09d8,
-  .textContainer__4d95d,.footer__4d95d,.container__9271d,.container_a8e786,
-  .searchResult__80bf8,.emptyCard__7e549,.card_c19a92,.row_d13feb,
-  .productCardContainer_fcbddd,.settingCard__1a4ef,.profileCard__5d7c9,
-  .accountProfileCard_a27e58,.perkCard_e6430c,.giftCard_a45ed3
-){
-  box-shadow:
-    0 1px 0 rgba(0,0,0,.10),
-    0 2px 6px -2px rgba(0,0,0,.20),
-    inset 0 1px 0 rgba(255,255,255,.02)!important;
-}
-
-/* ---------- F. POPOUTS / MODALS: STRONGER DROP SHADOW ----------
-   --glass-shadow was .10 alpha, far too subtle. Override directly. */
-:root{
-  --glass-shadow:
-    0 8px 24px rgba(0,0,0,.35),
-    0 2px 6px rgba(0,0,0,.25);
-}
-:is(
-  .wrapper_f7ecac,.popover_f84418,.toolbar_bba883,.quickSelectPopout_ebaca5,
-  .reactionTooltip_bbcccb,.container__5808f,.jumpToPresentBar__0f481,
-  .autocomplete__13533,.popout_a16aea,.selectDropdown__0edde,.menu_c1e9c4,
-  .tooltip_fa450d,.contentWrapper__08434,.messagesPopoutWrap__432f4,
-  .browser_d98031,.popout__76f04,.picker__09f65,.rolePopout__75297
-){
-  box-shadow:
-    0 8px 24px rgba(0,0,0,.35),
-    0 2px 6px rgba(0,0,0,.25),
-    inset 0 0 0 1px var(--glass-border-color)!important;
-}
-:is(
-  .root__49fc1,.container__8a031,.keyboardShortcutsModal_f061f6,
-  .authBox__921c5,.uploadDropModal_b78547,.inner_b78547
-){
-  box-shadow:
-    0 24px 60px rgba(0,0,0,.55),
-    0 8px 20px rgba(0,0,0,.40),
-    inset 0 0 0 1px var(--glass-border-color)!important;
-}
-
-/* ---------- G. MESSAGE ROWS: EDGE DEPTH ---------- */
-:is(.message__5126c:hover,.message__5126c.selected__5126c,
-   .wrapper_c19a55:hover,.wrapper_c19a55.selected__5126c){
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.025),
-    inset 0 -1px 0 rgba(0,0,0,.15)!important;
-}
-:is(.replying__5126c,.mentioned__5126c,
-   .wrapper_c19a55.replying__5126c,.wrapper_c19a55.mentioned__5126c){
-  box-shadow:
-    inset 4px 0 8px -6px rgba(0,0,0,.55),
-    inset 0 0 0 1px rgba(0,0,0,.08)!important;
-}
-
-/* ---------- H. CHANNEL / DM ROWS ---------- */
-.wrapper__2ea32:hover .link__2ea32,
-.wrapper__2ea32.modeSelected__2ea32 .link__2ea32,
-.interactive__972a0:hover,
-.interactive__972a0.interactiveSelected__972a0{
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.02),
-    inset 0 -1px 0 rgba(0,0,0,.14)!important;
-}
-
-/* ---------- I. BUTTONS: ELEVATION ---------- */
-:is(
-  .lookFilled__201d5,
-  .primary_a22cb0,
-  .activeButton_c15210,
-  .selected__1a58a,
-  .bd-button-filled
-){
-  box-shadow:
-    0 1px 0 rgba(0,0,0,.20),
-    0 2px 4px -1px rgba(0,0,0,.22),
-    inset 0 1px 0 rgba(255,255,255,.05)!important;
+:is(.name__29444,.headerText__99e7c,.membersGroup_c8ffbb,.sectionLabel__409aa)::before,
+:is(.name__29444,.headerText__99e7c,.membersGroup_c8ffbb,.sectionLabel__409aa)::after{
+  content:none!important;
 }
