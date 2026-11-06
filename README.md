@@ -10,8 +10,6 @@ A customizable glass theme for Discord.
 
 ## Customize
 
-Live panel blur is off by default for smoother scrolling. To restore it, set `--glass-backdrop-filter: initial;` in your local settings.
-
 Keep personal changes in QuickCSS or edit the variables in your local `CompactX.theme.css` file. Your settings stay in place when the shared theme updates.
 
 ```css
