@@ -1,12 +1,12 @@
 /**
  * @name CompactX
  * @author Czczh
- * @version 1.0.1
+ * @version 1.0.2
  * @description CompactX with personal settings kept locally.
  * @source https://github.com/Czczh/CompactX
  */
 
-@import url("https://cdn.jsdelivr.net/gh/Czczh/CompactX@main/CompactX.css?v=1.0.1");
+@import url("https://raw.githubusercontent.com/Czczh/CompactX/main/CompactX.css");
 
 /* Settings are stored in this local file and remain unchanged by remote updates. */
 :root {
