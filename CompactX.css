@@ -1,7 +1,7 @@
 /**
  * @name CompactX
  * @author Czczh
- * @version 1.1.0
+ * @version 1.1.1
  * @description A compact, customizable glass theme for Discord.
  */
 
@@ -127,6 +127,7 @@
      ======================================================= */
   --glass-base-color:rgb(0 0 0);
   --glass-blur:4px;
+  --glass-backdrop-filter:none;
   --glass-saturation:100%;
   --glass-brightness:1;
   --glass-border-color:rgba(255,255,255,.10);
@@ -610,7 +611,7 @@ code,pre{font-family:var(--code-font)!important}
 :is(:is(.unread__2ea32,.unread_TNyK-N),:is(.bar__7aaec,.bar_t1P8Sn),:is(.bar__3b95d,.bar_oJAkDB)){box-shadow:none}
 :is(:is(.bar__7aaec,.bar_t1P8Sn),:is(.bar__3b95d,.bar_oJAkDB)){background:var(--cv-main)!important;border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
 
-:is(.link__2ea32,.link_TNyK-N){margin-left:4px;transition:.15s ease}
+:is(.link__2ea32,.link_TNyK-N){margin-left:4px;transition:background-color var(--transition-speed) ease,color var(--transition-speed) ease}
 :is(.wrapper__2ea32,.wrapper_TNyK-N):hover :is(.link__2ea32,.link_TNyK-N){background:var(--surface-hover)!important}
 :is(.wrapper__2ea32,.wrapper_TNyK-N):is(.modeMuted__2ea32,.modeMuted_TNyK-N) :is(:is(.name__2ea32,.name_TNyK-N),:is(.icon__2ea32,.icon_TNyK-N)){color:var(--channel-muted)!important}
 :is(.wrapper__2ea32,.wrapper_TNyK-N):is(.modeUnreadImportant__2ea32,.modeUnreadImportant_TNyK-N) :is(:is(.name__2ea32,.name_TNyK-N),:is(.icon__2ea32,.icon_TNyK-N)){
@@ -657,7 +658,7 @@ code,pre{font-family:var(--code-font)!important}
   color:var(--cv-main)!important;
   font-weight:700;
 }
-:is(.interactive__972a0,.interactive_zln_tS){border-radius:var(--radius-small);transition:.15s ease}
+:is(.interactive__972a0,.interactive_zln_tS){border-radius:var(--radius-small);transition:background-color var(--transition-speed) ease,color var(--transition-speed) ease}
 :is(.interactive__972a0,.interactive_zln_tS):hover{background:var(--surface-hover)!important}
 :is(.interactive__972a0,.interactive_zln_tS):is(.interactiveSelected__972a0,.interactiveSelected_zln_tS){background:var(--accent-fill-strong)!important;color:var(--interactive-text-active)!important}
 
@@ -975,8 +976,8 @@ code,pre{font-family:var(--code-font)!important}
   :is([class^="privateChannels_"],[class*=" privateChannels_"]),:is([class^="members_"],[class*=" members_"]),:is([class^="aside_"],[class*=" aside_"]),:is([class^="panels_"],[class*=" panels_"]),
   :is([class^="sidebarRegionScroller_"],[class*=" sidebarRegionScroller_"]),:is([class^="contentRegionScroller_"],[class*=" contentRegionScroller_"])
 ){
-  -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness));
-  backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness));
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)));
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)));
 }
 
 /* TOPMOST WINDOW BAR
@@ -987,8 +988,8 @@ code,pre{font-family:var(--code-font)!important}
   background-color:transparent!important;
   background-image:none!important;
   box-shadow:inset 0 0 0 9999px var(--g-titlebar)!important;
-  -webkit-backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation)))!important;
   border-bottom:1px solid var(--glass-divider-color)!important;
 }
 
@@ -1000,8 +1001,8 @@ code,pre{font-family:var(--code-font)!important}
   background:transparent!important;
   background-color:transparent!important;
   box-shadow:inset 0 0 0 9999px var(--g-titlebar)!important;
-  -webkit-backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation)))!important;
 }
 
 /* Active channel / DM header directly below the title bar. */
@@ -1010,8 +1011,8 @@ code,pre{font-family:var(--code-font)!important}
   background-color:transparent!important;
   background-image:none!important;
   box-shadow:inset 0 0 0 9999px var(--g-chat-header)!important;
-  -webkit-backdrop-filter:blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation)))!important;
   border-bottom:1px solid var(--glass-divider-color)!important;
 }
 :is(:is(.title_f75fb0,.title_z_gUBg),:is(.toolbar__9293f,.toolbar_ybUK7Z),:is(.children__9293f,.children_ybUK7Z)){background:transparent!important}
@@ -1027,8 +1028,8 @@ code,pre{font-family:var(--code-font)!important}
 :is(:is([class^="chatContent_"],[class*=" chatContent_"]),:is(.scroller_f35c3c,.scroller_wmABvb),:is([class^="callContainer_"],[class*=" callContainer_"])){
   background:var(--g-chat)!important;
   background-color:var(--g-chat)!important;
-  -webkit-backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
-  backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation)));
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation)));
 }
 :is([class^="chat_"],[class*=" chat_"]){background:transparent!important}
 
@@ -1037,8 +1038,8 @@ code,pre{font-family:var(--code-font)!important}
 :is([class^="guilds_"],[class*=" guilds_"]){
   background:var(--g-server-list)!important;
   background-color:var(--g-server-list)!important;
-  -webkit-backdrop-filter:blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation)))!important;
   border-right:1px solid var(--glass-divider-color)!important;
 }
 
@@ -1047,8 +1048,8 @@ code,pre{font-family:var(--code-font)!important}
 :is([class^="sidebarList_"],[class*=" sidebarList_"]){
   background:var(--g-channel-sidebar)!important;
   background-color:var(--g-channel-sidebar)!important;
-  -webkit-backdrop-filter:blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation)))!important;
   border-right:1px solid var(--glass-divider-color)!important;
 }
 :is(:is(.container__2637a,.container_H5ozaj),:is(.animatedContainer_f37cb1,.animatedContainer_XH4OpX)){background:transparent!important}
@@ -1059,8 +1060,8 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--g-dm-sidebar)!important;
   background-color:var(--g-dm-sidebar)!important;
   border-radius:0!important;
-  -webkit-backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation)))!important;
 }
 :is([class^="privateChannels_"],[class*=" privateChannels_"]),
 :is([class^="privateChannels_"],[class*=" privateChannels_"]){
@@ -1078,8 +1079,8 @@ code,pre{font-family:var(--code-font)!important}
 :is([class^="members_"],[class*=" members_"]){
   background:var(--g-member-list)!important;
   background-color:var(--g-member-list)!important;
-  -webkit-backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation)))!important;
   border-left:1px solid var(--glass-divider-color)!important;
 }
 
@@ -1089,8 +1090,8 @@ code,pre{font-family:var(--code-font)!important}
 [class*=" aside_"]:has(.user-profile-sidebar-redesign){
   background:var(--g-profile-sidebar)!important;
   background-color:var(--g-profile-sidebar)!important;
-  -webkit-backdrop-filter:blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation)))!important;
   border-left:1px solid var(--glass-divider-color)!important;
 }
 .user-profile-sidebar-redesign[class*="outer_"],
@@ -1102,8 +1103,8 @@ code,pre{font-family:var(--code-font)!important}
 :is([class^="panels_"],[class*=" panels_"]){
   background:var(--g-user-panel)!important;
   background-color:var(--g-user-panel)!important;
-  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)))!important;
   border-top:1px solid var(--glass-divider-color)!important;
 }
 
@@ -1134,8 +1135,8 @@ code,pre{font-family:var(--code-font)!important}
   :is(.keywordsTextArea__6a631,.keywordsTextArea_q4D1ZT),:is(.textArea_c615b7,.textArea_65838B),:is([class^="profileNote_"],[class*=" profileNote_"]) :is(.textarea__9daae,.textarea_7NTkEC)
 ){
   background:var(--g-input)!important;
-  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
-  backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation)));
+  backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation)));
   border-color:var(--glass-border-color)!important;
 }
 
@@ -1148,8 +1149,8 @@ code,pre{font-family:var(--code-font)!important}
   :is(.browser_d98031,.browser_l-3BKx),:is(.popout__76f04,.popout_j5xNzb),:is(.picker__09f65,.picker_1lN7Eh),:is(.rolePopout__75297,.rolePopout_ku1OHH)
 ){
   background:var(--g-popout)!important;
-  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation)))!important;
   border:1px solid var(--glass-border-color)!important;
   box-shadow:var(--glass-shadow)!important;
   border-radius:var(--radius-popout)!important;
@@ -1158,8 +1159,8 @@ code,pre{font-family:var(--code-font)!important}
 /* Modals */
 :is(:is(.root__49fc1,.root__KoJTP),:is(.container__8a031,.container_dvN-MP),:is(.keyboardShortcutsModal_f061f6,.keyboardShortcutsModal_jCEr5v),:is(.modalBg_b824c5,.modalBg_hFq1lM),:is(.authBox__921c5,.authBox_rN1Ls3)){
   background:var(--g-modal)!important;
-  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation)))!important;
   border:1px solid var(--glass-border-color)!important;
   box-shadow:var(--glass-shadow)!important;
   border-radius:var(--radius-modal)!important;
@@ -1334,8 +1335,8 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--g-input)!important;
   background-color:var(--g-input)!important;
   border-color:var(--glass-border-color)!important;
-  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
-  backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation)));
+  backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation)));
 }
 
 /* ---------- MESSAGE ACTION BAR / POPOVERS ---------- */
@@ -1343,8 +1344,8 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--g-popout)!important;
   background-color:var(--g-popout)!important;
   border-color:var(--glass-border-color)!important;
-  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation)))!important;
 }
 :is(:is([class^="hoverBarButton_"],[class*=" hoverBarButton_"]),:is(.button_f7ecac,.button_Z0MHyc)):hover{background:var(--g-hover)!important}
 
@@ -1411,8 +1412,8 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--g-modal)!important;
   background-color:var(--g-modal)!important;
   border-color:var(--glass-border-color)!important;
-  -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation)))!important;
 }
 :is([class^="uploadDropModal_"],[class*=" uploadDropModal_"]) :is(:is(.icons_b78547,.icons_TLgD1o),:is(.title_b78547,.title_TLgD1o),:is(.instructions_b78547,.instructions_TLgD1o)){background:transparent!important}
 
@@ -1448,8 +1449,8 @@ code,pre{font-family:var(--code-font)!important}
   background-color:var(--g-spotify)!important;
   border-top:var(--separator-thickness) solid var(--g-separator)!important;
   border-bottom:var(--separator-thickness) solid var(--g-separator)!important;
-  -webkit-backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
-  backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
 }
 
 /* Keep the panel internals clear so the configured Spotify glass is the only
@@ -1604,8 +1605,8 @@ code,pre{font-family:var(--code-font)!important}
   border-bottom:var(--separator-thickness) solid var(--g-separator)!important;
   border-left:0!important;
   box-shadow:none!important;
-  -webkit-backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
-  backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
 }
 
 /* Kill plugin-owned solid/album-art surfaces if SpotifyControls adds them via
@@ -1788,8 +1789,8 @@ code,pre{font-family:var(--code-font)!important}
   background-image:none!important;
   border:0!important;
   box-shadow:none!important;
-  -webkit-backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
-  backdrop-filter:blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-spotify-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
 }
 
 /* ---------------------------------------------------------
@@ -1820,8 +1821,8 @@ code,pre{font-family:var(--code-font)!important}
   bottom:0;
   height:var(--separator-thickness);
   background:var(--g-separator);
-  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
-  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--separator-blur)) saturate(var(--separator-saturation)));
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--separator-blur)) saturate(var(--separator-saturation)));
   box-shadow:none!important;
   pointer-events:none;
   z-index:1;
@@ -1838,8 +1839,8 @@ code,pre{font-family:var(--code-font)!important}
   display:block!important;
   background:var(--g-separator)!important;
   background-image:none!important;
-  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
-  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--separator-blur)) saturate(var(--separator-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--separator-blur)) saturate(var(--separator-saturation)))!important;
   box-shadow:none!important;
   pointer-events:none!important;
   z-index:1!important;
@@ -1887,8 +1888,8 @@ code,pre{font-family:var(--code-font)!important}
   height:var(--separator-thickness);
   transform:translateY(-50%);
   background:var(--g-separator);
-  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
-  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation));
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--separator-blur)) saturate(var(--separator-saturation)));
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--separator-blur)) saturate(var(--separator-saturation)));
   box-shadow:none!important;
   pointer-events:none;
   z-index:0;
@@ -1897,8 +1898,8 @@ code,pre{font-family:var(--code-font)!important}
   position:relative!important;
   z-index:1!important;
   background:color-mix(in srgb,var(--glass-main-chat-color) 88%,transparent)!important;
-  -webkit-backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
-  backdrop-filter:blur(var(--separator-blur)) saturate(var(--separator-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--separator-blur)) saturate(var(--separator-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--separator-blur)) saturate(var(--separator-saturation)))!important;
   border-radius:999px!important;
   padding-inline:8px!important;
 }
@@ -2024,8 +2025,8 @@ code,pre{font-family:var(--code-font)!important}
   background-image:none!important;
   border:0!important;
   box-shadow:none!important;
-  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
-  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
 }
 
 /* All three optional rows are counted by the nameplate spans above.
@@ -2041,8 +2042,8 @@ code,pre{font-family:var(--code-font)!important}
   z-index:1!important;
   pointer-events:none!important;
   background:var(--g-user-panel)!important;
-  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
-  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
 }
 
 /* Keep the visible account controls above the new tint overlay. */
@@ -2069,8 +2070,8 @@ code,pre{font-family:var(--code-font)!important}
   background-image:none!important;
   border:0!important;
   box-shadow:none!important;
-  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
-  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness)))!important;
 }
 
 /* Clear Discord's stock fill inside the activity row, but preserve buttons,
@@ -2118,8 +2119,8 @@ code,pre{font-family:var(--code-font)!important}
   background:transparent!important;
   box-shadow:inset 0 0 0 9999px var(--g-titlebar)!important;
   border-bottom:1px solid var(--glass-divider-color)!important;
-  -webkit-backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation)))!important;
 }
 
 #app-mount :is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]){
@@ -2133,8 +2134,8 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--g-chat-header)!important;
   border:0!important;
   box-shadow:none!important;
-  -webkit-backdrop-filter:blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation)))!important;
 }
 #app-mount :is([class^="subtitleContainer_"],[class*=" subtitleContainer_"])::after{
   content:"";
@@ -2148,8 +2149,7 @@ code,pre{font-family:var(--code-font)!important}
   z-index:1;
 }
 
-#app-mount :is([class^="chat_"],[class*=" chat_"]):has(> :is([class^="chatContent_"],[class*=" chatContent_"])),
-#app-mount :is([class^="chat_"],[class*=" chat_"]):has(:is([class^="messagesWrapper_"],[class*=" messagesWrapper_"])){
+#app-mount :is(.chat_f75fb0,.chat_z_gUBg){
   background-color:transparent!important;
   background-image:none!important;
   border-color:transparent!important;
@@ -2158,8 +2158,8 @@ code,pre{font-family:var(--code-font)!important}
   background:var(--g-chat)!important;
   background-color:var(--g-chat)!important;
   background-image:none!important;
-  -webkit-backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
-  backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation)));
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation)));
 }
 #app-mount :is([class^="chatContent_"],[class*=" chatContent_"]) :is(
   [class^="messagesWrapper_"],[class*=" messagesWrapper_"],
@@ -2180,23 +2180,23 @@ code,pre{font-family:var(--code-font)!important}
 
 #app-mount :is([class^="guilds_"],[class*=" guilds_"]){
   background:var(--g-server-list)!important;
-  -webkit-backdrop-filter:blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation)))!important;
   border-right:1px solid var(--glass-divider-color)!important;
   box-shadow:none!important;
 }
 #app-mount :is([class^="sidebarList_"],[class*=" sidebarList_"]){
   background:var(--g-channel-sidebar)!important;
-  -webkit-backdrop-filter:blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation)))!important;
   border-radius:0!important;
   border-right:1px solid var(--glass-divider-color)!important;
   box-shadow:none!important;
 }
 #app-mount :is([class^="sidebarList_"],[class*=" sidebarList_"]):has(:is([class^="privateChannels_"],[class*=" privateChannels_"])){
   background:var(--g-dm-sidebar)!important;
-  -webkit-backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation)))!important;
 }
 #app-mount :is([class^="privateChannels_"],[class*=" privateChannels_"]){
   background:transparent!important;
@@ -2215,8 +2215,8 @@ code,pre{font-family:var(--code-font)!important}
 }
 #app-mount :is([class^="members_"],[class*=" members_"]){
   background:var(--g-member-list)!important;
-  -webkit-backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation)))!important;
   border-left:1px solid var(--glass-divider-color)!important;
 }
 #app-mount :is([class^="member_"],[class*=" member_"]){
@@ -2224,13 +2224,13 @@ code,pre{font-family:var(--code-font)!important}
 }
 #app-mount :is([class^="aside_"],[class*=" aside_"]):has([class*="user-profile-sidebar"]){
   background:var(--g-profile-sidebar)!important;
-  -webkit-backdrop-filter:blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation)))!important;
 }
 #app-mount :is([class^="panels_"],[class*=" panels_"]){
   background:var(--g-user-panel)!important;
-  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
-  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
+  -webkit-backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)))!important;
+  backdrop-filter:var(--glass-backdrop-filter,blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation)))!important;
   border-top:1px solid var(--glass-divider-color)!important;
 }
 #app-mount :is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player{
