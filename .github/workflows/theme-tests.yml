@@ -1,0 +1,30 @@
+name: Theme layout checks
+
+on:
+  push:
+    paths:
+      - '*.css'
+      - 'tests/**'
+      - 'package.json'
+      - '.github/workflows/theme-tests.yml'
+  pull_request:
+    paths:
+      - '*.css'
+      - 'tests/**'
+      - 'package.json'
+      - '.github/workflows/theme-tests.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npx playwright install --with-deps chromium
+      - run: npm test

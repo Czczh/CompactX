@@ -1,12 +1,12 @@
 /**
  * @name CompactX
  * @author Czczh
- * @version 1.0.3
+ * @version 1.1.0
  * @description CompactX with personal settings kept locally.
  * @source https://github.com/Czczh/CompactX
  */
 
-@import url("https://raw.githubusercontent.com/Czczh/CompactX/main/CompactX.css");
+@import url("https://raw.githubusercontent.com/Czczh/CompactX/main/CompactX.css?v=1.1.0");
 
 /* Settings are stored in this local file and remain unchanged by remote updates. */
 :root {
@@ -246,3 +246,4 @@
   --tint-message-hover:var(--glass-message-hover-opacity);
   --tint-whole-app:var(--background-shading-percent);
 }
+
