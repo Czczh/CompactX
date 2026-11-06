@@ -1,7 +1,7 @@
 /**
  * @name CompactX
  * @author Czczh
- * @version 1.0.1
+ * @version 1.0.2
  * @description A compact, customizable glass theme for Discord.
  */
 
@@ -317,7 +317,7 @@
 /* =========================================================
    BASE / WALLPAPER
    ========================================================= */
-:is(html,body,#app-mount,.appMount__51fd7){background:transparent!important}
+:is(html,body,#app-mount,:is([class^="appMount_"],[class*=" appMount_"])){background:transparent!important}
 body,button,input,select,textarea{font-family:var(--main-font)!important}
 code,pre{font-family:var(--code-font)!important}
 ::selection{background:var(--cv-main);color:#fff}
@@ -349,16 +349,16 @@ code,pre{font-family:var(--code-font)!important}
   .guildInviteContainer__083ae,.tile__72090,.wrapperAudio_cf09d8,.wrapper_cf09d8,
   .textContainer__4d95d,.footer__4d95d,.container__9271d,.container_a8e786,
   .container_f69538,.container__0be77,.container_ca49a1,.contentPreview__9a337,
-  .searchResult__80bf8,.container__0f2e8,.emptyCard__7e549,.mainTableContainer__09a38,
-  .container_a62383,.card_c19a92,.row_d13feb,.container__5573a,.productCardContainer_fcbddd,
+  :is([class^="searchResult_"],[class*=" searchResult_"]),.container__0f2e8,.emptyCard__7e549,:is([class^="mainTableContainer_"],[class*=" mainTableContainer_"]),
+  .container_a62383,.card_c19a92,.row_d13feb,.container__5573a,:is([class^="productCardContainer_"],[class*=" productCardContainer_"]),
   .container_cec934,.joinOptions__959cb,.safetyChecklist_eae0ef,.simpleItemWrapper__5dac8,
   .auditLog__43dab,.scrollerContainer__4b8d8,.editCard_a25a68,.featureCard__7dd5e,
   .upsellContainer__73000,.card_fc2e20,.descriptionBox__981f7,.analyticsCard__0dfec,
   .accountProfileCard_a27e58,.perkCard_e6430c,.giftCard_a45ed3,.guildContainer__5dba5,
-  .boostContainer_ceb06a,.detailsBlock_e335a7,.paymentPane__01014,.settingCard__1a4ef,
-  .mainTableContainer_fa2640,.container_d8f25b,.card__84e3e,.container__19cf2,
+  .boostContainer_ceb06a,.detailsBlock_e335a7,.paymentPane__01014,:is([class^="settingCard_"],[class*=" settingCard_"]),
+  :is([class^="mainTableContainer_"],[class*=" mainTableContainer_"]),.container_d8f25b,.card__84e3e,.container__19cf2,
   .container__5682d,.backgroundModifierContainer_d96a9c,.collapseable__217b7,
-  .newMembersNotice_acdcc0,.container_bc0d35,.optionButtonWrapper__270d7,
+  :is([class^="newMembersNotice_"],[class*=" newMembersNotice_"]),.container_bc0d35,.optionButtonWrapper__270d7,
   .profileCard__5d7c9,.container__6764b,.container_cb32c7,.command_c94584,
   .clickable__761e5,.soundButton__9be63,.soundButtonRefresh__9be63,
   .selectionBox_b13085,.selectedPlan_b13085,.previewContainerSelected__50f14,
@@ -373,15 +373,15 @@ code,pre{font-family:var(--code-font)!important}
 :is(
   .wrapper_f7ecac,.popover_f84418,.toolbar_bba883,.quickSelectPopout_ebaca5,
   .reactionTooltip_bbcccb,.container__5808f,.jumpToPresentBar__0f481,.wrapper__44df5,
-  .popoutContentWrapper_af3b89,.interactionsContainer_af3b89,.container_dca174,
+  :is([class^="popoutContentWrapper_"],[class*=" popoutContentWrapper_"]),.interactionsContainer_af3b89,.container_dca174,
   .loadingPopout__58f1c,.autocomplete__13533,.popout_a16aea,.selectDropdown__0edde,
   .container__8cb2e,.channelHeader__5d903,.menu_c1e9c4,.tooltip_fa450d,
   .contentWrapper__08434,.messagesPopoutWrap__432f4,.container__16eb0,.browser_d98031,
   .popout__76f04,.contentWrapper__9c62c,.picker__09f65,.popoutContainer__0f481,
-  .containerBackground_d4ced7,.contentWarningPopout_d2eed6,.popover_d6f39b,
+  .containerBackground_d4ced7,:is([class^="contentWarningPopout_"],[class*=" contentWarningPopout_"]),.popover_d6f39b,
   .rolePopout__75297,.tooltip__4e35b,.container__3dde2,.customColorPicker__459fb,
   .createOverwritePopout__0ab2c,.action__83b1d,.container__09ccc,.guildDetails__7dd5e,
-  .browser__9a792,.innerWrapper_b4589b,.chatHeaderBar_a5700d,.innerWrapperBase__553fd
+  .browser__9a792,.innerWrapper_b4589b,:is([class^="chatHeaderBar_"],[class*=" chatHeaderBar_"]),.innerWrapperBase__553fd
 ){
   background:var(--cv-pop)!important;
   border-color:transparent!important;
@@ -401,7 +401,7 @@ code,pre{font-family:var(--code-font)!important}
   .header__49fc1,.content__49fc1,.footer__49fc1,.footer__7f727,.content_a8c622,
   .upsellFooter__5e07c,.customGiftMessage_bf1b4a,.wrapper__4106a,.content_e9e3ed,
   .contentHeader_e9e3ed,.badgeList_a27e58,.background_a27e58,.fieldList_a27e58,
-  .container_d878e7,.avatarBackground_eb2508,.modalContent__39813,.header_a72ffc,
+  .container_d878e7,:is([class^="avatarBackground_"],[class*=" avatarBackground_"]),.modalContent__39813,.header_a72ffc,
   .emptyContainer__88a04,.connectionHeader_c7f964,.modalContentInner_e44912
 ){background:transparent!important}
 
@@ -409,17 +409,17 @@ code,pre{font-family:var(--code-font)!important}
    INPUTS / SEARCH / FORM CONTROLS
    ========================================================= */
 :is(
-  .wrapper__72c38,.container_a45028,.container_fea832,.channelTextArea__74017,
+  .wrapper__72c38,.container_a45028,.container_fea832,:is([class^="channelTextArea_"],[class*=" channelTextArea_"]),
   .searchBar__97492,.input_ac6cb0,.addFriendInputWrapper__72ba7,.cardInput__8b579,
-  .keywordsTextArea__6a631,.textArea_c615b7,.header_f369db,.profileNote__9c3be .textarea__9daae
+  .keywordsTextArea__6a631,.textArea_c615b7,.header_f369db,:is([class^="profileNote_"],[class*=" profileNote_"]) .textarea__9daae
 ){
   background:var(--cv-input)!important;
   border-color:color-mix(in srgb,var(--cv-input) 74%,white 26%)!important;
 }
 :is(
-  .wrapper__72c38,.container_a45028,.container_fea832,.channelTextArea__74017,
+  .wrapper__72c38,.container_a45028,.container_fea832,:is([class^="channelTextArea_"],[class*=" channelTextArea_"]),
   .searchBar__97492,.input_ac6cb0,.addFriendInputWrapper__72ba7,.cardInput__8b579,
-  .keywordsTextArea__6a631,.textArea_c615b7,.header_f369db,.profileNote__9c3be .textarea__9daae
+  .keywordsTextArea__6a631,.textArea_c615b7,.header_f369db,:is([class^="profileNote_"],[class*=" profileNote_"]) .textarea__9daae
 ):focus-within{
   border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
   box-shadow:0 0 0 2px color-mix(in srgb,var(--cv-main) 70%,transparent)!important;
@@ -455,7 +455,7 @@ code,pre{font-family:var(--code-font)!important}
 }
 :is(
   .lookFilled__201d5.colorBrand__201d5,.lookFilled__201d5.colorPrimary__201d5,
-  .primary_a22cb0,.activeButton_c15210,.newMembersNotice_acdcc0
+  .primary_a22cb0,.activeButton_c15210,:is([class^="newMembersNotice_"],[class*=" newMembersNotice_"])
 ):hover{background:var(--accent-fill-hover)!important}
 
 .lookFilled__201d5.colorGreen__201d5{background:var(--cv-success)!important}
@@ -487,18 +487,18 @@ code,pre{font-family:var(--code-font)!important}
 /* =========================================================
    CHAT
    ========================================================= */
-.chat_f75fb0{background:transparent!important;border:none!important}
-:is(.chatContent_f75fb0,.scroller_f35c3c,.callContainer_cb9592,.peopleColumn__133bf,.contentRegion__23e6b){
+:is([class^="chat_"],[class*=" chat_"]){background:transparent!important;border:none!important}
+:is(:is([class^="chatContent_"],[class*=" chatContent_"]),.scroller_f35c3c,:is([class^="callContainer_"],[class*=" callContainer_"]),:is([class^="peopleColumn_"],[class*=" peopleColumn_"]),:is([class^="contentRegion_"],[class*=" contentRegion_"])){
   background:color-mix(in srgb,var(--cv-chat) var(--tint-main-chat),transparent)!important;
 }
-:is(.chatGradientBase__36d07,.chatHeaderBar_dc83f5,.formWithLoadedChatInput_f75fb0:before,.stackedBars__74017,.themedBackground__74017,.threadSuggestionBar__841c8){
+:is(:is([class^="chatGradientBase_"],[class*=" chatGradientBase_"]),:is([class^="chatHeaderBar_"],[class*=" chatHeaderBar_"]),:is([class^="formWithLoadedChatInput_"],[class*=" formWithLoadedChatInput_"]):before,:is([class^="stackedBars_"],[class*=" stackedBars_"]),:is([class^="themedBackground_"],[class*=" themedBackground_"]),:is([class^="threadSuggestionBar_"],[class*=" threadSuggestionBar_"])){
   background:transparent!important;
 }
 .form_f75fb0{margin-top:4px}
 .upload_aa605f{background:var(--cv-card)!important;border:none!important}
 
 /* Message-row tint, matching the narrow message strip shown in the screenshot. */
-:is(.message__5126c:hover,.message__5126c.selected__5126c){
+:is(:is([class^="message_"],[class*=" message_"]):hover,:is([class^="message_"],[class*=" message_"]).selected__5126c){
   background:color-mix(in srgb,var(--cv-card) var(--tint-message-hover),transparent)!important;
 }
 
@@ -509,20 +509,20 @@ code,pre{font-family:var(--code-font)!important}
 .wrapper_f61d60{background:var(--accent-fill-strong)!important;color:var(--text-strong)!important;border-radius:var(--radius-small)}
 .wrapper_f61d60:hover{background:var(--accent-fill-hover)!important}
 
-:is(.repliedMessageClickableSpine_c19a55,.messageSpine_c19a55::before,.cozy_c19a55.hasThread_c19a55::after){
+:is(:is([class^="repliedMessageClickableSpine_"],[class*=" repliedMessageClickableSpine_"]),:is([class^="messageSpine_"],[class*=" messageSpine_"])::before,.cozy_c19a55.hasThread_c19a55::after){
   border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
 }
-:is(.reactions__23977 .reactionMe__23977,.reactions_f8896c .reactionMe_f8896c){
+:is(:is([class^="reactions_"],[class*=" reactions_"]) :is([class^="reactionMe_"],[class*=" reactionMe_"]),:is([class^="reactions_"],[class*=" reactions_"]) :is([class^="reactionMe_"],[class*=" reactionMe_"])){
   background:color-mix(in srgb,var(--cv-main) 16%,transparent)!important;
   border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important;
 }
-:is(.reaction__23977,.reactionBtn__23977,.reaction_f8896c,.reactionBtn_f8896c):hover{
+:is(:is([class^="reaction_"],[class*=" reaction_"]),:is([class^="reactionBtn_"],[class*=" reactionBtn_"]),:is([class^="reaction_"],[class*=" reaction_"]),:is([class^="reactionBtn_"],[class*=" reactionBtn_"])):hover{
   border-color:var(--cv-hover)!important;
 }
 
 .divider__908e2{--divider-color:var(--cv-main)}
 .content__908e2{background:transparent!important}
-:is(.newMessagesBar__0f481,.countContainer_f369db,.countContainer__5808f,.newMembersNotice_acdcc0){
+:is(.newMessagesBar__0f481,.countContainer_f369db,.countContainer__5808f,:is([class^="newMembersNotice_"],[class*=" newMembersNotice_"])){
   background:var(--cv-main)!important;
 }
 
@@ -565,15 +565,15 @@ code,pre{font-family:var(--code-font)!important}
 :is(.container__9a337,.container_faa96b):hover{border-color:var(--cv-hover)!important}
 :is(.container__9a337.isOpen__9a337,.container_faa96b.isOpen_faa96b){border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
 
-:is(.searchResultsWrap_a98f3b,.searchHeader_ae7890){background:color-mix(in srgb,var(--cv-app) 80%,transparent)!important}
-.searchResult__80bf8{background:var(--cv-card)!important}
+:is(:is([class^="searchResultsWrap_"],[class*=" searchResultsWrap_"]),:is([class^="searchHeader_"],[class*=" searchHeader_"])){background:color-mix(in srgb,var(--cv-app) 80%,transparent)!important}
+:is([class^="searchResult_"],[class*=" searchResult_"]){background:var(--cv-card)!important}
 .button__80bf8{background:var(--cv-main)!important}
 .button__80bf8:hover{background:var(--accent-fill-hover)!important}
 
 /* =========================================================
    SERVER RAIL / HOME
    ========================================================= */
-.guilds__5e434{
+:is([class^="guilds_"],[class*=" guilds_"]){
   background:color-mix(in srgb,var(--cv-app) var(--tint-server-list),transparent)!important;
 }
 .wrapper_ef3116{background:transparent!important;padding-top:10px}
@@ -587,11 +587,11 @@ code,pre{font-family:var(--code-font)!important}
 /* =========================================================
    SERVER CHANNEL SIDEBAR
    ========================================================= */
-:is(.sidebar__5e434,.sidebarList__5e434,.container__2637a,.panels__5e434){
+:is(.sidebar__5e434,:is([class^="sidebarList_"],[class*=" sidebarList_"]),.container__2637a,:is([class^="panels_"],[class*=" panels_"])){
   background:var(--surface-sidebar)!important;
   border:none!important;
 }
-.sidebarList__5e434{border-radius:0!important;backdrop-filter:none!important}
+:is([class^="sidebarList_"],[class*=" sidebarList_"]){border-radius:0!important;backdrop-filter:none!important}
 .sidebar__5e434:after{display:none!important}
 .animatedContainer_f37cb1{background:transparent!important;border:none!important}
 
@@ -648,25 +648,25 @@ code,pre{font-family:var(--code-font)!important}
 /* =========================================================
    PRIVATE CHANNELS / DMS
    ========================================================= */
-.privateChannels_e6b769{
+:is([class^="privateChannels_"],[class*=" privateChannels_"]){
   background:color-mix(in srgb,var(--cv-app) var(--tint-dms),transparent)!important;
 }
-.privateChannels_e6b769 .scroller__99e7c{background:transparent!important}
-.privateChannelsHeaderContainer__99e7c{color:var(--cv-main)!important}
-.headerText__99e7c{
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) .scroller__99e7c{background:transparent!important}
+:is([class^="privateChannelsHeaderContainer_"],[class*=" privateChannelsHeaderContainer_"]){color:var(--cv-main)!important}
+:is([class^="headerText_"],[class*=" headerText_"]){
   color:var(--cv-main)!important;
   display:flex;
   align-items:center;
   gap:6px;
   font-weight:700;
 }
-.headerText__99e7c::before,.headerText__99e7c::after{
+:is([class^="headerText_"],[class*=" headerText_"])::before,:is([class^="headerText_"],[class*=" headerText_"])::after{
   content:"";
   height:2px;
   flex:1;
   background:linear-gradient(90deg,transparent,var(--cv-main));
 }
-.headerText__99e7c::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
+:is([class^="headerText_"],[class*=" headerText_"])::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
 .interactive__972a0{border-radius:var(--radius-small);transition:.15s ease}
 .interactive__972a0:hover{background:var(--surface-hover)!important}
 .interactive__972a0.interactiveSelected__972a0{background:var(--accent-fill-strong)!important;color:var(--interactive-text-active)!important}
@@ -674,24 +674,24 @@ code,pre{font-family:var(--code-font)!important}
 /* =========================================================
    MEMBER LIST
    ========================================================= */
-:is(.container_c8ffbb,.membersWrap_c8ffbb){background:transparent!important;border:none!important}
-.members_c8ffbb{background:color-mix(in srgb,var(--cv-app) 72%,transparent)!important}
-.membersGroup_c8ffbb{
+:is(.container_c8ffbb,:is([class^="membersWrap_"],[class*=" membersWrap_"])){background:transparent!important;border:none!important}
+:is([class^="members_"],[class*=" members_"]){background:color-mix(in srgb,var(--cv-app) 72%,transparent)!important}
+:is([class^="membersGroup_"],[class*=" membersGroup_"]){
   display:flex;
   align-items:center;
   gap:6px;
   color:var(--cv-main)!important;
   font-weight:700;
 }
-.membersGroup_c8ffbb::before,.membersGroup_c8ffbb::after{
+:is([class^="membersGroup_"],[class*=" membersGroup_"])::before,:is([class^="membersGroup_"],[class*=" membersGroup_"])::after{
   content:"";
   height:2px;
   flex:1;
   background:linear-gradient(90deg,transparent,currentColor);
 }
-.membersGroup_c8ffbb::after{background:linear-gradient(90deg,currentColor,transparent)}
-.member__5d473{background:transparent!important}
-.member__5d473:hover .childContainer__91a9d{background:var(--surface-hover)!important}
+:is([class^="membersGroup_"],[class*=" membersGroup_"])::after{background:linear-gradient(90deg,currentColor,transparent)}
+:is([class^="member_"],[class*=" member_"]){background:transparent!important}
+:is([class^="member_"],[class*=" member_"]):hover .childContainer__91a9d{background:var(--surface-hover)!important}
 .selected__91a9d .childContainer__91a9d{
   background:color-mix(in srgb,var(--cv-main) 20%,transparent)!important;
 }
@@ -699,7 +699,7 @@ code,pre{font-family:var(--code-font)!important}
 /* =========================================================
    FRIENDS / ACTIVITY / REQUESTS
    ========================================================= */
-:is(.container_cbd375,.container__7d20c,.peopleColumn__133bf,.list_f391e3){
+:is(.container_cbd375,.container__7d20c,:is([class^="peopleColumn_"],[class*=" peopleColumn_"]),.list_f391e3){
   background:color-mix(in srgb,var(--cv-app) 76%,transparent)!important;
 }
 :is(.tabBody__133bf,.container__133bf,.nowPlayingColumn__133bf){background:transparent!important;border:none!important}
@@ -718,7 +718,7 @@ code,pre{font-family:var(--code-font)!important}
 :is(.scroller__02f2d,.contentContainer__89463,.shop__6db1d,.scroller__4a84a,.scroller_fb04e1,.scroller__23746){
   background:color-mix(in srgb,var(--cv-app) 76%,transparent)!important;
 }
-.productCardContainer_fcbddd:hover{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
+:is([class^="productCardContainer_"],[class*=" productCardContainer_"]):hover{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
 .productSkeletonCardContainer_e4f643,.featuredBlockSkeleton__08415{
   background:var(--cv-card)!important;
   animation:compact-pulse 1.5s ease-in-out infinite;
@@ -746,7 +746,7 @@ code,pre{font-family:var(--code-font)!important}
 .outer_c0bea0:not(.custom-user-profile-theme) .inner_ab8609{background:transparent!important}
 .panel_b08638{background:var(--cv-pop)!important}
 
-.aside_f58343{
+:is([class^="aside_"],[class*=" aside_"]){
   background:color-mix(in srgb,var(--cv-app) var(--tint-profile),transparent)!important;
 }
 :is(
@@ -806,25 +806,25 @@ code,pre{font-family:var(--code-font)!important}
 /* =========================================================
    SETTINGS
    ========================================================= */
-:is(.contentRegionScroller__23e6b,.content_e9e3ed,.contentHeader_e9e3ed){background:transparent!important}
-.sidebarRegionScroller__23e6b{
+:is(:is([class^="contentRegionScroller_"],[class*=" contentRegionScroller_"]),.content_e9e3ed,.contentHeader_e9e3ed){background:transparent!important}
+:is([class^="sidebarRegionScroller_"],[class*=" sidebarRegionScroller_"]){
   background:color-mix(in srgb,var(--cv-app) 74%,transparent)!important;
   padding:20px 8px 60px 20px;
 }
 :is(.sidebar__409aa,.fixedContent__409aa){background:transparent!important}
 .fixedContent__409aa::after{display:none!important}
-.sectionLabel__409aa{
+:is([class^="sectionLabel_"],[class*=" sectionLabel_"]){
   display:flex;
   align-items:center;
   gap:6px;
 }
-.sectionLabel__409aa::before,.sectionLabel__409aa::after{
+:is([class^="sectionLabel_"],[class*=" sectionLabel_"])::before,:is([class^="sectionLabel_"],[class*=" sectionLabel_"])::after{
   content:"";
   height:2px;
   flex:1;
   background:linear-gradient(90deg,transparent,var(--cv-main));
 }
-.sectionLabel__409aa::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
+:is([class^="sectionLabel_"],[class*=" sectionLabel_"])::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
 .label__409aa{color:var(--cv-main)!important}
 .item_caf372:hover{background:var(--surface-hover)!important}
 .item_caf372.active_caf372{background:var(--cv-main)!important}
@@ -839,7 +839,7 @@ code,pre{font-family:var(--code-font)!important}
 /* =========================================================
    SERVER SETTINGS / MODERATION
    ========================================================= */
-:is(.settingCard__1a4ef,.container_d8f25b,.auditLog__43dab,.editCard_a25a68,.safetyChecklist_eae0ef){
+:is(:is([class^="settingCard_"],[class*=" settingCard_"]),.container_d8f25b,.auditLog__43dab,.editCard_a25a68,.safetyChecklist_eae0ef){
   background:var(--cv-card)!important;
 }
 :is(.container_d8f25b,.editCard_a25a68):hover{border-color:color-mix(in srgb,var(--cv-main) 58%,transparent)!important}
@@ -981,9 +981,9 @@ code,pre{font-family:var(--code-font)!important}
 
 /* Frosting helper. */
 :is(
-  .bar_c38106,.container__9293f,.guilds__5e434,.sidebarList__5e434,
-  .privateChannels_e6b769,.members_c8ffbb,.aside_f58343,.panels__5e434,
-  .sidebarRegionScroller__23e6b,.contentRegionScroller__23e6b
+  .bar_c38106,.container__9293f,:is([class^="guilds_"],[class*=" guilds_"]),:is([class^="sidebarList_"],[class*=" sidebarList_"]),
+  :is([class^="privateChannels_"],[class*=" privateChannels_"]),:is([class^="members_"],[class*=" members_"]),:is([class^="aside_"],[class*=" aside_"]),:is([class^="panels_"],[class*=" panels_"]),
+  :is([class^="sidebarRegionScroller_"],[class*=" sidebarRegionScroller_"]),:is([class^="contentRegionScroller_"],[class*=" contentRegionScroller_"])
 ){
   -webkit-backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness));
   backdrop-filter:blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness));
@@ -1034,16 +1034,16 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Main chat */
-:is(.chatContent_f75fb0,.scroller_f35c3c,.callContainer_cb9592){
+:is(:is([class^="chatContent_"],[class*=" chatContent_"]),.scroller_f35c3c,:is([class^="callContainer_"],[class*=" callContainer_"])){
   background:var(--g-chat)!important;
   background-color:var(--g-chat)!important;
   -webkit-backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
   backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
 }
-.chat_f75fb0{background:transparent!important}
+:is([class^="chat_"],[class*=" chat_"]){background:transparent!important}
 
 /* Server rail */
-.guilds__5e434,
+:is([class^="guilds_"],[class*=" guilds_"]),
 :is([class^="guilds_"],[class*=" guilds_"]){
   background:var(--g-server-list)!important;
   background-color:var(--g-server-list)!important;
@@ -1053,7 +1053,7 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Server / channel sidebar. DM sidebar overrides this below. */
-.sidebarList__5e434,
+:is([class^="sidebarList_"],[class*=" sidebarList_"]),
 :is([class^="sidebarList_"],[class*=" sidebarList_"]){
   background:var(--g-channel-sidebar)!important;
   background-color:var(--g-channel-sidebar)!important;
@@ -1064,7 +1064,7 @@ code,pre{font-family:var(--code-font)!important}
 :is(.container__2637a,.animatedContainer_f37cb1){background:transparent!important}
 
 /* DMs: includes the search/header part and the private-channel scroller. */
-.sidebarList__5e434:has(.privateChannels_e6b769),
+:is([class^="sidebarList_"],[class*=" sidebarList_"]):has(:is([class^="privateChannels_"],[class*=" privateChannels_"])),
 :is([class^="sidebarList_"],[class*=" sidebarList_"]):has([class^="privateChannels_"],[class*=" privateChannels_"]){
   background:var(--g-dm-sidebar)!important;
   background-color:var(--g-dm-sidebar)!important;
@@ -1072,7 +1072,7 @@ code,pre{font-family:var(--code-font)!important}
   -webkit-backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
   backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
 }
-.privateChannels_e6b769,
+:is([class^="privateChannels_"],[class*=" privateChannels_"]),
 :is([class^="privateChannels_"],[class*=" privateChannels_"]){
   background:transparent!important;
   background-color:transparent!important;
@@ -1080,12 +1080,12 @@ code,pre{font-family:var(--code-font)!important}
   -webkit-backdrop-filter:none!important;
   backdrop-filter:none!important;
 }
-.privateChannels_e6b769 .scroller__99e7c,
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) .scroller__99e7c,
 :is([class^="privateChannels_"],[class*=" privateChannels_"]) [class*="scroller_"]{background:transparent!important}
 
 /* Member list */
-:is(.container_c8ffbb,.membersWrap_c8ffbb){background:transparent!important}
-.members_c8ffbb{
+:is(.container_c8ffbb,:is([class^="membersWrap_"],[class*=" membersWrap_"])){background:transparent!important}
+:is([class^="members_"],[class*=" members_"]){
   background:var(--g-member-list)!important;
   background-color:var(--g-member-list)!important;
   -webkit-backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
@@ -1094,7 +1094,7 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* DM profile sidebar */
-.aside_f58343,
+:is([class^="aside_"],[class*=" aside_"]),
 [class^="aside_"]:has(.user-profile-sidebar-redesign),
 [class*=" aside_"]:has(.user-profile-sidebar-redesign){
   background:var(--g-profile-sidebar)!important;
@@ -1109,7 +1109,7 @@ code,pre{font-family:var(--code-font)!important}
 .user-profile-sidebar-redesign [class*="panel_"]{background:transparent!important;background-color:transparent!important}
 
 /* Bottom-left user/voice panel */
-.panels__5e434{
+:is([class^="panels_"],[class*=" panels_"]){
   background:var(--g-user-panel)!important;
   background-color:var(--g-user-panel)!important;
   -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
@@ -1118,11 +1118,11 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Settings panes */
-.sidebarRegionScroller__23e6b{
+:is([class^="sidebarRegionScroller_"],[class*=" sidebarRegionScroller_"]){
   background:var(--g-settings-sidebar)!important;
   background-color:var(--g-settings-sidebar)!important;
 }
-.contentRegionScroller__23e6b{
+:is([class^="contentRegionScroller_"],[class*=" contentRegionScroller_"]){
   background:var(--g-settings-content)!important;
   background-color:var(--g-settings-content)!important;
 }
@@ -1132,16 +1132,16 @@ code,pre{font-family:var(--code-font)!important}
   .hljs,.markup__75297 code,.embedFull__623de,.file__0ccae,.wrapper_d5f3cd,
   .guildInviteContainer__083ae,.tile__72090,.wrapperAudio_cf09d8,.wrapper_cf09d8,
   .textContainer__4d95d,.footer__4d95d,.container__9271d,.container_a8e786,
-  .searchResult__80bf8,.emptyCard__7e549,.card_c19a92,.row_d13feb,
-  .productCardContainer_fcbddd,.settingCard__1a4ef,.profileCard__5d7c9,
+  :is([class^="searchResult_"],[class*=" searchResult_"]),.emptyCard__7e549,.card_c19a92,.row_d13feb,
+  :is([class^="productCardContainer_"],[class*=" productCardContainer_"]),:is([class^="settingCard_"],[class*=" settingCard_"]),.profileCard__5d7c9,
   .accountProfileCard_a27e58,.perkCard_e6430c,.giftCard_a45ed3
 ){background:var(--g-card)!important}
 
 /* Inputs */
 :is(
-  .wrapper__72c38,.container_a45028,.container_fea832,.channelTextArea__74017,
+  .wrapper__72c38,.container_a45028,.container_fea832,:is([class^="channelTextArea_"],[class*=" channelTextArea_"]),
   .searchBar__97492,.input_ac6cb0,.addFriendInputWrapper__72ba7,.cardInput__8b579,
-  .keywordsTextArea__6a631,.textArea_c615b7,.profileNote__9c3be .textarea__9daae
+  .keywordsTextArea__6a631,.textArea_c615b7,:is([class^="profileNote_"],[class*=" profileNote_"]) .textarea__9daae
 ){
   background:var(--g-input)!important;
   -webkit-backdrop-filter:blur(calc(var(--glass-blur) * .65)) saturate(var(--glass-saturation));
@@ -1176,8 +1176,8 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Messages */
-.message__5126c{transition:background-color var(--transition-speed) ease}
-:is(.message__5126c:hover,.message__5126c.selected__5126c){background:var(--g-message-hover)!important}
+:is([class^="message_"],[class*=" message_"]){transition:background-color var(--transition-speed) ease}
+:is(:is([class^="message_"],[class*=" message_"]):hover,:is([class^="message_"],[class*=" message_"]).selected__5126c){background:var(--g-message-hover)!important}
 .replying__5126c{background:color-mix(in srgb,var(--cv-main) var(--glass-message-selected-opacity),transparent)!important}
 .mentioned__5126c{background:color-mix(in srgb,var(--cv-main) var(--glass-mentioned-opacity),transparent)!important}
 
@@ -1201,13 +1201,13 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Server sizing */
-.guilds__5e434 .listItem__650eb{margin-bottom:var(--server-gap)!important;overflow:visible!important}
-.guilds__5e434 :is(.wrapper_cc5dd2,.svg_cc5dd2,.childWrapper__6e9f8,.icon__6e9f8){
+:is([class^="guilds_"],[class*=" guilds_"]) .listItem__650eb{margin-bottom:var(--server-gap)!important;overflow:visible!important}
+:is([class^="guilds_"],[class*=" guilds_"]) :is(.wrapper_cc5dd2,.svg_cc5dd2,.childWrapper__6e9f8,.icon__6e9f8){
   width:var(--server-size)!important;
   height:var(--server-size)!important;
 }
-.guilds__5e434 .childWrapper__6e9f8{border-radius:var(--server-radius)!important}
-.guilds__5e434 .icon__6e9f8{border-radius:0!important}
+:is([class^="guilds_"],[class*=" guilds_"]) .childWrapper__6e9f8{border-radius:var(--server-radius)!important}
+:is([class^="guilds_"],[class*=" guilds_"]) .icon__6e9f8{border-radius:0!important}
 
 /* Optional independent profile imagery. Nitro/custom profile themes are left alone. */
 .user-profile-popout:not(.custom-user-profile-theme){
@@ -1257,12 +1257,12 @@ code,pre{font-family:var(--code-font)!important}
   .content__5e434,
   .page__5e434,
   .content_f75fb0,
-  .subtitleContainer_f75fb0,
-  .messagesWrapper__36d07,
+  :is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]),
+  :is([class^="messagesWrapper_"],[class*=" messagesWrapper_"]),
   .scroller__36d07,
-  .scrollerContent__36d07,
-  .scrollerInner__36d07,
-  .channelBottomBarArea_f75fb0,
+  :is([class^="scrollerContent_"],[class*=" scrollerContent_"]),
+  :is([class^="scrollerInner_"],[class*=" scrollerInner_"]),
+  :is([class^="channelBottomBarArea_"],[class*=" channelBottomBarArea_"]),
   .layerContainer__59d0d
 ){
   background:transparent!important;
@@ -1279,7 +1279,7 @@ code,pre{font-family:var(--code-font)!important}
 /* ---------- DM SIDEBAR ---------- */
 /* The live build puts its DM search header inside privateChannels. Let the
    configured DM glass tint show through instead of Discord's own fill. */
-:is(.searchBar_e6b769,.privateChannelsHeaderContainer__99e7c){
+:is(.searchBar_e6b769,:is([class^="privateChannelsHeaderContainer_"],[class*=" privateChannelsHeaderContainer_"])){
   background:transparent!important;
   background-color:transparent!important;
   border-color:transparent!important;
@@ -1299,34 +1299,34 @@ code,pre{font-family:var(--code-font)!important}
 /* ---------- MAIN CHAT ---------- */
 /* chatContent owns the configured chat tint. Everything inside should be
    transparent unless it is deliberately a card/input/popout. */
-.chatContent_f75fb0{
+:is([class^="chatContent_"],[class*=" chatContent_"]){
   background:var(--g-chat)!important;
   background-color:var(--g-chat)!important;
 }
-.chatContent_f75fb0 :is(
-  .messagesWrapper__36d07,
+:is([class^="chatContent_"],[class*=" chatContent_"]) :is(
+  :is([class^="messagesWrapper_"],[class*=" messagesWrapper_"]),
   .scroller__36d07,
-  .scrollerContent__36d07,
-  .scrollerInner__36d07
+  :is([class^="scrollerContent_"],[class*=" scrollerContent_"]),
+  :is([class^="scrollerInner_"],[class*=" scrollerInner_"])
 ){
   background:transparent!important;
   background-color:transparent!important;
 }
 
 /* Current message implementation uses both __5126c and c19a55 classes. */
-:is(.message__5126c,.wrapper_c19a55){
+:is(:is([class^="message_"],[class*=" message_"]),.wrapper_c19a55){
   transition:background-color var(--transition-speed) ease!important;
 }
-:is(.message__5126c,.wrapper_c19a55):hover{
+:is(:is([class^="message_"],[class*=" message_"]),.wrapper_c19a55):hover{
   background:var(--g-message-hover)!important;
 }
-:is(.message__5126c.selected__5126c,.wrapper_c19a55.selected__5126c){
+:is(:is([class^="message_"],[class*=" message_"]).selected__5126c,.wrapper_c19a55.selected__5126c){
   background:var(--g-message-hover)!important;
 }
-:is(.message__5126c.replying__5126c,.wrapper_c19a55.replying__5126c){
+:is(:is([class^="message_"],[class*=" message_"]).replying__5126c,.wrapper_c19a55.replying__5126c){
   background:color-mix(in srgb,var(--cv-main) var(--glass-message-selected-opacity),transparent)!important;
 }
-:is(.message__5126c.mentioned__5126c,.wrapper_c19a55.mentioned__5126c){
+:is(:is([class^="message_"],[class*=" message_"]).mentioned__5126c,.wrapper_c19a55.mentioned__5126c){
   background:color-mix(in srgb,var(--cv-main) var(--glass-mentioned-opacity),transparent)!important;
 }
 
@@ -1339,8 +1339,8 @@ code,pre{font-family:var(--code-font)!important}
 /* ---------- CHAT INPUT ---------- */
 /* In the current build the visible fill is often on scrollableContainer,
    not channelTextArea itself. */
-:is(.channelTextArea_f75fb0,.channelTextArea__74017){background:transparent!important}
-:is(.scrollableContainer__74017,.inner__74017){
+:is(:is([class^="channelTextArea_"],[class*=" channelTextArea_"]),:is([class^="channelTextArea_"],[class*=" channelTextArea_"])){background:transparent!important}
+:is(:is([class^="scrollableContainer_"],[class*=" scrollableContainer_"]),.inner__74017){
   background:var(--g-input)!important;
   background-color:var(--g-input)!important;
   border-color:var(--glass-border-color)!important;
@@ -1349,24 +1349,24 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* ---------- MESSAGE ACTION BAR / POPOVERS ---------- */
-:is(.buttonsInner__5126c,.popover_f84418,.wrapper_f7ecac,.popover__2d0ab,.statusPopover__2d0ab){
+:is(:is([class^="buttonsInner_"],[class*=" buttonsInner_"]),.popover_f84418,.wrapper_f7ecac,.popover__2d0ab,.statusPopover__2d0ab){
   background:var(--g-popout)!important;
   background-color:var(--g-popout)!important;
   border-color:var(--glass-border-color)!important;
   -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
   backdrop-filter:blur(calc(var(--glass-blur) * 1.3)) saturate(var(--glass-saturation))!important;
 }
-:is(.hoverBarButton_f84418,.button_f7ecac):hover{background:var(--g-hover)!important}
+:is(:is([class^="hoverBarButton_"],[class*=" hoverBarButton_"]),.button_f7ecac):hover{background:var(--g-hover)!important}
 
 /* ---------- BOTTOM USER / VOICE PANEL ---------- */
 /* The panel itself is tinted by --glass-user-panel-*; clear nested stock
    surfaces so they do not defeat that setting. */
-.panels__5e434 > :is(.wrapper_e131a9,.container__37e49),
-.panels__5e434 :is(.container__37e49,.container_df39b2,.accountPopoutButtonWrapper__37e49){
+:is([class^="panels_"],[class*=" panels_"]) > :is(.wrapper_e131a9,.container__37e49),
+:is([class^="panels_"],[class*=" panels_"]) :is(.container__37e49,.container_df39b2,:is([class^="accountPopoutButtonWrapper_"],[class*=" accountPopoutButtonWrapper_"])){
   background:transparent!important;
   background-color:transparent!important;
 }
-.panels__5e434 :is(.accountPopoutButtonWrapper__37e49,.button__67645.plated__67645):hover{
+:is([class^="panels_"],[class*=" panels_"]) :is(:is([class^="accountPopoutButtonWrapper_"],[class*=" accountPopoutButtonWrapper_"]),.button__67645.plated__67645):hover{
   background:var(--g-hover)!important;
 }
 
@@ -1374,11 +1374,11 @@ code,pre{font-family:var(--code-font)!important}
 /* Current live DOM uses a custom-user-profile-theme even in the DM sidebar.
    The ASIDE owns the glass tint, so neutralize only structural profile layers;
    banner/avatar/effects remain intact. */
-.aside_f58343 > .outer_c0bea0.user-profile-sidebar{
+:is([class^="aside_"],[class*=" aside_"]) > .outer_c0bea0.user-profile-sidebar{
   background:transparent!important;
   background-color:transparent!important;
 }
-.aside_f58343 .user-profile-sidebar :is(
+:is([class^="aside_"],[class*=" aside_"]) .user-profile-sidebar :is(
   .inner_c0bea0,
   .scrollerFade__7f9c0,
   .wrapper_da5890,
@@ -1392,7 +1392,7 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Profile sections/cards seen in the live sidebar. */
-.aside_f58343 .user-profile-sidebar :is(
+:is([class^="aside_"],[class*=" aside_"]) .user-profile-sidebar :is(
   .section_bf424d,
   .section__6aa84,
   .card__9d597,
@@ -1408,23 +1408,23 @@ code,pre{font-family:var(--code-font)!important}
 
 /* ---------- SERVER RAIL ---------- */
 /* BetterFolders/current wrappers around server icons. */
-.guilds__5e434 :is(.wrapper__58105,.overlay__58105,.blobContainer_e5445c){
+:is([class^="guilds_"],[class*=" guilds_"]) :is(.wrapper__58105,.overlay__58105,.blobContainer_e5445c){
   background:transparent!important;
   background-color:transparent!important;
 }
-.guilds__5e434 :is(.folderButton__48112,.folderButtonInner__48112):hover{
+:is([class^="guilds_"],[class*=" guilds_"]) :is(.folderButton__48112,.folderButtonInner__48112):hover{
   background:var(--g-hover)!important;
 }
 
 /* ---------- DRAG/DROP MODAL ---------- */
-:is(.uploadDropModal_b78547,.inner_b78547){
+:is(:is([class^="uploadDropModal_"],[class*=" uploadDropModal_"]),.inner_b78547){
   background:var(--g-modal)!important;
   background-color:var(--g-modal)!important;
   border-color:var(--glass-border-color)!important;
   -webkit-backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
   backdrop-filter:blur(calc(var(--glass-blur) * 1.6)) saturate(var(--glass-saturation))!important;
 }
-.uploadDropModal_b78547 :is(.icons_b78547,.title_b78547,.instructions_b78547){background:transparent!important}
+:is([class^="uploadDropModal_"],[class*=" uploadDropModal_"]) :is(.icons_b78547,.title_b78547,.instructions_b78547){background:transparent!important}
 
 /* ---------- HASH-RESISTANT STRUCTURAL FALLBACKS ---------- */
 /* Scope these to known regions so generic names such as "content" do not
@@ -1453,7 +1453,7 @@ code,pre{font-family:var(--code-font)!important}
    panels region. :has() scopes this styling to the Spotify instance only so
    Discord voice/activity wrappers using the same structural class are left
    alone. */
-.panels__5e434 > .wrapper_e131a9:has([class*="vc-spotify"]){
+:is([class^="panels_"],[class*=" panels_"]) > .wrapper_e131a9:has([class*="vc-spotify"]){
   background:var(--g-spotify)!important;
   background-color:var(--g-spotify)!important;
   border-top:var(--separator-thickness) solid var(--g-separator)!important;
@@ -1464,7 +1464,7 @@ code,pre{font-family:var(--code-font)!important}
 
 /* Keep the panel internals clear so the configured Spotify glass is the only
    surface tint. */
-.panels__5e434 > .wrapper_e131a9:has([class*="vc-spotify"]) :is(
+:is([class^="panels_"],[class*=" panels_"]) > .wrapper_e131a9:has([class*="vc-spotify"]) :is(
   .vc-spotify-button-row,
   .container__5a838,
   .control__5a838,
@@ -1476,7 +1476,7 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Song / artist / album text follows the theme instead of Spotify green. */
-.panels__5e434 :is(
+:is([class^="panels_"],[class*=" panels_"]) :is(
   .vc-spotify-ellipoverflow,
   .vc-spotify-secondary-song-info,
   .vc-spotify-progress-time,
@@ -1486,44 +1486,44 @@ code,pre{font-family:var(--code-font)!important}
 ){
   color:var(--normal-text)!important;
 }
-.panels__5e434 :is(.vc-spotify-secondary-song-info,.vc-spotify-progress-time,.vc-spotify-song-info-prefix){
+:is([class^="panels_"],[class*=" panels_"]) :is(.vc-spotify-secondary-song-info,.vc-spotify-progress-time,.vc-spotify-song-info-prefix){
   color:var(--muted-text)!important;
 }
-.panels__5e434 :is(.vc-spotify-artist,.vc-spotify-album):hover{
+:is([class^="panels_"],[class*=" panels_"]) :is(.vc-spotify-artist,.vc-spotify-album):hover{
   color:var(--cv-hover)!important;
   text-decoration:underline;
 }
 
 /* Playback controls. */
-.panels__5e434 .vc-spotify-button{
+:is([class^="panels_"],[class*=" panels_"]) .vc-spotify-button{
   background:transparent!important;
   border-color:transparent!important;
   border-radius:var(--radius-small)!important;
   transition:background-color var(--transition-speed) ease,color var(--transition-speed) ease!important;
 }
-.panels__5e434 .vc-spotify-button:hover{
+:is([class^="panels_"],[class*=" panels_"]) .vc-spotify-button:hover{
   background:color-mix(in srgb,var(--spotify-accent-color) var(--spotify-control-hover-opacity),transparent)!important;
 }
-.panels__5e434 .vc-spotify-button-icon{
+:is([class^="panels_"],[class*=" panels_"]) .vc-spotify-button-icon{
   color:var(--normal-text)!important;
   fill:currentColor!important;
 }
-.panels__5e434 :is(.vc-spotify-repeat-context,.vc-spotify-shuffle:not(.vc-spotify-shuffle-off)){
+:is([class^="panels_"],[class*=" panels_"]) :is(.vc-spotify-repeat-context,.vc-spotify-shuffle:not(.vc-spotify-shuffle-off)){
   color:var(--spotify-accent-color)!important;
   background:color-mix(in srgb,var(--spotify-accent-color) 10%,transparent)!important;
 }
-.panels__5e434 :is(.vc-spotify-repeat-context,.vc-spotify-shuffle:not(.vc-spotify-shuffle-off)) .vc-spotify-button-icon{
+:is([class^="panels_"],[class*=" panels_"]) :is(.vc-spotify-repeat-context,.vc-spotify-shuffle:not(.vc-spotify-shuffle-off)) .vc-spotify-button-icon{
   color:var(--spotify-accent-color)!important;
 }
 
 /* Spotify progress slider uses the theme accent. */
-.panels__5e434 .slider__4c059 .bar__4c059{
+:is([class^="panels_"],[class*=" panels_"]) .slider__4c059 .bar__4c059{
   background:color-mix(in srgb,var(--normal-text) 18%,transparent)!important;
 }
-.panels__5e434 .slider__4c059 .barFill__4c059{
+:is([class^="panels_"],[class*=" panels_"]) .slider__4c059 .barFill__4c059{
   background:var(--spotify-accent-color)!important;
 }
-.panels__5e434 .slider__4c059 .grabber__4c059{
+:is([class^="panels_"],[class*=" panels_"]) .slider__4c059 .grabber__4c059{
   background:var(--normal-text)!important;
   border-color:var(--glass-border-color)!important;
 }
@@ -1531,9 +1531,9 @@ code,pre{font-family:var(--code-font)!important}
 /* ---------- SEPARATORS / DIVIDERS ---------- */
 /* Solid divider elements currently mounted in the collected DOM. */
 :is(
-  .guildSeparator__252b6,
-  .sectionDivider_e6b769,
-  .sectionDivider__629e4,
+  :is([class^="guildSeparator_"],[class*=" guildSeparator_"]),
+  :is([class^="sectionDivider_"],[class*=" sectionDivider_"]),
+  :is([class^="sectionDivider_"],[class*=" sectionDivider_"]),
   .separator_f84418,
   .divider__1feb0
 ){
@@ -1576,11 +1576,11 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Sidebar resize handle is an interactive separator, not a decorative line. */
-.sidebarResizeHandle__5e434{
+:is([class^="sidebarResizeHandle_"],[class*=" sidebarResizeHandle_"]){
   background:transparent!important;
 }
-.sidebarResizeHandle__5e434:hover,
-.sidebarResizeHandle__5e434:active{
+:is([class^="sidebarResizeHandle_"],[class*=" sidebarResizeHandle_"]):hover,
+:is([class^="sidebarResizeHandle_"],[class*=" sidebarResizeHandle_"]):active{
   background:color-mix(in srgb,var(--spotify-accent-color) 30%,transparent)!important;
 }
 
@@ -1605,7 +1605,7 @@ code,pre{font-family:var(--code-font)!important}
        > .container__37e49          (account panel)
    The previous :has() rule targeted the empty wrapper and therefore never
    painted the player itself. */
-.panels__5e434 > #vc-spotify-player{
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player{
   background:var(--g-spotify)!important;
   background-color:var(--g-spotify)!important;
   background-image:none!important;
@@ -1620,8 +1620,8 @@ code,pre{font-family:var(--code-font)!important}
 
 /* Kill plugin-owned solid/album-art surfaces if SpotifyControls adds them via
    pseudo elements. Album artwork itself remains visible through the img. */
-.panels__5e434 > #vc-spotify-player::before,
-.panels__5e434 > #vc-spotify-player::after{
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player::before,
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player::after{
   background-color:transparent!important;
   background-image:none!important;
   box-shadow:none!important;
@@ -1670,7 +1670,7 @@ code,pre{font-family:var(--code-font)!important}
 /* ---------- SPOTIFY / ACCOUNT-PANEL SEAM ----------
    Make the player/account boundary use the same separator system rather than
    Discord/Vencord's own hard-coded line. */
-.panels__5e434 > #vc-spotify-player + .container__37e49{
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player + .container__37e49{
   border-top:0!important;
   box-shadow:none!important;
 }
@@ -1678,14 +1678,14 @@ code,pre{font-family:var(--code-font)!important}
 /* ---------- DM / CHANNEL HEADER SEPARATOR ----------
    Put exactly one configurable separator on the subtitle wrapper. The inner
    container currently carries Discord's own border, so remove that first. */
-.subtitleContainer_f75fb0{
+:is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]){
   background:transparent!important;
   border:0!important;
   border-bottom:var(--separator-thickness) solid var(--g-separator)!important;
   box-shadow:none!important;
 }
-.subtitleContainer_f75fb0 > .container__9293f,
-.subtitleContainer_f75fb0 > .title_f75fb0.container__9293f{
+:is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]) > .container__9293f,
+:is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]) > .title_f75fb0.container__9293f{
   border:0!important;
   border-bottom:0!important;
   box-shadow:none!important;
@@ -1693,14 +1693,14 @@ code,pre{font-family:var(--code-font)!important}
 
 /* If Discord's data-has-border chat wrapper is the source of the extra line,
    neutralize it and let the explicit subtitle separator above be authoritative. */
-.chat_f75fb0[data-has-border="true"]{
+:is([class^="chat_"],[class*=" chat_"])[data-has-border="true"]{
   border:0!important;
   box-shadow:none!important;
 }
 
 /* ---------- KNOWN SIDEBAR SEPARATORS FROM INSPECTOR ---------- */
-.guilds__5e434 .guildSeparator__252b6,
-.privateChannels_e6b769 .sectionDivider_e6b769{
+:is([class^="guilds_"],[class*=" guilds_"]) :is([class^="guildSeparator_"],[class*=" guildSeparator_"]),
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) :is([class^="sectionDivider_"],[class*=" sectionDivider_"]){
   background:var(--g-separator)!important;
   background-color:var(--g-separator)!important;
   border:0!important;
@@ -1711,19 +1711,19 @@ code,pre{font-family:var(--code-font)!important}
 
 /* Keep their spacing but prevent Discord's default surface token from leaking
    through around the line. */
-.guilds__5e434 .listItem__650eb:has(> .guildSeparator__252b6),
-.privateChannels_e6b769 .content_d125d2:has(> .sectionDivider_e6b769){
+:is([class^="guilds_"],[class*=" guilds_"]) .listItem__650eb:has(> :is([class^="guildSeparator_"],[class*=" guildSeparator_"])),
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) .content_d125d2:has(> :is([class^="sectionDivider_"],[class*=" sectionDivider_"])){
   background:transparent!important;
 }
 
 /* ---------- CHAT DATE / UNREAD DIVIDERS ----------
    This is the actual role=separator element inside the message scroller. */
-.chatContent_f75fb0 :is(.divider__5126c.divider__908e2,.divider__908e2){
+:is([class^="chatContent_"],[class*=" chatContent_"]) :is(.divider__5126c.divider__908e2,.divider__908e2){
   --divider-color:var(--g-separator)!important;
   border-top-color:var(--g-separator)!important;
   box-shadow:none!important;
 }
-.chatContent_f75fb0 .divider__908e2 > .content__908e2{
+:is([class^="chatContent_"],[class*=" chatContent_"]) .divider__908e2 > .content__908e2{
   background:var(--g-chat)!important;
   color:var(--muted-text)!important;
 }
@@ -1742,11 +1742,11 @@ code,pre{font-family:var(--code-font)!important}
    The effect expands upward behind whichever rows exist. Only the image or
    video surface is extended; the sidebar and panel layout never move.
    --------------------------------------------------------- */
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])){
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])){
   overflow:hidden!important;
 }
 
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49{
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49{
   position:relative!important;
   overflow:visible!important;
   z-index:1!important;
@@ -1754,7 +1754,7 @@ code,pre{font-family:var(--code-font)!important}
   background-color:transparent!important;
 }
 
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2{
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2{
   position:absolute!important;
   left:0!important;
   right:0!important;
@@ -1768,7 +1768,7 @@ code,pre{font-family:var(--code-font)!important}
   z-index:0!important;
 }
 
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2 .videoContainer_df39b2{
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2 .videoContainer_df39b2{
   position:absolute!important;
   inset:0!important;
   width:100%!important;
@@ -1776,7 +1776,7 @@ code,pre{font-family:var(--code-font)!important}
   overflow:hidden!important;
 }
 
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2 :is(.img_df39b2,video){
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) .container_df39b2.fitInAccount_df39b2 :is(.img_df39b2,video){
   width:100%!important;
   height:100%!important;
   min-width:100%!important;
@@ -1784,12 +1784,12 @@ code,pre{font-family:var(--code-font)!important}
   object-fit:cover!important;
 }
 
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49 > :not(.container_df39b2){
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49 > :not(.container_df39b2){
   position:relative!important;
   z-index:2!important;
 }
 
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > #vc-spotify-player{
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > #vc-spotify-player{
   position:relative!important;
   z-index:2!important;
   overflow:hidden!important;
@@ -1810,19 +1810,19 @@ code,pre{font-family:var(--code-font)!important}
    of wallpaper. These use a dark/tinted surface plus a soft halo instead.
    --------------------------------------------------------- */
 /* Header bottom seam */
-.subtitleContainer_f75fb0{
+:is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]){
   position:relative!important;
   border:0!important;
   border-bottom:0!important;
   box-shadow:none!important;
 }
-.subtitleContainer_f75fb0 > .container__9293f,
-.subtitleContainer_f75fb0 > .title_f75fb0.container__9293f{
+:is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]) > .container__9293f,
+:is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]) > .title_f75fb0.container__9293f{
   border:0!important;
   border-bottom:0!important;
   box-shadow:none!important;
 }
-.subtitleContainer_f75fb0::after{
+:is([class^="subtitleContainer_"],[class*=" subtitleContainer_"])::after{
   content:"";
   position:absolute;
   left:0;
@@ -1838,8 +1838,8 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Spotify top/bottom seams */
-.panels__5e434 > #vc-spotify-player::before,
-.panels__5e434 > #vc-spotify-player::after{
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player::before,
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player::after{
   content:""!important;
   position:absolute!important;
   left:0!important;
@@ -1854,14 +1854,14 @@ code,pre{font-family:var(--code-font)!important}
   pointer-events:none!important;
   z-index:1!important;
 }
-.panels__5e434 > #vc-spotify-player::before{top:0!important}
-.panels__5e434 > #vc-spotify-player::after{bottom:0!important}
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player::before{top:0!important}
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player::after{bottom:0!important}
 
 /* Server rail, DM sections, menus and other real separator nodes. */
 :is(
-  .guildSeparator__252b6,
-  .sectionDivider_e6b769,
-  .sectionDivider__629e4,
+  :is([class^="guildSeparator_"],[class*=" guildSeparator_"]),
+  :is([class^="sectionDivider_"],[class*=" sectionDivider_"]),
+  :is([class^="sectionDivider_"],[class*=" sectionDivider_"]),
   .separator_f84418,
   .divider__1feb0,
   .separator_c1e9c4
@@ -1873,22 +1873,22 @@ code,pre{font-family:var(--code-font)!important}
   backdrop-filter:none!important;
   box-shadow:none!important;
 }
-.guilds__5e434 .guildSeparator__252b6,
-.privateChannels_e6b769 .sectionDivider_e6b769{
+:is([class^="guilds_"],[class*=" guilds_"]) :is([class^="guildSeparator_"],[class*=" guildSeparator_"]),
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) :is([class^="sectionDivider_"],[class*=" sectionDivider_"]){
   height:var(--separator-thickness)!important;
   min-height:var(--separator-thickness)!important;
   border:0!important;
 }
 
 /* Message date/unread divider */
-.chatContent_f75fb0 :is(.divider__5126c.divider__908e2,.divider__908e2){
+:is([class^="chatContent_"],[class*=" chatContent_"]) :is(.divider__5126c.divider__908e2,.divider__908e2){
   position:relative!important;
   border:0!important;
   border-top:0!important;
   background:transparent!important;
   overflow:visible!important;
 }
-.chatContent_f75fb0 :is(.divider__5126c.divider__908e2,.divider__908e2)::before{
+:is([class^="chatContent_"],[class*=" chatContent_"]) :is(.divider__5126c.divider__908e2,.divider__908e2)::before{
   content:"";
   position:absolute;
   left:0;
@@ -1903,7 +1903,7 @@ code,pre{font-family:var(--code-font)!important}
   pointer-events:none;
   z-index:0;
 }
-.chatContent_f75fb0 .divider__908e2 > .content__908e2{
+:is([class^="chatContent_"],[class*=" chatContent_"]) .divider__908e2 > .content__908e2{
   position:relative!important;
   z-index:1!important;
   background:color-mix(in srgb,var(--glass-main-chat-color) 88%,transparent)!important;
@@ -1934,12 +1934,12 @@ code,pre{font-family:var(--code-font)!important}
   .content__5e434,
   .page__5e434,
   .content_f75fb0,
-  .subtitleContainer_f75fb0,
-  .messagesWrapper__36d07,
+  :is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]),
+  :is([class^="messagesWrapper_"],[class*=" messagesWrapper_"]),
   .scroller__36d07,
-  .scrollerContent__36d07,
-  .scrollerInner__36d07,
-  .channelBottomBarArea_f75fb0
+  :is([class^="scrollerContent_"],[class*=" scrollerContent_"]),
+  :is([class^="scrollerInner_"],[class*=" scrollerInner_"]),
+  :is([class^="channelBottomBarArea_"],[class*=" channelBottomBarArea_"])
 ){
   background-color:transparent!important;
   background-image:none!important;
@@ -1948,13 +1948,13 @@ code,pre{font-family:var(--code-font)!important}
 
 /* The actual scrolling/content regions keep normal clipping behavior. */
 :is(
-  .chatContent_f75fb0,
-  .privateChannels_e6b769,
-  .members_c8ffbb,
-  .guilds__5e434,
-  .sidebarList__5e434,
-  .aside_f58343,
-  .panels__5e434
+  :is([class^="chatContent_"],[class*=" chatContent_"]),
+  :is([class^="privateChannels_"],[class*=" privateChannels_"]),
+  :is([class^="members_"],[class*=" members_"]),
+  :is([class^="guilds_"],[class*=" guilds_"]),
+  :is([class^="sidebarList_"],[class*=" sidebarList_"]),
+  :is([class^="aside_"],[class*=" aside_"]),
+  :is([class^="panels_"],[class*=" panels_"])
 ){
   background-clip:border-box!important;
 }
@@ -1963,36 +1963,36 @@ code,pre{font-family:var(--code-font)!important}
    already blurred continuously, so backdrop-filter here only causes halos,
    discontinuities and offset-looking samples. */
 :is(
-  .guildSeparator__252b6,
-  .sectionDivider_e6b769,
-  .sectionDivider__629e4,
+  :is([class^="guildSeparator_"],[class*=" guildSeparator_"]),
+  :is([class^="sectionDivider_"],[class*=" sectionDivider_"]),
+  :is([class^="sectionDivider_"],[class*=" sectionDivider_"]),
   .separator_f84418,
   .divider__1feb0,
   .separator_c1e9c4,
-  .chatContent_f75fb0 .divider__908e2 > .content__908e2
+  :is([class^="chatContent_"],[class*=" chatContent_"]) .divider__908e2 > .content__908e2
 ){
   -webkit-backdrop-filter:none!important;
   backdrop-filter:none!important;
 }
-.subtitleContainer_f75fb0::after,
-.panels__5e434 > #vc-spotify-player::before,
-.panels__5e434 > #vc-spotify-player::after,
-.chatContent_f75fb0 .divider__908e2::before{
+:is([class^="subtitleContainer_"],[class*=" subtitleContainer_"])::after,
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player::before,
+:is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player::after,
+:is([class^="chatContent_"],[class*=" chatContent_"]) .divider__908e2::before{
   -webkit-backdrop-filter:none!important;
   backdrop-filter:none!important;
 }
 
 /* Structural panels rely on their tint rather than overlapping edge shadows. */
-:is(.guilds__5e434,.sidebarList__5e434,.privateChannels_e6b769,.members_c8ffbb,.aside_f58343,.panels__5e434){
+:is(:is([class^="guilds_"],[class*=" guilds_"]),:is([class^="sidebarList_"],[class*=" sidebarList_"]),:is([class^="privateChannels_"],[class*=" privateChannels_"]),:is([class^="members_"],[class*=" members_"]),:is([class^="aside_"],[class*=" aside_"]),:is([class^="panels_"],[class*=" panels_"])){
   box-shadow:none!important;
 }
 
 /* Do not let the resize handle reveal a sharp strip when idle. */
-.sidebarResizeHandle__5e434{
+:is([class^="sidebarResizeHandle_"],[class*=" sidebarResizeHandle_"]){
   background:transparent!important;
 }
-.sidebarResizeHandle__5e434:hover,
-.sidebarResizeHandle__5e434:active{
+:is([class^="sidebarResizeHandle_"],[class*=" sidebarResizeHandle_"]):hover,
+:is([class^="sidebarResizeHandle_"],[class*=" sidebarResizeHandle_"]):active{
   background:color-mix(in srgb,var(--spotify-accent-color) 30%,transparent)!important;
 }
 
@@ -2007,26 +2007,26 @@ code,pre{font-family:var(--code-font)!important}
 
 /* Optional panels each contribute their own height to the nameplate image.
    Detect each sibling independently: game activity also works with no Spotify. */
-.panels__5e434{
+:is([class^="panels_"],[class*=" panels_"]){
   --nameplate-spotify-span:0px;
   --nameplate-activity-span:0px;
   --nameplate-listening-span:0px;
 }
-.panels__5e434:has(> #vc-spotify-player){
+:is([class^="panels_"],[class*=" panels_"]):has(> #vc-spotify-player){
   --nameplate-spotify-span:var(--user-panel-effect-extension);
 }
-.panels__5e434:has(> [class*="activityPanel_"]){
+:is([class^="panels_"],[class*=" panels_"]):has(> [class*="activityPanel_"]){
   --nameplate-activity-span:var(--activity-panel-effect-extension);
 }
-.panels__5e434:has(> [class*="listeningAlong_"]){
+:is([class^="panels_"],[class*=" panels_"]):has(> [class*="listeningAlong_"]){
   --nameplate-listening-span:var(--listen-along-effect-extension);
 }
 
 /* Listen Along is a separate sibling above Spotify in the live DOM. Give it
    an explicit glass layer so it cannot fall back to a stock/clear surface. */
-.panels__5e434 > .listeningAlong_e0cf27,
-.panels__5e434 > [class^="listeningAlong_"],
-.panels__5e434 > [class*=" listeningAlong_"]{
+:is([class^="panels_"],[class*=" panels_"]) > :is([class^="listeningAlong_"],[class*=" listeningAlong_"]),
+:is([class^="panels_"],[class*=" panels_"]) > [class^="listeningAlong_"],
+:is([class^="panels_"],[class*=" panels_"]) > [class*=" listeningAlong_"]{
   position:relative!important;
   z-index:3!important;
   background:var(--g-user-panel)!important;
@@ -2044,7 +2044,7 @@ code,pre{font-family:var(--code-font)!important}
 /* The collectible/nameplate media is painted above the panel's own background,
    so the parent's tint cannot tint the media itself. Put the same user-panel
    glass over the media, but below the account controls. */
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49::before{
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49::before{
   content:"";
   position:absolute!important;
   inset:0!important;
@@ -2056,7 +2056,7 @@ code,pre{font-family:var(--code-font)!important}
 }
 
 /* Keep the visible account controls above the new tint overlay. */
-.panels__5e434:has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49 > :not(.container_df39b2){
+:is([class^="panels_"],[class*=" panels_"]):has(> :is(#vc-spotify-player, [class*="activityPanel_"], [class*="listeningAlong_"])) > .container__37e49 > :not(.container_df39b2){
   position:relative!important;
   z-index:2!important;
 }
@@ -2069,9 +2069,9 @@ code,pre{font-family:var(--code-font)!important}
 /* Discord's "Playing a game" row is a sibling of Spotify and the account
    controls. Keep the account media behind it and make the row itself lightly
    frosted, matching Listen Along and Spotify rather than appearing separate. */
-.panels__5e434 > .activityPanel__5e434,
-.panels__5e434 > [class^="activityPanel_"],
-.panels__5e434 > [class*=" activityPanel_"]{
+:is([class^="panels_"],[class*=" panels_"]) > :is([class^="activityPanel_"],[class*=" activityPanel_"]),
+:is([class^="panels_"],[class*=" panels_"]) > [class^="activityPanel_"],
+:is([class^="panels_"],[class*=" panels_"]) > [class*=" activityPanel_"]{
   position:relative!important;
   z-index:2!important;
   background:var(--g-user-panel)!important;
@@ -2085,10 +2085,10 @@ code,pre{font-family:var(--code-font)!important}
 
 /* Clear Discord's stock fill inside the activity row, but preserve buttons,
    game art, hover states and all real content. */
-.panels__5e434 [class*="activityPanel_"] :is(
+:is([class^="panels_"],[class*=" panels_"]) [class*="activityPanel_"] :is(
   .body__5dec7,
   [class^="body_5dec7"],
-  .gameWrapper__8c6c2,
+  :is([class^="gameWrapper_"],[class*=" gameWrapper_"]),
   [class^="gameWrapper_"]
 ){
   background:transparent!important;
@@ -2098,7 +2098,175 @@ code,pre{font-family:var(--code-font)!important}
 /* The nameplate is behind the activity/Spotify/Listen Along content and
    cannot intercept controls. The existing album art and game icon remain. */
 
-:is(.name__29444,.headerText__99e7c,.membersGroup_c8ffbb,.sectionLabel__409aa)::before,
-:is(.name__29444,.headerText__99e7c,.membersGroup_c8ffbb,.sectionLabel__409aa)::after{
+:is(.name__29444,:is([class^="headerText_"],[class*=" headerText_"]),:is([class^="membersGroup_"],[class*=" membersGroup_"]),:is([class^="sectionLabel_"],[class*=" sectionLabel_"]))::before,
+:is(.name__29444,:is([class^="headerText_"],[class*=" headerText_"]),:is([class^="membersGroup_"],[class*=" membersGroup_"]),:is([class^="sectionLabel_"],[class*=" sectionLabel_"]))::after{
   content:none!important;
+}
+
+:is([class^="bg_"],[class*=" bg_"]):is(.theme-dark,.theme-darker,.theme-midnight,.theme-light){
+  background-image:var(--background-image)!important;
+  background-color:transparent!important;
+  background-position:var(--background-position)!important;
+  background-size:var(--background-size)!important;
+  background-repeat:var(--background-repeat)!important;
+  background-attachment:var(--background-attachment)!important;
+  inset:calc(0px - var(--background-underlay-overscan))!important;
+  width:auto!important;
+  height:auto!important;
+  filter:var(--background-filter) blur(var(--background-underlay-blur))!important;
+}
+
+#app-mount :is([class^="app_"],[class*=" app_"]):has(> :is([class^="bg_"],[class*=" bg_"])),
+#app-mount :is([class^="base_"],[class*=" base_"]):has(> :is([class^="bar_"],[class*=" bar_"])),
+#app-mount :is([class^="content_"],[class*=" content_"]):has(> :is([class^="guilds_"],[class*=" guilds_"])),
+#app-mount :is([class^="page_"],[class*=" page_"]):has(> :is([class^="chat_"],[class*=" chat_"])){
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+#app-mount :is([class^="bar_"],[class*=" bar_"]):is([class^="systemBar_"],[class*=" systemBar_"]){
+  background:transparent!important;
+  box-shadow:inset 0 0 0 9999px var(--g-titlebar)!important;
+  border-bottom:1px solid var(--glass-divider-color)!important;
+  -webkit-backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-titlebar-blur)) saturate(var(--glass-saturation))!important;
+}
+
+#app-mount :is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]){
+  position:relative;
+  background-color:transparent!important;
+  background-image:none!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#app-mount :is([class^="subtitleContainer_"],[class*=" subtitleContainer_"]) > :is([class^="container_"],[class*=" container_"]){
+  background:var(--g-chat-header)!important;
+  border:0!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-chat-header-blur)) saturate(var(--glass-saturation))!important;
+}
+#app-mount :is([class^="subtitleContainer_"],[class*=" subtitleContainer_"])::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:var(--separator-thickness);
+  background:var(--g-separator);
+  pointer-events:none;
+  z-index:1;
+}
+
+#app-mount :is([class^="chat_"],[class*=" chat_"]):has(> :is([class^="chatContent_"],[class*=" chatContent_"])),
+#app-mount :is([class^="chat_"],[class*=" chat_"]):has(:is([class^="messagesWrapper_"],[class*=" messagesWrapper_"])){
+  background-color:transparent!important;
+  background-image:none!important;
+  border-color:transparent!important;
+}
+#app-mount :is([class^="chatContent_"],[class*=" chatContent_"]){
+  background:var(--g-chat)!important;
+  background-color:var(--g-chat)!important;
+  background-image:none!important;
+  -webkit-backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
+  backdrop-filter:blur(var(--glass-main-chat-blur)) saturate(var(--glass-saturation));
+}
+#app-mount :is([class^="chatContent_"],[class*=" chatContent_"]) :is(
+  [class^="messagesWrapper_"],[class*=" messagesWrapper_"],
+  [class^="scrollerContent_"],[class*=" scrollerContent_"],
+  [class^="scrollerInner_"],[class*=" scrollerInner_"]
+){
+  background-color:transparent!important;
+  background-image:none!important;
+}
+#app-mount :is([class^="channelTextArea_"],[class*=" channelTextArea_"]){
+  background-color:transparent!important;
+  background-image:none!important;
+}
+#app-mount :is([class^="scrollableContainer_"],[class*=" scrollableContainer_"]){
+  background:var(--g-input)!important;
+  border-color:var(--glass-border-color)!important;
+}
+
+#app-mount :is([class^="guilds_"],[class*=" guilds_"]){
+  background:var(--g-server-list)!important;
+  -webkit-backdrop-filter:blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-server-list-blur)) saturate(var(--glass-saturation))!important;
+  border-right:1px solid var(--glass-divider-color)!important;
+  box-shadow:none!important;
+}
+#app-mount :is([class^="sidebarList_"],[class*=" sidebarList_"]){
+  background:var(--g-channel-sidebar)!important;
+  -webkit-backdrop-filter:blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-channel-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  border-radius:0!important;
+  border-right:1px solid var(--glass-divider-color)!important;
+  box-shadow:none!important;
+}
+#app-mount :is([class^="sidebarList_"],[class*=" sidebarList_"]):has(:is([class^="privateChannels_"],[class*=" privateChannels_"])){
+  background:var(--g-dm-sidebar)!important;
+  -webkit-backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-dm-sidebar-blur)) saturate(var(--glass-saturation))!important;
+}
+#app-mount :is([class^="privateChannels_"],[class*=" privateChannels_"]){
+  background:transparent!important;
+  border-radius:0!important;
+}
+#app-mount :is([class^="privateChannels_"],[class*=" privateChannels_"]) :is(
+  [class^="scroller_"],[class*=" scroller_"],
+  [class^="searchBar_"],[class*=" searchBar_"]
+){
+  background-color:transparent!important;
+  background-image:none!important;
+}
+
+#app-mount :is([class^="membersWrap_"],[class*=" membersWrap_"]){
+  background:transparent!important;
+}
+#app-mount :is([class^="members_"],[class*=" members_"]){
+  background:var(--g-member-list)!important;
+  -webkit-backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-member-list-blur)) saturate(var(--glass-saturation))!important;
+  border-left:1px solid var(--glass-divider-color)!important;
+}
+#app-mount :is([class^="member_"],[class*=" member_"]){
+  background-color:transparent!important;
+}
+#app-mount :is([class^="aside_"],[class*=" aside_"]):has([class*="user-profile-sidebar"]){
+  background:var(--g-profile-sidebar)!important;
+  -webkit-backdrop-filter:blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-profile-sidebar-blur)) saturate(var(--glass-saturation))!important;
+}
+#app-mount :is([class^="panels_"],[class*=" panels_"]){
+  background:var(--g-user-panel)!important;
+  -webkit-backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
+  backdrop-filter:blur(var(--glass-user-panel-blur)) saturate(var(--glass-saturation))!important;
+  border-top:1px solid var(--glass-divider-color)!important;
+}
+#app-mount :is([class^="panels_"],[class*=" panels_"]) > #vc-spotify-player{
+  background:var(--g-spotify)!important;
+  border-color:var(--g-separator)!important;
+}
+
+#app-mount :is([class^="message_"],[class*=" message_"]):hover{
+  background:var(--g-message-hover)!important;
+}
+#app-mount :is([class^="replying_"],[class*=" replying_"]){
+  background:color-mix(in srgb,var(--cv-main) var(--glass-message-selected-opacity),transparent)!important;
+}
+#app-mount :is([class^="mentioned_"],[class*=" mentioned_"]){
+  background:color-mix(in srgb,var(--cv-main) var(--glass-mentioned-opacity),transparent)!important;
+}
+#app-mount :is([class^="modeSelected_"],[class*=" modeSelected_"]) :is([class^="link_"],[class*=" link_"]){
+  background:var(--channel-selected-bg)!important;
+}
+#app-mount :is([class^="modeUnreadImportant_"],[class*=" modeUnreadImportant_"]) :is([class^="name_"],[class*=" name_"]){
+  color:var(--channel-unread)!important;
+}
+
+#app-mount :is([class^="sidebarRegionScroller_"],[class*=" sidebarRegionScroller_"]){
+  background:var(--g-settings-sidebar)!important;
+}
+#app-mount :is([class^="contentRegionScroller_"],[class*=" contentRegionScroller_"]){
+  background:var(--g-settings-content)!important;
 }
