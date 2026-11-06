@@ -1,7 +1,7 @@
 /**
  * @name CompactX
  * @author Czczh
- * @version 1.0.2
+ * @version 1.0.3
  * @description A compact, customizable glass theme for Discord.
  */
 
@@ -653,20 +653,20 @@ code,pre{font-family:var(--code-font)!important}
 }
 :is([class^="privateChannels_"],[class*=" privateChannels_"]) .scroller__99e7c{background:transparent!important}
 :is([class^="privateChannelsHeaderContainer_"],[class*=" privateChannelsHeaderContainer_"]){color:var(--cv-main)!important}
-:is([class^="headerText_"],[class*=" headerText_"]){
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) :is([class^="headerText_"],[class*=" headerText_"]){
   color:var(--cv-main)!important;
   display:flex;
   align-items:center;
   gap:6px;
   font-weight:700;
 }
-:is([class^="headerText_"],[class*=" headerText_"])::before,:is([class^="headerText_"],[class*=" headerText_"])::after{
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) :is([class^="headerText_"],[class*=" headerText_"])::before,:is([class^="privateChannels_"],[class*=" privateChannels_"]) :is([class^="headerText_"],[class*=" headerText_"])::after{
   content:"";
   height:2px;
   flex:1;
   background:linear-gradient(90deg,transparent,var(--cv-main));
 }
-:is([class^="headerText_"],[class*=" headerText_"])::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
+:is([class^="privateChannels_"],[class*=" privateChannels_"]) :is([class^="headerText_"],[class*=" headerText_"])::after{background:linear-gradient(90deg,var(--cv-main),transparent)}
 .interactive__972a0{border-radius:var(--radius-small);transition:.15s ease}
 .interactive__972a0:hover{background:var(--surface-hover)!important}
 .interactive__972a0.interactiveSelected__972a0{background:var(--accent-fill-strong)!important;color:var(--interactive-text-active)!important}
@@ -2098,8 +2098,8 @@ code,pre{font-family:var(--code-font)!important}
 /* The nameplate is behind the activity/Spotify/Listen Along content and
    cannot intercept controls. The existing album art and game icon remain. */
 
-:is(.name__29444,:is([class^="headerText_"],[class*=" headerText_"]),:is([class^="membersGroup_"],[class*=" membersGroup_"]),:is([class^="sectionLabel_"],[class*=" sectionLabel_"]))::before,
-:is(.name__29444,:is([class^="headerText_"],[class*=" headerText_"]),:is([class^="membersGroup_"],[class*=" membersGroup_"]),:is([class^="sectionLabel_"],[class*=" sectionLabel_"]))::after{
+:is(.name__29444,:is([class^="privateChannels_"],[class*=" privateChannels_"]) :is([class^="headerText_"],[class*=" headerText_"]),:is([class^="membersGroup_"],[class*=" membersGroup_"]),:is([class^="sectionLabel_"],[class*=" sectionLabel_"]))::before,
+:is(.name__29444,:is([class^="privateChannels_"],[class*=" privateChannels_"]) :is([class^="headerText_"],[class*=" headerText_"]),:is([class^="membersGroup_"],[class*=" membersGroup_"]),:is([class^="sectionLabel_"],[class*=" sectionLabel_"]))::after{
   content:none!important;
 }
 
